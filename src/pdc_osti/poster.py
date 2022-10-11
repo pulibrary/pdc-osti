@@ -4,8 +4,9 @@ import os
 import sys
 
 import pandas as pd
-
 import ostiapi
+
+from .config import settings
 
 
 class Poster:
@@ -39,14 +40,15 @@ class Poster:
             environment_vars = ['OSTI_USERNAME_TEST', 'OSTI_PASSWORD_TEST',
                                 'OSTI_USERNAME_PROD', 'OSTI_PASSWORD_PROD']
 
-        assert all([var in os.environ for var in environment_vars]), \
+        settings_dict = settings.dict()
+        assert all([var in settings_dict for var in environment_vars]), \
             f'All {mode} environment variables need to be set. ' \
             f'See the README for more information.'
 
         # Assign username and password depending on where data is being posted
         if mode in ['test', 'prod']:
-            self.username = os.environ[f'OSTI_USERNAME_{mode.upper()}']
-            self.password = os.environ[f'OSTI_PASSWORD_{mode.upper()}']
+            self.username = settings_dict.get(f'OSTI_USERNAME_{mode.upper()}')
+            self.password = settings_dict.get(f'OSTI_PASSWORD_{mode.upper()}')
         else:
             self.username, self.password = None, None
 
