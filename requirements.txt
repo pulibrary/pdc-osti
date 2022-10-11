@@ -1,4 +1,0 @@
-requests
-pandas
-dicttoxml
-git+https://github.com/doecode/ostiapi.git

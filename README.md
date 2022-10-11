@@ -1,4 +1,4 @@
-# dspace-osti 
+# pdc-osti 
 
 For oversight reasons, [OSTI](https://www.osti.gov/) requires that PPPL submit its datasets' metadata through their API. OSTI is only a metadata repository, and the datasets themselves are stored in Dataspace. We are responsible for posting the metadata by the end of each fiscal year. This is not to be confused with submitting journal article metadata to OSTI, which is an entirely separate process and is handled by PPPL.
 
@@ -9,14 +9,14 @@ For oversight reasons, [OSTI](https://www.osti.gov/) requires that PPPL submit i
 To post to OSTI's test server, a user needs to acquire an ELink account. Currently, the OSTI API does not have a UI to create an account, so a new user will have to contact OSTI directly. To post to the production account, go to LastPass and get Princeton's credentials.
 
 ### Setup an environment
-We are dependent on [ostiapi](https://github.com/doecode/ostiapi) as a submodule. Presumably, this will eventually be available on PyPi. For all other libraries install the requirements in a python 3.8 environment.
+We are dependent on [ostiapi](https://github.com/doecode/ostiapi) as a library. Presumably, this will eventually be available on PyPi. For all other libraries install the requirements in a python 3.8 environment.
 
 ```
-pip install -r requirements.txt
+pip install -e .
 ```
 
 `ostiapi` requires a username and a password, which are different for posting to either `test` or `prod`.
-`Poster.py` searches for two environment variables for the appropriate `mode` (`test`/`prod`).
+`poster` searches for two environment variables for the appropriate `mode` (`test`/`prod`).
 After a user gets an E-Link Account, one can set the appropriate variables in `secrets.sh`,
 which is already removed from version control by `.gitignore`.
 

@@ -4,7 +4,6 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pdc-osti"
-version = "0.0.1"
 description = "Library to submit research dataset metadata to DOE/OSTI E-Link API"
 readme = "README.md"
 authors = [
@@ -26,7 +25,12 @@ dependencies = [
     "dicttoxml",
     "ostiapi @ git+https://github.com/doecode/ostiapi.git",
 ]
+dynamic = ["version"]
+
 [project.urls]
 homepage = "https://github.com/pulibrary/pdc-osti"
 documentation = "https://github.com/pulibrary/pdc-osti/blob/main/README.md"
 repository = "https://github.com/pulibrary/pdc-osti"
+
+[tool.setuptools.dynamic]
+version = {attr = "pdc_osti.__version__"}
