@@ -200,11 +200,11 @@ class Poster:
         self.post_to_osti()
 
 
-if __name__ == '__main__':
+def main():
     args = sys.argv
 
     help_s = """
-Choose one of the following options:
+    Choose one of the following options:
     --dry-run: Make fake requests locally to test workflow.
     --test: Post to OSTI's test server.
     --prod: Post to OSTI's prod server.

@@ -20,9 +20,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -e .
     - name: Run scraper
-      run: python src/pdc_osti/scraper.py
+      run: scraper
     - name: Run poster
-      run: python src/pdc_osti/poster.py --dry-run
+      run: poster --dry-run
       env:
         OSTI_USERNAME_TEST: my-test-osti-username
         OSTI_PASSWORD_TEST: my-test-osti-password
