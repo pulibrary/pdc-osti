@@ -332,7 +332,7 @@ def get_doe_funding(grant_nos: str) -> Dict[str, set]:
     return grant_dict
 
 
-if __name__ == '__main__':
+def main():
     s = Scraper()
     # NOTE: It may be useful to implement a CLI command (e.g. --no-scrape) to
     #  allow for debugging the get_unposted_metadata or generate_contract_entry_form

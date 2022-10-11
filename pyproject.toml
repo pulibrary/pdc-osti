@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=65.4.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdc-osti"
+description = "Library to submit research dataset metadata to DOE/OSTI E-Link API"
+readme = "README.md"
+authors = [
+    {name = "Chun Ly", email = "cly@pppl.gov"}
+]
+maintainers = [
+    {name = "Chun Ly", email = "cly@pppl.gov"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9"
+]
+requires-python = ">=3.8"
+
+dependencies = [
+    "requests",
+    "pandas",
+    "dicttoxml",
+    "ostiapi @ git+https://github.com/doecode/ostiapi.git",
+]
+dynamic = ["version"]
+
+[project.urls]
+homepage = "https://github.com/pulibrary/pdc-osti"
+documentation = "https://github.com/pulibrary/pdc-osti/blob/main/README.md"
+repository = "https://github.com/pulibrary/pdc-osti"
+
+[project.scripts]
+scraper = "pdc_osti.scraper:main"
+poster = "pdc_osti.poster:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "pdc_osti.__version__"}

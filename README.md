@@ -1,4 +1,4 @@
-# dspace-osti 
+# pdc-osti 
 
 For oversight reasons, [OSTI](https://www.osti.gov/) requires that PPPL submit its datasets' metadata through their API. OSTI is only a metadata repository, and the datasets themselves are stored in Dataspace. We are responsible for posting the metadata by the end of each fiscal year. This is not to be confused with submitting journal article metadata to OSTI, which is an entirely separate process and is handled by PPPL.
 
@@ -9,14 +9,14 @@ For oversight reasons, [OSTI](https://www.osti.gov/) requires that PPPL submit i
 To post to OSTI's test server, a user needs to acquire an ELink account. Currently, the OSTI API does not have a UI to create an account, so a new user will have to contact OSTI directly. To post to the production account, go to LastPass and get Princeton's credentials.
 
 ### Setup an environment
-We are dependent on [ostiapi](https://github.com/doecode/ostiapi) as a submodule. Presumably, this will eventually be available on PyPi. For all other libraries install the requirements in a python 3.8 environment.
+We are dependent on [ostiapi](https://github.com/doecode/ostiapi) as a library. Presumably, this will eventually be available on PyPi. For all other libraries install the requirements in a python 3.8 environment.
 
 ```
-pip install -r requirements.txt
+pip install -e .
 ```
 
 `ostiapi` requires a username and a password, which are different for posting to either `test` or `prod`.
-`Poster.py` searches for two environment variables for the appropriate `mode` (`test`/`prod`).
+`poster` searches for two environment variables for the appropriate `mode` (`test`/`prod`).
 After a user gets an E-Link Account, one can set the appropriate variables in `secrets.sh`,
 which is already removed from version control by `.gitignore`.
 
@@ -31,7 +31,7 @@ export OSTI_PASSWORD_PROD="my-prod-osti-password" # from LastPass
 
 ### Pull necessary data
 
-Run `python Scraper.py` to collect data from OSTI & DSpace. The pipeline will compare (by title) to see which datasets haven't yet been uploaded. It will output `entry_form.tsv` that one needs to manually fill out with DOE Contract information 
+Run `scraper` command-line script to collect data from OSTI & DSpace. The pipeline will compare (by title) to see which datasets haven't yet been uploaded. It will output `entry_form.tsv` that one needs to manually fill out with DOE Contract information 
 
 ### Manually enter data
 
@@ -40,11 +40,11 @@ Copy `entry_form.tsv` to a Google Sheet and share with partners at PPPL. They wi
 The `Sponsoring Organization`, `DOE Contract` and `Non-DOE Contract` may need to be modified. The latter two are retrieved from DataSpace metadata.
 Note that the default `Sponsoring Organization` is "USDOE Office of Science (SC)".
 
-Note: Since we're joining by title, typos and encoding errors will inevitably lead to missed results in `entry_form.tsv`. `Scraper.py` also checks for items that are in OSTI but not DSpace, something that shouldn't happen. The user will need to manually remove those rows from the entry form.
+Note: Since we're joining by title, typos and encoding errors will inevitably lead to missed results in `entry_form.tsv`. `scraper` also checks for items that are in OSTI but not DSpace, something that shouldn't happen. The user will need to manually remove those rows from the entry form.
 
 ### Post to OSTI
 
-`Poster.py` is used to combine the `form_input.tsv` and DSpace metadata to generate the JSON necessary for OSTI ingestion. Choose one of the three options:
+`poster` is used to combine the `form_input.tsv` and DSpace metadata to generate the JSON necessary for OSTI ingestion. Choose one of the three options:
 
 ```
     --dry-run: Make fake requests locally to test workflow.
@@ -52,13 +52,13 @@ Note: Since we're joining by title, typos and encoding errors will inevitably le
     --prod: Post to OSTI's prod server.
 ```
 
-| :warning:  | Posting to OSTI, both through test and prod, will send an email to you, your team, and OSTI. Make sure that `data/osti.json` is in good shape by running `python Poster.py --dry-run` before posting with `--test`. After OSTI approves what you've posted to their test server, post to production with the `--prod` flag. Ideally, you'd only need to go through this process once.      |
-|---------------|:------------------------|
+| :warning:  | Posting to OSTI, both through test and prod, will send an email to you, your team, and OSTI. Make sure that `data/osti.json` is in good shape by running `poster --dry-run` before posting with `--test`. After OSTI approves what you've posted to their test server, post to production with the `--prod` flag. Ideally, you'd only need to go through this process once. |
+|---------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 ### Examples
-If you're confused about how the output of `Scraper.py` turns into the input for `Poster.py`, consider looking at the CSVs in the `examples` folder.
+If you're confused about how the output of `scraper` turns into the input for `poster`, consider looking at the CSVs in the `examples` folder.
 
-Also, successful runs of `Poster.py` will give the following output:
+Also, successful runs of `poster` will give the following output:
 ```
 Posting data...
     ✔ Toward fusion plasma scenario planning
