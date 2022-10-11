@@ -17,14 +17,14 @@ pip install -e .
 
 `ostiapi` requires a username and a password, which are different for posting to either `test` or `prod`.
 `poster` searches for two environment variables for the appropriate `mode` (`test`/`prod`).
-After a user gets an E-Link Account, one can set the appropriate variables in `secrets.sh`,
-which is already removed from version control by `.gitignore`.
+After a user gets an E-Link Account, one can set the appropriate variables in a `.env` file,
+which is already removed from version control by `.gitignore`. `.env-template` is provided for convenience.
 
 ```
-export OSTI_USERNAME_TEST="my-test-osti-username"
-export OSTI_PASSWORD_TEST="my-test-osti-password"
-export OSTI_USERNAME_PROD="my-prod-osti-username" # from LastPass
-export OSTI_PASSWORD_PROD="my-prod-osti-password" # from LastPass
+OSTI_USERNAME_TEST="my-test-osti-username"
+OSTI_PASSWORD_TEST="my-test-osti-password"
+OSTI_USERNAME_PROD="my-prod-osti-username" # from LastPass
+OSTI_PASSWORD_PROD="my-prod-osti-password" # from LastPass
 ```
 
 ## Workflow
