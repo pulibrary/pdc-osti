@@ -133,10 +133,7 @@ class Scraper:
         all_items = []
 
         for c_name, c_id in PPPL_COLLECTIONS.items():
-            url = (
-                f"{DATASPACE_URI}/rest/collections/{c_id}/"
-                "items?expand=metadata"
-            )
+            url = f"{DATASPACE_URI}/rest/collections/{c_id}/items?expand=metadata"
             r = requests.get(url)
             j = json.loads(r.text)
             all_items.extend(j)
@@ -180,9 +177,7 @@ class Scraper:
 
         # Find handles in DSpace whose handles aren't linked in OSTI's DOIs
         # HACK: returning proper DOI while also updating redirects_j
-        osti_handles = [
-            get_handle(record["doi"], redirects_j) for record in osti_j
-        ]
+        osti_handles = [get_handle(record["doi"], redirects_j) for record in osti_j]
 
         to_be_published = []
         for dspace_record in dspace_j:
@@ -222,11 +217,7 @@ class Scraper:
         df = pd.DataFrame()
         df[DSPACE_ID] = [item["id"] for item in to_upload_j]
         df["Issue Date"] = [
-            [
-                m["value"]
-                for m in item["metadata"]
-                if m["key"] == "dc.date.issued"
-            ][0]
+            [m["value"] for m in item["metadata"] if m["key"] == "dc.date.issued"][0]
             for item in to_upload_j
         ]
         df["Title"] = [item["name"] for item in to_upload_j]
@@ -256,8 +247,7 @@ class Scraper:
 
         # Generate lists of lists per each dc.contributor.funder entry
         funding_result = [
-            list(filter(None, map(get_funder, f_list)))
-            for f_list in funding_text_list
+            list(filter(None, map(get_funder, f_list))) for f_list in funding_text_list
         ]
         funding_result_simple = [  # All grants for each DSpace record
             ";".join([";".join(value) if value else "" for value in res])
@@ -304,12 +294,8 @@ class Scraper:
         if os.path.exists(self.form_input):
             print(f"File exists. Will update: {self.form_input}")
 
-            entry_df = pd.read_csv(
-                self.entry_form, index_col=DSPACE_ID, sep="\t"
-            )
-            input_df = pd.read_csv(
-                self.form_input, index_col=DSPACE_ID, sep="\t"
-            )
+            entry_df = pd.read_csv(self.entry_form, index_col=DSPACE_ID, sep="\t")
+            input_df = pd.read_csv(self.form_input, index_col=DSPACE_ID, sep="\t")
             print("Identifying DataSpace records to add and remove ...")
             entry_id = set(entry_df.index)
             input_id = set(input_df.index)
@@ -329,9 +315,7 @@ class Scraper:
 
             revised_df.to_csv(self.form_input, sep="\t")
         else:
-            raise FileNotFoundError(
-                f"WARNING: {self.form_input} does not exist!"
-            )
+            raise FileNotFoundError(f"WARNING: {self.form_input} does not exist!")
 
     def run_pipeline(self, scrape=True):
         if scrape:

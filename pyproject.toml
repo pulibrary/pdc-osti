@@ -47,5 +47,5 @@ poster = "pdc_osti.poster:main"
 version = {attr = "pdc_osti.__version__"}
 
 [tool.black]
-line-length = 79
+line-length = 88
 target-version = ["py39"]

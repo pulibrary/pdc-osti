@@ -46,8 +46,7 @@ class Poster:
         # Ensure minimum (test/prod) environment variables are prepared
         if mode in ["test", "prod"]:
             environment_vars = [
-                f"{v}_{mode.upper()}"
-                for v in ["OSTI_USERNAME", "OSTI_PASSWORD"]
+                f"{v}_{mode.upper()}" for v in ["OSTI_USERNAME", "OSTI_PASSWORD"]
             ]
         if mode == "dry-run":
             environment_vars = [
@@ -107,9 +106,7 @@ class Poster:
         # Generate final JSON to post to OSTI
         osti_format = []
         for dspace_id, row in df.iterrows():
-            dspace_data = [
-                item for item in to_upload_j if item["id"] == dspace_id
-            ]
+            dspace_data = [item for item in to_upload_j if item["id"] == dspace_id]
             assert len(dspace_data) == 1, dspace_data
             dspace_data = dspace_data[0]
 
@@ -121,9 +118,7 @@ class Poster:
             ]
             assert len(date_info) == 1
             date_info = date_info[0]
-            pub_dt = datetime.datetime.strptime(
-                date_info, "%Y-%m-%dT%H:%M:%S%z"
-            )
+            pub_dt = datetime.datetime.strptime(date_info, "%Y-%m-%dT%H:%M:%S%z")
             pub_date = pub_dt.strftime("%m/%d/%Y")
 
             # Collect all required information
@@ -156,9 +151,7 @@ class Poster:
                 item_dict["description"] = "\n\n".join(abstract)
 
             keywords = [
-                m["value"]
-                for m in dspace_data["metadata"]
-                if m["key"] == "dc.subject"
+                m["value"] for m in dspace_data["metadata"] if m["key"] == "dc.subject"
             ]
             if len(keywords) != 0:
                 item_dict["keywords"] = "; ".join(keywords)
@@ -235,9 +228,7 @@ class Poster:
                 print(f"\t✗ {item['title']}")
 
         if self.mode != "dry-run":
-            status = [
-                item["status"] == "SUCCESS" for item in response_data["record"]
-            ]
+            status = [item["status"] == "SUCCESS" for item in response_data["record"]]
             if all(status):
                 print("Congrats 🚀 OSTI says that all records were uploaded!")
             else:
@@ -264,11 +255,7 @@ def main():
 
     commands = ["--dry-run", "--test", "--prod"]
 
-    if (
-        (len(args) != 2)
-        or (args[1] in ["--help", "-h"])
-        or (args[1] not in commands)
-    ):
+    if (len(args) != 2) or (args[1] in ["--help", "-h"]) or (args[1] not in commands):
         print(help_s)
     else:
         mode = args[1][2:]
