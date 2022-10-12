@@ -1,12 +1,10 @@
 import json
-import os
+from pathlib import Path
 import re
 from typing import Dict
 
 import requests
 import pandas as pd
-
-from os.path import join as pjoin
 
 from . import DATASPACE_URI, DSPACE_ID
 
@@ -77,7 +75,7 @@ class Scraper:
 
     def __init__(
         self,
-        data_dir="data",
+        data_dir=Path("data"),
         osti_scrape="osti_scrape.json",
         dspace_scrape="dspace_scrape.json",
         entry_form_full_path="entry_form.tsv",
@@ -86,15 +84,15 @@ class Scraper:
         redirects="redirects.json",
     ):
 
-        self.osti_scrape = pjoin(data_dir, osti_scrape)
-        self.dspace_scrape = pjoin(data_dir, dspace_scrape)
-        self.entry_form = entry_form_full_path
-        self.form_input = form_input_full_path
-        self.to_upload = pjoin(data_dir, to_upload)
-        self.redirects = pjoin(data_dir, redirects)
+        self.osti_scrape = data_dir / osti_scrape
+        self.dspace_scrape = data_dir / dspace_scrape
+        self.entry_form = Path(entry_form_full_path)
+        self.form_input = Path(form_input_full_path)
+        self.to_upload = data_dir / to_upload
+        self.redirects = data_dir / redirects
 
-        if not os.path.exists(data_dir):
-            os.mkdir(data_dir)
+        if not data_dir.exists():
+            data_dir.mkdir()
 
     def get_existing_datasets(self):
         """
@@ -291,7 +289,7 @@ class Scraper:
         In most cases, this will update form_input.tsv. This further
         supports CI
         """
-        if os.path.exists(self.form_input):
+        if self.form_input.exists():
             print(f"File exists. Will update: {self.form_input}")
 
             entry_df = pd.read_csv(self.entry_form, index_col=DSPACE_ID, sep="\t")
