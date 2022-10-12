@@ -1,6 +1,6 @@
 import datetime
 import json
-import os
+from pathlib import Path
 import sys
 
 import pandas as pd
@@ -21,27 +21,27 @@ class Poster:
     def __init__(
         self,
         mode,
-        data_dir="data",
+        data_dir=Path("data"),
         to_upload="dataset_metadata_to_upload.json",
         form_input_full_path="form_input.tsv",
         osti_upload="osti.json",
-        response_dir="responses",
+        response_dir=Path("responses"),
     ):
         self.mode = mode
 
         # Prepare all paths
         self.form_input = form_input_full_path
         self.data_dir = data_dir
-        self.to_upload = os.path.join(data_dir, to_upload)
-        self.osti_upload = os.path.join(data_dir, osti_upload)
+        self.to_upload = data_dir / to_upload
+        self.osti_upload = data_dir / osti_upload
 
         timestamp = str(datetime.datetime.now()).replace(":", "")
-        self.response_output = os.path.join(
-            response_dir, f"{mode}_osti_response_{timestamp}.json"
+        self.response_output = (
+            response_dir / f"{mode}_osti_response_{timestamp}.json"
         )
 
-        assert os.path.exists(data_dir)
-        assert os.path.exists(response_dir)
+        assert data_dir.exists()
+        assert response_dir.exists()
 
         # Ensure minimum (test/prod) environment variables are prepared
         if mode in ["test", "prod"]:
