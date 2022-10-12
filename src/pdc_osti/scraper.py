@@ -8,8 +8,7 @@ import pandas as pd
 
 from os.path import join as pjoin
 
-from . import DATASPACE_URI
-DSPACE_ID = 'DSpace ID'
+from . import DATASPACE_URI, DSPACE_ID
 
 # NOTE: The Dataspace REST API can now support requests from handles.
 #  Shifting this scrape to collection handles instead of IDs may make

@@ -6,7 +6,7 @@ import sys
 import pandas as pd
 import ostiapi
 
-from . import DATASPACE_URI
+from . import DATASPACE_URI, DSPACE_ID
 from .config import settings
 
 ACCEPTED_DATATYPE = ["AS", "GD", "IM", "ND", "IP", "FP", "SM", "MM", "I"]
@@ -78,7 +78,7 @@ class Poster:
             to_upload_j = json.load(f)
 
         df = pd.read_csv(self.form_input, sep="\t", keep_default_na=False)
-        df = df.set_index("DSpace ID")
+        df = df.set_index(DSPACE_ID)
 
         # Validate Input CSV
         def no_empty_cells(series):
