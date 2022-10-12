@@ -13,8 +13,10 @@ ACCEPTED_DATATYPE = ["AS", "GD", "IM", "ND", "IP", "FP", "SM", "MM", "I"]
 
 
 class Poster:
-    """Use the form input and DSpace metadata to generate the JSON necessary
-     for OSTI ingestion. Then post to OSTI using their API"""
+    """
+    Use the form input and DSpace metadata to generate the JSON necessary for
+    OSTI ingestion. Then post to OSTI using their API
+    """
 
     def __init__(
         self,
@@ -206,8 +208,10 @@ class Poster:
         }
 
     def post_to_osti(self):
-        """Post the collected metadata to OSTI's test or prod server. If in
-         dry-run mode, call our _fake_post method"""
+        """
+        Post the collected metadata to OSTI's test or prod server. If in
+        dry-run mode, call our _fake_post method
+        """
         if self.mode == "test":
             ostiapi.testmode()
 

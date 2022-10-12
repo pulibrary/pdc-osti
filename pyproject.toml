@@ -48,4 +48,4 @@ version = {attr = "pdc_osti.__version__"}
 
 [tool.black]
 line-length = 79
-target-version = ["py38"]
+target-version = ["py39"]
