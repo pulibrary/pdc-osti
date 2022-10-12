@@ -36,9 +36,7 @@ class Poster:
         self.osti_upload = data_dir / osti_upload
 
         timestamp = str(datetime.datetime.now()).replace(":", "")
-        self.response_output = (
-            response_dir / f"{mode}_osti_response_{timestamp}.json"
-        )
+        self.response_output = response_dir / f"{mode}_osti_response_{timestamp}.json"
 
         assert data_dir.exists()
         assert response_dir.exists()
