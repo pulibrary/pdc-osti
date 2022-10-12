@@ -28,6 +28,12 @@ dependencies = [
 ]
 dynamic = ["version"]
 
+[project.optional-dependencies]
+dev = [
+  "black",
+  "flake8",
+]
+
 [project.urls]
 homepage = "https://github.com/pulibrary/pdc-osti"
 documentation = "https://github.com/pulibrary/pdc-osti/blob/main/README.md"
@@ -39,3 +45,7 @@ poster = "pdc_osti.poster:main"
 
 [tool.setuptools.dynamic]
 version = {attr = "pdc_osti.__version__"}
+
+[tool.black]
+line-length = 88
+target-version = ["py39"]
