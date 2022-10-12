@@ -11,8 +11,13 @@ To post to OSTI's test server, a user needs to acquire an ELink account. Current
 ### Setup an environment
 We are dependent on [ostiapi](https://github.com/doecode/ostiapi) as a library. Presumably, this will eventually be available on PyPi. For all other libraries install the requirements in a python 3.8 environment.
 
-```
+```bash
 pip install -e .
+```
+
+For development purposes, please also install additional dependencies:
+```bash
+pip install -e .[dev]
 ```
 
 `ostiapi` requires a username and a password, which are different for posting to either `test` or `prod`.
