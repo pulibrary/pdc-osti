@@ -119,7 +119,9 @@ class Poster:
             # Collect all required information
             item_dict = {
                 "title": dspace_data["name"],
-                "creators": ";".join(get_dc_value(dspace_data, "dc.contributor.author")),
+                "creators": ";".join(
+                    get_dc_value(dspace_data, "dc.contributor.author")
+                ),
                 "dataset_type": row["Datatype"],
                 "site_url": f"{DATASPACE_URI}/handle/{dspace_data['handle']}",
                 "contract_nos": row["DOE Contract"],
