@@ -1,5 +1,11 @@
 # pdc-osti 
 
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![smoke-test](https://github.com/pulibrary/pdc-osti/actions/workflows/smoke-test.yaml/badge.svg)](https://github.com/pulibrary/pdc-osti/actions/workflows/smoke-test.yaml)
+[![linting](https://github.com/pulibrary/pdc-osti/actions/workflows/linting.yml/badge.svg)](https://github.com/pulibrary/pdc-osti/actions/workflows/linting.yml)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/pulibrary/pdc-osti?label=version)
+![python](https://img.shields.io/badge/python-3.8%20%7C%203.9-blue)
+
 For oversight reasons, [OSTI](https://www.osti.gov/) requires that PPPL submit its datasets' metadata through their API. OSTI is only a metadata repository, and the datasets themselves are stored in Dataspace. We are responsible for posting the metadata by the end of each fiscal year. This is not to be confused with submitting journal article metadata to OSTI, which is an entirely separate process and is handled by PPPL.
 
 ## Setup
