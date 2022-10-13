@@ -7,6 +7,7 @@ import requests
 import pandas as pd
 
 from . import DATASPACE_URI, DSPACE_ID
+from .commons import get_dc_value
 
 # NOTE: The Dataspace REST API can now support requests from handles.
 #  Shifting this scrape to collection handles instead of IDs may make
@@ -215,18 +216,11 @@ class Scraper:
         df = pd.DataFrame()
         df[DSPACE_ID] = [item["id"] for item in to_upload_j]
         df["Issue Date"] = [
-            [m["value"] for m in item["metadata"] if m["key"] == "dc.date.issued"][0]
-            for item in to_upload_j
+            get_dc_value(item, "dc.date.issued")[0] for item in to_upload_j
         ]
         df["Title"] = [item["name"] for item in to_upload_j]
         df["Author"] = [
-            ";".join(
-                [
-                    m["value"]
-                    for m in item["metadata"]
-                    if m["key"] == "dc.contributor.author"
-                ]
-            )
+            ";".join(get_dc_value(item, "dc.contributor.author"))
             for item in to_upload_j
         ]
         df["Dataspace Link"] = [
@@ -235,12 +229,7 @@ class Scraper:
 
         # Retrieve funding data
         funding_text_list = [
-            [
-                m["value"]
-                for m in item["metadata"]
-                if m["key"] == "dc.contributor.funder"
-            ]
-            for item in to_upload_j
+            get_dc_value(item, "dc.contributor.funder") for item in to_upload_j
         ]
 
         # Generate lists of lists per each dc.contributor.funder entry

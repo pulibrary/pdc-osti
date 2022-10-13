@@ -7,6 +7,7 @@ import pandas as pd
 import ostiapi
 
 from . import DATASPACE_URI, DSPACE_ID
+from .commons import get_dc_value
 from .config import settings
 
 ACCEPTED_DATATYPE = ["AS", "GD", "IM", "ND", "IP", "FP", "SM", "MM", "I"]
@@ -109,11 +110,7 @@ class Poster:
             dspace_data = dspace_data[0]
 
             # get publication date
-            date_info = [
-                m["value"]
-                for m in dspace_data["metadata"]
-                if m["key"] == "dc.date.available"
-            ]
+            date_info = get_dc_value(dspace_data, "dc.date.available")
             assert len(date_info) == 1
             date_info = date_info[0]
             pub_dt = datetime.datetime.strptime(date_info, "%Y-%m-%dT%H:%M:%S%z")
@@ -122,13 +119,7 @@ class Poster:
             # Collect all required information
             item_dict = {
                 "title": dspace_data["name"],
-                "creators": ";".join(
-                    [
-                        m["value"]
-                        for m in dspace_data["metadata"]
-                        if m["key"] == "dc.contributor.author"
-                    ]
-                ),
+                "creators": ";".join(get_dc_value(dspace_data, "dc.contributor.author")),
                 "dataset_type": row["Datatype"],
                 "site_url": f"{DATASPACE_URI}/handle/{dspace_data['handle']}",
                 "contract_nos": row["DOE Contract"],
@@ -140,25 +131,15 @@ class Poster:
             }
 
             # Collect optional required information
-            abstract = [
-                m["value"]
-                for m in dspace_data["metadata"]
-                if m["key"] == "dc.description.abstract"
-            ]
+            abstract = get_dc_value(dspace_data, "dc.description.abstract")
             if len(abstract) != 0:
                 item_dict["description"] = "\n\n".join(abstract)
 
-            keywords = [
-                m["value"] for m in dspace_data["metadata"] if m["key"] == "dc.subject"
-            ]
+            keywords = get_dc_value(dspace_data, "dc.subject")
             if len(keywords) != 0:
                 item_dict["keywords"] = "; ".join(keywords)
 
-            is_referenced_by = [
-                m["value"]
-                for m in dspace_data["metadata"]
-                if m["key"] == "dc.relation.isreferencedby"
-            ]
+            is_referenced_by = get_dc_value(dspace_data, "dc.relation.isreferencedby")
             if len(is_referenced_by) != 0:
                 item_dict["related_identifiers"] = []
                 for irb in is_referenced_by:
