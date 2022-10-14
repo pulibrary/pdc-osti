@@ -24,6 +24,7 @@ pip install -e .
 For development purposes, please also install additional dependencies:
 ```bash
 pip install -e .[dev]
+pre-commit
 ```
 
 `ostiapi` requires a username and a password, which are different for posting to either `test` or `prod`.

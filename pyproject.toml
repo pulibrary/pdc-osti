@@ -30,8 +30,9 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 dev = [
-  "black",
-  "flake8",
+    "black",
+    "flake8",
+    "pre-commit",
 ]
 
 [project.urls]
