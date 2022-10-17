@@ -8,9 +8,9 @@ import requests
 
 from . import DATASPACE_URI, DSPACE_ID
 from .commons import get_dc_value
-from .logger import pdc_log, script_log_init, script_log_end
+from .logger import pdc_log, script_log_end, script_log_init
 
-script_name = Path(__file__).stem
+SCRIPT_NAME = Path(__file__).stem
 
 # NOTE: The Dataspace REST API can now support requests from handles.
 #  Shifting this scrape to collection handles instead of IDs may make
@@ -349,14 +349,14 @@ class Scraper:
         self.log.info("[bold green]✔ Form input updated!")
 
     def run_pipeline(self, scrape=True):
-        self.log.info("[bold yellow]Running scraper pipeline")
+        self.log.info(f"[bold yellow]Running {SCRIPT_NAME} pipeline")
         if scrape:
             self.get_existing_datasets()
             self.get_dspace_metadata()
         self.get_unposted_metadata()
         self.generate_contract_entry_form()
         self.update_form_input()
-        self.log.info("[bold green]✔ Scraper pipeline run completed!")
+        self.log.info(f"[bold green]✔ Pipeline run completed for {SCRIPT_NAME}!")
 
 
 def get_funder(text: str) -> list:
@@ -396,10 +396,10 @@ def get_doe_funding(grant_nos: str) -> Dict[str, set]:
 
 
 def main():
-    log = script_log_init(script_name)
+    log = script_log_init(SCRIPT_NAME)
     s = Scraper(log=log)
     # NOTE: It may be useful to implement a CLI command (e.g. --no-scrape) to
     #       allow for debugging the get_unposted_metadata or
     #       generate_contract_entry_form functions
     s.run_pipeline()
-    script_log_end(script_name, log)
+    script_log_end(SCRIPT_NAME, log)

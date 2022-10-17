@@ -9,6 +9,9 @@ import pandas as pd
 from . import DATASPACE_URI, DSPACE_ID
 from .commons import get_dc_value
 from .config import settings
+from .logger import pdc_log, script_log_end, script_log_init
+
+SCRIPT_NAME = Path(__file__).stem
 
 ACCEPTED_DATATYPE = ["AS", "GD", "IM", "ND", "IP", "FP", "SM", "MM", "I"]
 
@@ -27,8 +30,10 @@ class Poster:
         form_input_full_path="form_input.tsv",
         osti_upload="osti.json",
         response_dir=Path("responses"),
+        log=pdc_log,
     ):
         self.mode = mode
+        self.log = log
 
         # Prepare all paths
         self.form_input = form_input_full_path
@@ -38,7 +43,6 @@ class Poster:
 
         timestamp = str(datetime.datetime.now()).replace(":", "")
         self.response_output = response_dir / f"{mode}_osti_response_{timestamp}.json"
-
         assert data_dir.exists()
         assert response_dir.exists()
 
@@ -73,10 +77,13 @@ class Poster:
         Validate the form input provided by the user and combine new data with
         DSpace data to generate JSON that is prepared for OSTI ingestion
         """
+        self.log.info("[bold yellow]Generating upload data")
 
+        self.log.info(f"[yellow]Loading: {self.to_upload}")
         with open(self.to_upload) as f:
             to_upload_j = json.load(f)
 
+        self.log.info(f"[yellow]Loading: {self.form_input}")
         df = pd.read_csv(self.form_input, sep="\t", keep_default_na=False)
         df = df.set_index(DSPACE_ID)
 
@@ -155,12 +162,16 @@ class Poster:
 
             osti_format.append(item_dict)
 
+        state = "Updating" if self.osti_upload.exists() else "Writing"
+        self.log.info(f"[yellow]{state}: {self.osti_upload}")
         with open(self.osti_upload, "w") as f:
             json.dump(osti_format, f, indent=4)
 
-    @staticmethod
-    def _fake_post(records):
+        self.log.info("[bold green]✔ Upload data generated!")
+
+    def _fake_post(self, records):
         """A fake JSON response that mirrors OSTI's"""
+        self.log.info("[bold yellow]Fake posting")
         return {
             "record": [
                 {
@@ -186,45 +197,53 @@ class Poster:
         Post the collected metadata to OSTI's test or prod server. If in
         dry-run mode, call our _fake_post method
         """
+        self.log.info("[bold yellow]Posting to OSTI")
         if self.mode == "test":
             ostiapi.testmode()
 
+        self.log.info(f"[yellow]Loading: {self.osti_upload}")
         with open(self.osti_upload) as f:
             osti_j = json.load(f)
 
-        print("Posting data...")
+        self.log.info("[bold yellow]Posting data")
         if self.mode == "dry-run":
             response_data = self._fake_post(osti_j)
         else:
             response_data = ostiapi.post(osti_j, self.username, self.password)
 
+        self.log.info(f"[yellow]Writing: {self.response_output}")
         with open(self.response_output, "w") as f:
             json.dump(response_data, f, indent=4)
 
         # output results to the shell:
         for item in response_data["record"]:
             if item["status"] == "SUCCESS":
-                print(f"\t✔ {item['title']}")
+                self.log.info(f"[green]\t✔ {item['title']}")
             else:
-                print(f"\t✗ {item['title']}")
+                self.log.info(f"[red]\t✗ {item['title']}")
 
         if self.mode != "dry-run":
             status = [item["status"] == "SUCCESS" for item in response_data["record"]]
             if all(status):
-                print("Congrats 🚀 OSTI says that all records were uploaded!")
+                self.log.info("Congrats 🚀 OSTI says that all records were uploaded!")
             else:
-                print(
+                self.log.info(
                     "Some of OSTI's responses do not have 'SUCCESS' as their "
                     f"status. Look at the file {self.response_output} to "
                     "see which records were not successfully uploaded."
                 )
 
+        self.log.info("[bold green]✔ Posted to OSTI!")
+
     def run_pipeline(self):
+        self.log.info(f"[bold yellow]Running {SCRIPT_NAME} pipeline")
         self.generate_upload_json()
         self.post_to_osti()
+        self.log.info(f"[bold green]✔ Pipeline run completed for {SCRIPT_NAME}!")
 
 
 def main():
+    log = script_log_init(SCRIPT_NAME)
     args = sys.argv
 
     help_s = """
@@ -244,15 +263,17 @@ def main():
         if mode == "dry-run":
             user_response = "yes"
         if mode in ["test", "prod"]:
-            print(
-                f"WARNING: Running this script in {mode} mode will "
-                "trigger emails to PPPL and OSTI!"
+            log.warning(
+                "[bold red]"
+                f"Running in {mode} mode will trigger emails to PPPL and OSTI!"
             )
             user_response = input(
                 "Are you sure you wish you proceed? (Enter 'Yes'/'yes') "
             )
-        print(f"User response: {user_response}")
+        log.info(f"{user_response=}")
         if user_response.lower() == "yes":
             p.run_pipeline()
         else:
             print("Exiting!!! You must respond with a Yes/yes")
+
+    script_log_end(SCRIPT_NAME, log)
