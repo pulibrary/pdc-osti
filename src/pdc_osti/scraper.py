@@ -167,7 +167,7 @@ class Scraper:
         with open(self.dspace_scrape, "w") as f:
             json.dump(all_items, f, indent=4)
 
-        self.log.info("[bold green]✔ DataSpace metadata collected")
+        self.log.info("[bold green]✔ DataSpace metadata collected!")
 
     def get_unposted_metadata(self):
         """Compare OSTI and DataSpace JSON to identify records for uploading"""
