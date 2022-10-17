@@ -1,4 +1,4 @@
-# pdc-osti 
+# pdc-osti
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![smoke-test](https://github.com/pulibrary/pdc-osti/actions/workflows/smoke-test.yaml/badge.svg)](https://github.com/pulibrary/pdc-osti/actions/workflows/smoke-test.yaml)
@@ -24,7 +24,7 @@ pip install -e .
 For development purposes, please also install additional dependencies:
 ```bash
 pip install -e .[dev]
-pre-commit
+pre-commit install
 ```
 
 `ostiapi` requires a username and a password, which are different for posting to either `test` or `prod`.
@@ -43,7 +43,7 @@ OSTI_PASSWORD_PROD="my-prod-osti-password" # from LastPass
 
 ### Pull necessary data
 
-Run `scraper` command-line script to collect data from OSTI & DSpace. The pipeline will compare (by title) to see which datasets haven't yet been uploaded. It will output `entry_form.tsv` that one needs to manually fill out with DOE Contract information 
+Run `scraper` command-line script to collect data from OSTI & DSpace. The pipeline will compare (by title) to see which datasets haven't yet been uploaded. It will output `entry_form.tsv` that one needs to manually fill out with DOE Contract information
 
 ### Manually enter data
 
