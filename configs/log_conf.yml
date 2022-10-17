@@ -1,0 +1,14 @@
+version: 1
+disable_existing_loggers: false
+handlers:
+  console:
+    level: INFO
+    class: rich.logging.RichHandler
+    log_time_format: "[%X]"
+    markup: True
+    show_path: False
+loggers:
+  pdc-osti:
+    level: DEBUG
+    handlers: [console]
+    propagate: no
