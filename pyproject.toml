@@ -26,6 +26,7 @@ dependencies = [
     "ostiapi @ git+https://github.com/doecode/ostiapi.git",
     "pydantic[dotenv]<2.0.0",
     "rich",
+    "PyYAML>=6.0, <7.0"
 ]
 dynamic = ["version"]
 
