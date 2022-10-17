@@ -25,6 +25,7 @@ dependencies = [
     "dicttoxml",
     "ostiapi @ git+https://github.com/doecode/ostiapi.git",
     "pydantic[dotenv]<2.0.0",
+    "rich",
 ]
 dynamic = ["version"]
 
