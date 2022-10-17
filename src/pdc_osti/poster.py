@@ -5,6 +5,7 @@ from pathlib import Path
 
 import ostiapi
 import pandas as pd
+from rich.prompt import Confirm
 
 from . import DATASPACE_URI, DSPACE_ID
 from .commons import get_dc_value
@@ -261,19 +262,17 @@ def main():
         mode = args[1][2:]
         p = Poster(mode)
         if mode == "dry-run":
-            user_response = "yes"
+            user_response = True
         if mode in ["test", "prod"]:
             log.warning(
                 "[bold red]"
                 f"Running in {mode} mode will trigger emails to PPPL and OSTI!"
             )
-            user_response = input(
-                "Are you sure you wish you proceed? (Enter 'Yes'/'yes') "
-            )
+            user_response = Confirm.ask("Are you sure you wish you proceed?")
         log.info(f"{user_response=}")
-        if user_response.lower() == "yes":
+        if user_response:
             p.run_pipeline()
         else:
-            print("Exiting!!! You must respond with a Yes/yes")
+            log.info("[bold red]Exiting!!! You must respond with a Y/y")
 
     script_log_end(SCRIPT_NAME, log)
