@@ -8,6 +8,9 @@ import requests
 
 from . import DATASPACE_URI, DSPACE_ID
 from .commons import get_dc_value
+from .logger import pdc_log, script_log_init, script_log_end
+
+script_name = Path(__file__).stem
 
 # NOTE: The Dataspace REST API can now support requests from handles.
 #  Shifting this scrape to collection handles instead of IDs may make
@@ -83,8 +86,10 @@ class Scraper:
         form_input_full_path="form_input.tsv",
         to_upload="dataset_metadata_to_upload.json",
         redirects="redirects.json",
+        log=pdc_log,
     ):
 
+        self.log = log
         self.osti_scrape = data_dir / osti_scrape
         self.dspace_scrape = data_dir / dspace_scrape
         self.entry_form = Path(entry_form_full_path)
@@ -100,6 +105,8 @@ class Scraper:
         Paginate through OSTI's Data Explorer API to find datasets that have
         been submitted
         """
+        self.log.info("[bold yellow]Get existing datasets")
+
         MAX_PAGE_COUNT = 15
         existing_datasets = []
 
@@ -113,21 +120,24 @@ class Scraper:
             if len(j) != 0:
                 existing_datasets.extend(j)
             else:
-                print(f"Pulled {len(existing_datasets)} records from OSTI.")
+                self.log.info(f"Pulled {len(existing_datasets)} records from OSTI.")
                 break
         else:
-            raise BaseException(
-                "Didn't reach the final OSTI page! Increase the MAX_PAGE_COUNT"
-            )
+            msg = "Didn't reach the final OSTI page! Increase MAX_PAGE_COUNT"
+            self.log.error(f"[bold red]{msg}")
+            raise BaseException(msg)
 
+        state = "Updating" if self.osti_scrape.exists() else "Writing"
+        self.log.info(f"[yellow]{state}: {self.osti_scrape}")
         with open(self.osti_scrape, "w") as f:
             json.dump(existing_datasets, f, indent=4)
+        self.log.info("[bold green]✔ Existing datasets obtained!")
 
     def get_dspace_metadata(self):
         """
         Collect metadata on all items from all DataSpace PPPL collections
-
         """
+        self.log.info("[bold yellow]Collect DataSpace metadata")
 
         all_items = []
 
@@ -140,8 +150,8 @@ class Scraper:
         # Confirm that all collections were included
         url_all = f"{DATASPACE_URI}/rest/communities/{PPPL_COMMUNITY_ID}"
         r = requests.get(url_all)
-        print("countItems: ", json.loads(r.text)["countItems"])
-        print("all_items: ", len(all_items))
+        self.log.info(f"countItems: {json.loads(r.text)['countItems']}")
+        self.log.info(f"all_items: {len(all_items)}")
         assert json.loads(r.text)["countItems"] == len(all_items), (
             "The number of items in the PPPL community does not equal the "
             "number of items collected. Review the list of collections we "
@@ -150,9 +160,14 @@ class Scraper:
             "to prevent this from happening again."
         )
 
-        print(f"Pulled {len(all_items)} records from DSpace.")
+        self.log.info(f"Pulled {len(all_items)} records from DSpace.")
+
+        state = "Updating" if self.dspace_scrape.exists() else "Writing"
+        self.log.info(f"[yellow]{state}: {self.dspace_scrape}")
         with open(self.dspace_scrape, "w") as f:
             json.dump(all_items, f, indent=4)
+
+        self.log.info("[bold green]✔ DataSpace metadata collected")
 
     def get_unposted_metadata(self):
         """Compare OSTI and DataSpace JSON to identify records for uploading"""
@@ -167,10 +182,17 @@ class Scraper:
             else:
                 return redirects_j[doi]
 
+        self.log.info("[bold yellow]Identifying new records for uploading")
+
+        self.log.info(f"[yellow]Loading: {self.redirects}")
         with open(self.redirects) as f:
             redirects_j = json.load(f)
+
+        self.log.info(f"[yellow]Loading: {self.dspace_scrape}")
         with open(self.dspace_scrape) as f:
             dspace_j = json.load(f)
+
+        self.log.info(f"[yellow]Loading: {self.osti_scrape}")
         with open(self.osti_scrape) as f:
             osti_j = json.load(f)
 
@@ -183,8 +205,13 @@ class Scraper:
             if dspace_record["handle"] not in osti_handles:
                 to_be_published.append(dspace_record)
 
+        state = "Updating" if self.to_upload.exists() else "Writing"
+        self.log.info(f"[yellow]{state}: {self.to_upload}")
         with open(self.to_upload, "w") as f:
             json.dump(to_be_published, f, indent=4)
+
+        state = "Updating" if self.redirects.exists() else "Writing"
+        self.log.info(f"[yellow]{state}: {self.redirects}")
         with open(self.redirects, "w") as f:
             json.dump(redirects_j, f, indent=4)
 
@@ -196,20 +223,24 @@ class Scraper:
             if redirects_j[record["doi"]] not in dspace_handles
         ]
         if len(errors) > 0:
-            print(
-                "The following records were found on OSTI but not in DSpace "
-                "(that shouldn't happen). If they closely resemble records we "
-                "are about to upload, please remove those records from from "
-                "the upload process."
+            self.log.warning(
+                "[bold red]The following records were found on OSTI but not in DSpace "
+                "(that shouldn't happen). If they closely resemble records we are "
+                "about to upload, please remove those records from the upload process."
             )
             for error in errors:
-                print(f"\t{error['title']}")
+                self.log.info(f"\t{error['title']}")
+
+        self.log.info("[bold green]✔ New records for uploading identified!")
 
     def generate_contract_entry_form(self):
         """
         Create a CSV where a user can enter Sponsoring Organizations, DOE
         Contract, and Datatype, additional information required by OSTI
         """
+        self.log.info("[bold yellow]Generating entry form")
+
+        self.log.info(f"[yellow]Loading: {self.to_upload}")
         with open(self.to_upload) as f:
             to_upload_j = json.load(f)
 
@@ -255,20 +286,24 @@ class Scraper:
         df["Datatype"] = None  # To be filled in
 
         df = df.sort_values("Issue Date")
+        state = "Updating" if self.entry_form.exists() else "Writing"
+        self.log.info(f"[yellow]{state}: {self.entry_form}")
         df.to_csv(self.entry_form, index=False, sep="\t")
 
-        print(
-            f"{df.shape[0]} unpublished records were found in the PPPL "
+        self.log.info(
+            f"[purple]{df.shape[0]} unpublished records were found in the PPPL "
             f"dataspace community that have not been registered with OSTI."
         )
-        print(f"They've been saved to the form {self.entry_form}.")
-        print(
-            "You're now expected to manually update that form and save as a "
-            "new file before running Poster.py"
+        self.log.info(f"[purple]They've been saved to the form {self.entry_form}.")
+        self.log.info(
+            "[purple]You're now expected to manually update that form and "
+            "save as a new file before running Poster.py"
         )
         for i, row in df.iterrows():
-            print(f"\t{repr(row['Title'])}")
-            print(f"\t\t{row['Dataspace Link']}")
+            self.log.info(f"\t{repr(row['Title'])}")
+            self.log.info(f"\t\t{row['Dataspace Link']}")
+
+        self.log.info("[bold green]✔ Entry form generated!")
 
     def update_form_input(self):
         """
@@ -278,39 +313,50 @@ class Scraper:
         In most cases, this will update form_input.tsv. This further
         supports CI
         """
+        self.log.info("[bold yellow]Updating form input")
+
         if self.form_input.exists():
-            print(f"File exists. Will update: {self.form_input}")
+            self.log.info(f"File exists. Will update: {self.form_input}")
 
             entry_df = pd.read_csv(self.entry_form, index_col=DSPACE_ID, sep="\t")
             input_df = pd.read_csv(self.form_input, index_col=DSPACE_ID, sep="\t")
-            print("Identifying DataSpace records to add and remove ...")
+            self.log.info("Identifying DataSpace records to add and remove ...")
             entry_id = set(entry_df.index)
             input_id = set(input_df.index)
             drops = input_id - entry_id
             adds = entry_id - input_id
             commons = entry_id & input_id
-            print(f"Commons records : {len(commons):3}")
-            print(f"New records     : {len(adds):3}")
-            print(f"Records to drop : {len(drops):3}")
-            print(f"Removing : {','.join([str(drop) for drop in drops])} ...")
+            self.log.info(f"Commons records : {len(commons):3}")
+            self.log.info(f"New records     : {len(adds):3}")
+            self.log.info(f"Records to drop : {len(drops):3}")
+            self.log.info(f"Removing : {','.join([str(drop) for drop in drops])} ...")
             input_df.drop(drops, inplace=True)
-            print(f"Appending : {','.join([str(add) for add in adds])}")
+            self.log.info(f"Appending : {','.join([str(add) for add in adds])}")
             revised_df = input_df.append(entry_df.loc[adds])
 
             # "AS" is a placeholder - not included in DataSpace metadata
             revised_df.loc[adds, "Datatype"] = "AS"
 
+            state = "Updating" if self.form_input.exists() else "Writing"
+            self.log.info(f"[yellow]{state}: {self.form_input}")
             revised_df.to_csv(self.form_input, sep="\t")
         else:
-            raise FileNotFoundError(f"WARNING: {self.form_input} does not exist!")
+            self.log.warning(
+                f"[bold red]{(msg := f'{self.form_input} does not exist!')}"
+            )
+            raise FileNotFoundError(msg)
+
+        self.log.info("[bold green]✔ Form input updated!")
 
     def run_pipeline(self, scrape=True):
+        self.log.info("[bold yellow]Running scraper pipeline")
         if scrape:
             self.get_existing_datasets()
             self.get_dspace_metadata()
         self.get_unposted_metadata()
         self.generate_contract_entry_form()
         self.update_form_input()
+        self.log.info("[bold green]✔ Scraper pipeline run completed!")
 
 
 def get_funder(text: str) -> list:
@@ -350,8 +396,10 @@ def get_doe_funding(grant_nos: str) -> Dict[str, set]:
 
 
 def main():
-    s = Scraper()
+    log = script_log_init(script_name)
+    s = Scraper(log=log)
     # NOTE: It may be useful to implement a CLI command (e.g. --no-scrape) to
     #       allow for debugging the get_unposted_metadata or
     #       generate_contract_entry_form functions
     s.run_pipeline()
+    script_log_end(script_name, log)
