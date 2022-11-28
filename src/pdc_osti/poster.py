@@ -173,6 +173,11 @@ class Poster:
     def _fake_post(self, records):
         """A fake JSON response that mirrors OSTI's"""
         self.log.info("[bold yellow]Fake posting")
+        try:
+            ostiapi.datatoxml(records)  # Check that JSON can be parsed into XML
+        except AttributeError:
+            raise AttributeError("Failure to load data into XML")
+
         return {
             "record": [
                 {
