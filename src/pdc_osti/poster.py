@@ -176,7 +176,9 @@ class Poster:
         try:
             ostiapi.datatoxml(records)  # Check that JSON can be parsed into XML
         except AttributeError:
-            raise AttributeError("Failure to load data into XML")
+            raise AttributeError("Failure to load data into XML!")
+        else:
+            self.log.info("[bold green]Data loaded into XML!")
 
         return {
             "record": [
