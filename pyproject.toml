@@ -15,14 +15,15 @@ maintainers = [
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9"
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10"
 ]
 requires-python = ">=3.8"
 
 dependencies = [
     "requests",
     "pandas",
-    "dicttoxml",
+    "dicttoxml>=1.7.8,<2.0.0",
     "ostiapi @ git+https://github.com/doecode/ostiapi.git",
     "pydantic[dotenv]<2.0.0",
     "rich",
@@ -51,4 +52,4 @@ version = {attr = "pdc_osti.__version__"}
 
 [tool.black]
 line-length = 88
-target-version = ["py39"]
+target-version = ["py310"]

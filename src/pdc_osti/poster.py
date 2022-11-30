@@ -173,6 +173,16 @@ class Poster:
     def _fake_post(self, records):
         """A fake JSON response that mirrors OSTI's"""
         self.log.info("[bold yellow]Fake posting")
+        try:
+            ostiapi.datatoxml(records)  # Check that JSON can be parsed into XML
+        except AttributeError:
+            raise AttributeError(
+                "Failure to load data into XML!\n"
+                "Check your dicttoxml version (requires > 1.7.4)"
+            )
+        else:
+            self.log.info("[bold green]Data loaded into XML!")
+
         return {
             "record": [
                 {
