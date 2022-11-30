@@ -1,7 +1,8 @@
 import json
 import re
+from logging import Logger
 from pathlib import Path
-from typing import Dict
+from typing import Dict, List
 
 import pandas as pd
 import requests
@@ -79,15 +80,15 @@ class Scraper:
 
     def __init__(
         self,
-        data_dir=Path("data"),
-        osti_scrape="osti_scrape.json",
-        dspace_scrape="dspace_scrape.json",
-        entry_form_full_path="entry_form.tsv",
-        form_input_full_path="form_input.tsv",
-        to_upload="dataset_metadata_to_upload.json",
-        redirects="redirects.json",
-        log=pdc_log,
-    ):
+        data_dir: Path = Path("data"),
+        osti_scrape: str = "osti_scrape.json",
+        dspace_scrape: str = "dspace_scrape.json",
+        entry_form_full_path: str = "entry_form.tsv",
+        form_input_full_path: str = "form_input.tsv",
+        to_upload: str = "dataset_metadata_to_upload.json",
+        redirects: str = "redirects.json",
+        log: Logger = pdc_log,
+    ) -> None:
 
         self.log = log
         self.osti_scrape = data_dir / osti_scrape
@@ -100,7 +101,7 @@ class Scraper:
         if not data_dir.exists():
             data_dir.mkdir()
 
-    def get_existing_datasets(self):
+    def get_existing_datasets(self) -> None:
         """
         Paginate through OSTI's Data Explorer API to find datasets that have
         been submitted
@@ -133,7 +134,7 @@ class Scraper:
             json.dump(existing_datasets, f, indent=4)
         self.log.info("[bold green]✔ Existing datasets obtained!")
 
-    def get_dspace_metadata(self):
+    def get_dspace_metadata(self) -> None:
         """
         Collect metadata on all items from all DataSpace PPPL collections
         """
@@ -169,10 +170,10 @@ class Scraper:
 
         self.log.info("[bold green]✔ DataSpace metadata collected!")
 
-    def get_unposted_metadata(self):
+    def get_unposted_metadata(self) -> None:
         """Compare OSTI and DataSpace JSON to identify records for uploading"""
 
-        def get_handle(doi, redirects_j):
+        def get_handle(doi: str, redirects_j: List[dict]) -> str:
             if doi not in redirects_j:
                 r = requests.get(doi)
                 assert r.status_code == 200, f"Error parsing DOI: {doi}"
@@ -233,7 +234,7 @@ class Scraper:
 
         self.log.info("[bold green]✔ New records for uploading identified!")
 
-    def generate_contract_entry_form(self):
+    def generate_contract_entry_form(self) -> None:
         """
         Create a CSV where a user can enter Sponsoring Organizations, DOE
         Contract, and Datatype, additional information required by OSTI
@@ -305,7 +306,7 @@ class Scraper:
 
         self.log.info("[bold green]✔ Entry form generated!")
 
-    def update_form_input(self):
+    def update_form_input(self) -> None:
         """
         Update form_input.tsv by adding new records or removing DataSpace
         records that were removed/withdrawn
@@ -348,7 +349,7 @@ class Scraper:
 
         self.log.info("[bold green]✔ Form input updated!")
 
-    def run_pipeline(self, scrape=True):
+    def run_pipeline(self, scrape=True) -> None:
         self.log.info(f"[bold yellow]Running {SCRIPT_NAME} pipeline")
         if scrape:
             self.get_existing_datasets()
@@ -359,7 +360,7 @@ class Scraper:
         self.log.info(f"[bold green]✔ Pipeline run completed for {SCRIPT_NAME}!")
 
 
-def get_funder(text: str) -> list:
+def get_funder(text: str) -> List[str]:
     """Aggregate funding grant numbers from text"""
 
     # Clean up text by fixing any whitespace to get full grant no.
@@ -395,7 +396,7 @@ def get_doe_funding(grant_nos: str) -> Dict[str, set]:
     return grant_dict
 
 
-def main():
+def main() -> None:
     log = script_log_init(SCRIPT_NAME)
     s = Scraper(log=log)
     # NOTE: It may be useful to implement a CLI command (e.g. --no-scrape) to

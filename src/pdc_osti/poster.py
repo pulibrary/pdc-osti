@@ -1,6 +1,7 @@
 import datetime
 import json
 import sys
+from logging import Logger
 from pathlib import Path
 
 import ostiapi
@@ -25,14 +26,14 @@ class Poster:
 
     def __init__(
         self,
-        mode,
-        data_dir=Path("data"),
-        to_upload="dataset_metadata_to_upload.json",
-        form_input_full_path="form_input.tsv",
-        osti_upload="osti.json",
-        response_dir=Path("responses"),
-        log=pdc_log,
-    ):
+        mode: str,
+        data_dir: Path = Path("data"),
+        to_upload: str = "dataset_metadata_to_upload.json",
+        form_input_full_path: str = "form_input.tsv",
+        osti_upload: str = "osti.json",
+        response_dir: Path = Path("responses"),
+        log: Logger = pdc_log,
+    ) -> None:
         self.mode = mode
         self.log = log
 
@@ -73,7 +74,7 @@ class Poster:
         else:
             self.username, self.password = None, None
 
-    def generate_upload_json(self):
+    def generate_upload_json(self) -> None:
         """
         Validate the form input provided by the user and combine new data with
         DSpace data to generate JSON that is prepared for OSTI ingestion
@@ -89,7 +90,7 @@ class Poster:
         df = df.set_index(DSPACE_ID)
 
         # Validate Input CSV
-        def no_empty_cells(series):
+        def no_empty_cells(series) -> bool:
             return series.shape[0] == series.dropna().shape[0]
 
         expected_columns = [
@@ -170,7 +171,7 @@ class Poster:
 
         self.log.info("[bold green]✔ Upload data generated!")
 
-    def _fake_post(self, records):
+    def _fake_post(self, records: dict) -> dict:
         """A fake JSON response that mirrors OSTI's"""
         self.log.info("[bold yellow]Fake posting")
         try:
@@ -203,7 +204,7 @@ class Poster:
             ]
         }
 
-    def post_to_osti(self):
+    def post_to_osti(self) -> None:
         """
         Post the collected metadata to OSTI's test or prod server. If in
         dry-run mode, call our _fake_post method
@@ -246,14 +247,14 @@ class Poster:
 
         self.log.info("[bold green]✔ Posted to OSTI!")
 
-    def run_pipeline(self):
+    def run_pipeline(self) -> None:
         self.log.info(f"[bold yellow]Running {SCRIPT_NAME} pipeline")
         self.generate_upload_json()
         self.post_to_osti()
         self.log.info(f"[bold green]✔ Pipeline run completed for {SCRIPT_NAME}!")
 
 
-def main():
+def main() -> None:
     log = script_log_init(SCRIPT_NAME)
     args = sys.argv
 
