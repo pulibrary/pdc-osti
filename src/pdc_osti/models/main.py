@@ -20,10 +20,10 @@ class OSTI(BaseModel):
     keywords: str | None = None
 
 
-class DSpaceOSTI(BaseModel, OSTI):
+class DSpaceOSTI(OSTI):
     creators: str
 
 
-class DataCommonsOSTI(BaseModel, OSTI):
+class DataCommonsOSTI(OSTI):
     authors: List[Author]
     doi: str
