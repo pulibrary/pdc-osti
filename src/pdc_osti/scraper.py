@@ -1,10 +1,13 @@
 import json
 import re
+import ssl
 from pathlib import Path
 from typing import Dict
 
 import pandas as pd
 import requests
+import requests.adapters
+import urllib3
 
 from . import DATASPACE_URI, DSPACE_ID
 from .commons import get_dc_value
@@ -52,6 +55,22 @@ REPLACE_DICT = {
     "DOE ": "",  # Extra DOE
     "DOE": "",  # Remove DOE if still present
 }
+
+
+class CustomHttpAdapter(requests.adapters.HTTPAdapter):
+    # "Transport adapter" that allows us to use custom ssl_context.
+
+    def __init__(self, ssl_context=None, **kwargs):
+        self.ssl_context = ssl_context
+        super().__init__(**kwargs)
+
+    def init_poolmanager(self, connections, maxsize, block=False, **pool_kwargs):
+        self.poolmanager = urllib3.poolmanager.PoolManager(
+            num_pools=connections,
+            maxsize=maxsize,
+            block=block,
+            ssl_context=self.ssl_context,
+        )
 
 
 class Scraper:
@@ -115,7 +134,7 @@ class Scraper:
                 "https://www.osti.gov/dataexplorer/api/v1/records?"
                 f"site_ownership_code=PPPL&page={page}"
             )
-            r = requests.get(url)
+            r = get_legacy_session().get(url)
             j = json.loads(r.text)
             if len(j) != 0:
                 existing_datasets.extend(j)
@@ -393,6 +412,14 @@ def get_doe_funding(grant_nos: str) -> Dict[str, set]:
                 grant_dict["other"].update([grant])
 
     return grant_dict
+
+
+def get_legacy_session():
+    ctx = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
+    ctx.options |= 0x4  # OP_LEGACY_SERVER_CONNECT
+    session = requests.session()
+    session.mount("https://", CustomHttpAdapter(ctx))
+    return session
 
 
 def main():
