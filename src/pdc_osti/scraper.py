@@ -57,6 +57,7 @@ REPLACE_DICT = {
 }
 
 
+# Fix for OpenSSL issue: https://github.com/pulibrary/pdc-osti/issues/31
 class CustomHttpAdapter(requests.adapters.HTTPAdapter):
     # "Transport adapter" that allows us to use custom ssl_context.
 
@@ -134,7 +135,7 @@ class Scraper:
                 "https://www.osti.gov/dataexplorer/api/v1/records?"
                 f"site_ownership_code=PPPL&page={page}"
             )
-            r = get_legacy_session().get(url)
+            r = get_legacy_session().get(url)  # fix for #31
             j = json.loads(r.text)
             if len(j) != 0:
                 existing_datasets.extend(j)
@@ -193,7 +194,7 @@ class Scraper:
 
         def get_handle(doi, redirects_j):
             if doi not in redirects_j:
-                r = get_legacy_session().get(doi)
+                r = get_legacy_session().get(doi)  # fix for #31
                 assert r.status_code == 200, f"Error parsing DOI: {doi}"
                 handle = r.url.split("handle/")[-1]
                 redirects_j[doi] = handle
@@ -414,6 +415,7 @@ def get_doe_funding(grant_nos: str) -> Dict[str, set]:
     return grant_dict
 
 
+# Fix for OpenSSL issue: https://github.com/pulibrary/pdc-osti/issues/31
 def get_legacy_session():
     ctx = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
     ctx.options |= 0x4  # OP_LEGACY_SERVER_CONNECT
