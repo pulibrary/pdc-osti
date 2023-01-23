@@ -1,3 +1,4 @@
+import argparse
 import json
 import re
 import ssl
@@ -9,6 +10,7 @@ import pandas as pd
 import requests
 import requests.adapters
 import urllib3
+from rich.prompt import Prompt
 
 from . import DATASPACE_URI, DSPACE_ID
 from .commons import get_dc_value
@@ -78,32 +80,36 @@ class CustomHttpAdapter(requests.adapters.HTTPAdapter):
 
 class Scraper:
     """
-    Pipeline to collect data from OSTI & DataSpace, comparing which datasets
+    Pipeline to collect data from OSTI & DataSpace/PDC, comparing which datasets
     are not yet posted, and generating a form for a user to manually enter
     additional needed information
 
     :param data_dir: Local data folder for save files
     :param osti_scrape: JSON output file containing OSTI metadata
-    :param dspace_scrape: JSON output file containing DataSpace metadata
-    :param entry_form_full_path: TSV file containing DataSpace
+    :param princeton_source: Princeton data repository name
+    :param entry_form_full_path: TSV file containing DataSpace/PDC
            records not in OSTI
-    :param form_input_full_path: TSV file containing DataSpace
+    :param form_input_full_path: TSV file containing DataSpace/PDC
            records and DOE metadata for submission
     :param to_upload: JSON output file containing metadata for OSTI upload
     :param redirects: JSON output file containing DOI redirects
+    :param log: ``Logger`` for stdout and file logging
 
     :ivar osti_scrape: JSON output file containing OSTI metadata
-    :ivar dspace_scrape: JSON output file containing DataSpace metadata
-    :ivar entry_form: TSV file containing DataSpace records not in OSTI
+    :ivar princeton_source: Princeton data repository name
+    :ivar entry_form: TSV file containing DataSpace/PDC records not in OSTI
+    :ivar form_input: TSV file containing DataSpace/PDC
+           records and DOE metadata for submission
     :ivar to_upload: JSON output file containing metadata for OSTI upload
     :ivar redirects: JSON output file containing DOI redirects
+    :ivar princeton_scrape: JSON output file containing DataSpace/PDC metadata
     """
 
     def __init__(
         self,
         data_dir: Path = Path("data"),
         osti_scrape: str = "osti_scrape.json",
-        dspace_scrape: str = "dspace_scrape.json",
+        princeton_source: str = "dspace",
         entry_form_full_path: str = "entry_form.tsv",
         form_input_full_path: str = "form_input.tsv",
         to_upload: str = "dataset_metadata_to_upload.json",
@@ -113,11 +119,13 @@ class Scraper:
 
         self.log = log
         self.osti_scrape = data_dir / osti_scrape
-        self.dspace_scrape = data_dir / dspace_scrape
+        self.princeton_source = princeton_source
         self.entry_form = Path(entry_form_full_path)
         self.form_input = Path(form_input_full_path)
         self.to_upload = data_dir / to_upload
         self.redirects = data_dir / redirects
+
+        self.princeton_scrape = data_dir / f"{princeton_source}_scrape.json"
 
         if not data_dir.exists():
             data_dir.mkdir()
@@ -184,15 +192,15 @@ class Scraper:
 
         self.log.info(f"Pulled {len(all_items)} records from DSpace.")
 
-        state = "Updating" if self.dspace_scrape.exists() else "Writing"
-        self.log.info(f"[yellow]{state}: {self.dspace_scrape}")
-        with open(self.dspace_scrape, "w") as f:
+        state = "Updating" if self.princeton_scrape.exists() else "Writing"
+        self.log.info(f"[yellow]{state}: {self.princeton_scrape}")
+        with open(self.princeton_scrape, "w") as f:
             json.dump(all_items, f, indent=4)
 
         self.log.info("[bold green]✔ DataSpace metadata collected!")
 
     def get_unposted_metadata(self) -> None:
-        """Compare OSTI and DataSpace JSON to identify records for uploading"""
+        """Compare OSTI and DataSpace/PDC JSON to identify records for uploading"""
 
         def get_handle(doi: str, redirects_j: List[dict]) -> str:
             if doi not in redirects_j:
@@ -210,8 +218,8 @@ class Scraper:
         with open(self.redirects) as f:
             redirects_j = json.load(f)
 
-        self.log.info(f"[yellow]Loading: {self.dspace_scrape}")
-        with open(self.dspace_scrape) as f:
+        self.log.info(f"[yellow]Loading: {self.princeton_scrape}")
+        with open(self.princeton_scrape) as f:
             dspace_j = json.load(f)
 
         self.log.info(f"[yellow]Loading: {self.osti_scrape}")
@@ -314,7 +322,7 @@ class Scraper:
 
         self.log.info(
             f"[purple]{df.shape[0]} unpublished records were found in the PPPL "
-            f"dataspace community that have not been registered with OSTI."
+            f"Dataspace/PDC community that have not been registered with OSTI."
         )
         self.log.info(f"[purple]They've been saved to the form {self.entry_form}.")
         self.log.info(
@@ -329,7 +337,7 @@ class Scraper:
 
     def update_form_input(self) -> None:
         """
-        Update form_input.tsv by adding new records or removing DataSpace
+        Update form_input.tsv by adding new records or removing DataSpace/PDC
         records that were removed/withdrawn
 
         In most cases, this will update form_input.tsv. This further
@@ -342,7 +350,7 @@ class Scraper:
 
             entry_df = pd.read_csv(self.entry_form, index_col=DSPACE_ID, sep="\t")
             input_df = pd.read_csv(self.form_input, index_col=DSPACE_ID, sep="\t")
-            self.log.info("Identifying DataSpace records to add and remove ...")
+            self.log.info("Identifying DataSpace/PDC records to add and remove ...")
             entry_id = set(entry_df.index)
             input_id = set(input_df.index)
             drops = input_id - entry_id
@@ -374,7 +382,9 @@ class Scraper:
         self.log.info(f"[bold yellow]Running {SCRIPT_NAME} pipeline")
         if scrape:
             self.get_existing_datasets()
-            self.get_dspace_metadata()
+            if self.princeton_source == "dspace":
+                self.get_dspace_metadata()
+
         self.get_unposted_metadata()
         self.generate_contract_entry_form()
         self.update_form_input()
@@ -427,8 +437,32 @@ def get_legacy_session():
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Script to retrieve Princeton data repository and DOE/OSTI records"
+    )
+    parser.add_argument(
+        "-s",
+        "--source",
+        required=False,
+        default="",
+        type=str,
+        help="Mode of KPI operation (dry-run or execute)",
+    )
+    args = parser.parse_args()
+
     log = script_log_init(SCRIPT_NAME)
-    s = Scraper(log=log)
+
+    if not args.source:
+        princeton_source = Prompt.ask(
+            "Princeton data repository source?",
+            choices=["dspace", "pdc"],
+            default="dspace",
+        )
+    else:
+        princeton_source = args.source
+    log.info(f"Will retrieve Princeton data repository data from {princeton_source}")
+
+    s = Scraper(log=log, princeton_source=princeton_source)
     # NOTE: It may be useful to implement a CLI command (e.g. --no-scrape) to
     #       allow for debugging the get_unposted_metadata or
     #       generate_contract_entry_form functions

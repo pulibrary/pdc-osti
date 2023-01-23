@@ -26,7 +26,7 @@ jobs:
     - name: OpenSSL version
       run: openssl version
     - name: Run scraper
-      run: scraper
+      run: scraper -s dspace
     - name: Run poster
       run: poster --dry-run
       env:
