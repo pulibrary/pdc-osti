@@ -5,6 +5,7 @@ import ssl
 from logging import Logger
 from pathlib import Path
 from typing import Dict, List
+from urllib.parse import urlencode
 
 import pandas as pd
 import requests
@@ -12,7 +13,7 @@ import requests.adapters
 import urllib3
 from rich.prompt import Prompt
 
-from . import DATASPACE_URI, DSPACE_ID
+from . import DATASPACE_URI, DSPACE_ID, PDC_QUERY, PDC_URI
 from .commons import get_dc_value
 from .logger import pdc_log, script_log_end, script_log_init
 
@@ -164,13 +165,10 @@ class Scraper:
         self.log.info("[bold green]✔ Existing datasets obtained!")
 
     def get_dspace_metadata(self) -> None:
-        """
-        Collect metadata on all items from all DataSpace PPPL collections
-        """
-        self.log.info("[bold yellow]Collect DataSpace metadata")
+        """Collect metadata on all items from all DataSpace PPPL collections"""
+        self.log.info("[bold yellow]Collecting DataSpace metadata")
 
         all_items = []
-
         for c_name, c_id in PPPL_COLLECTIONS.items():
             url = f"{DATASPACE_URI}/rest/collections/{c_id}/items?expand=metadata"
             r = requests.get(url)
@@ -198,6 +196,30 @@ class Scraper:
             json.dump(all_items, f, indent=4)
 
         self.log.info("[bold green]✔ DataSpace metadata collected!")
+
+    def get_pdc_metadata(self) -> None:
+        """Collect metadata on all items from all PDC PPPL collections"""
+        self.log.info("[bold yellow]Collecting PDC metadata")
+
+        all_items = []
+        next_page = 1
+        while True:
+            query = PDC_QUERY | {"page": next_page}
+            r = requests.get(PDC_URI, params=urlencode(query, safe="+"))
+            j = r.json()
+            all_items.extend(j["data"])
+            next_page = j["meta"]["pages"]["next_page"]
+            if j["meta"]["pages"]["last_page?"]:
+                break
+
+        self.log.info(f"Pulled {len(all_items)} records from PDC.")
+
+        state = "Updating" if self.princeton_scrape.exists() else "Writing"
+        self.log.info(f"[yellow]{state}: {self.princeton_scrape}")
+        with open(self.princeton_scrape, "w") as f:
+            json.dump(all_items, f, indent=4)
+
+        self.log.info("[bold green]✔ PDC metadata collected!")
 
     def get_unposted_metadata(self) -> None:
         """Compare OSTI and DataSpace/PDC JSON to identify records for uploading"""
@@ -384,6 +406,8 @@ class Scraper:
             self.get_existing_datasets()
             if self.princeton_source == "dspace":
                 self.get_dspace_metadata()
+            elif self.princeton_source == "pdc":
+                self.get_pdc_metadata()
 
         self.get_unposted_metadata()
         self.generate_contract_entry_form()
