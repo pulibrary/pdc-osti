@@ -241,7 +241,7 @@ class Scraper:
 
         self.log.info(f"[yellow]Loading: {self.princeton_scrape}")
         with open(self.princeton_scrape) as f:
-            dspace_j = json.load(f)
+            princeton_j = json.load(f)
 
         self.log.info(f"[yellow]Loading: {self.osti_scrape}")
         with open(self.osti_scrape) as f:
@@ -252,9 +252,9 @@ class Scraper:
         osti_handles = [get_handle(record["doi"], redirects_j) for record in osti_j]
 
         to_be_published = []
-        for dspace_record in dspace_j:
-            if dspace_record["handle"] not in osti_handles:
-                to_be_published.append(dspace_record)
+        for record in princeton_j:
+            if record["handle"] not in osti_handles:
+                to_be_published.append(record)
 
         state = "Updating" if self.to_upload.exists() else "Writing"
         self.log.info(f"[yellow]{state}: {self.to_upload}")
@@ -267,11 +267,11 @@ class Scraper:
             json.dump(redirects_j, f, indent=4)
 
         # Check for records in OSTI but not DSpace
-        dspace_handles = [record["handle"] for record in dspace_j]
+        princeton_handles = [record["handle"] for record in princeton_j]
         errors = [
             record
             for record in osti_j
-            if redirects_j[record["doi"]] not in dspace_handles
+            if redirects_j[record["doi"]] not in princeton_handles
         ]
         if len(errors) > 0:
             self.log.warning(
