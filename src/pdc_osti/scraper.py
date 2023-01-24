@@ -163,62 +163,57 @@ class Scraper:
             json.dump(existing_datasets, f, indent=4)
         self.log.info("[bold green]✔ Existing datasets obtained!")
 
-    def get_dspace_metadata(self) -> None:
-        """Collect metadata on all items from all DataSpace PPPL collections"""
-        self.log.info("[bold yellow]Collecting DataSpace metadata")
+    def get_princeton_metadata(self) -> None:
+        """Collect metadata on all items from all DataSpace/PDC PPPL collections"""
+
+        if self.princeton_source == "dspace":
+            repo_name = "DataSpace"
+        elif self.princeton_source == "pdc":
+            repo_name = "PDC"
+        else:
+            raise ValueError("Incorrect repository source!!!")
+
+        self.log.info(f"[bold yellow]Collecting {repo_name} metadata")
 
         all_items = []
-        for c_name, c_id in PPPL_COLLECTIONS.items():
-            url = f"{DATASPACE_URI}/rest/collections/{c_id}/items?expand=metadata"
-            r = requests.get(url)
-            j = json.loads(r.text)
-            all_items.extend(j)
+        if self.princeton_source == "dspace":
+            for c_name, c_id in PPPL_COLLECTIONS.items():
+                url = f"{DATASPACE_URI}/rest/collections/{c_id}/items?expand=metadata"
+                r = requests.get(url)
+                j = json.loads(r.text)
+                all_items.extend(j)
 
-        # Confirm that all collections were included
-        url_all = f"{DATASPACE_URI}/rest/communities/{PPPL_COMMUNITY_ID}"
-        r = requests.get(url_all)
-        self.log.info(f"countItems: {json.loads(r.text)['countItems']}")
-        self.log.info(f"all_items: {len(all_items)}")
-        assert json.loads(r.text)["countItems"] == len(all_items), (
-            "The number of items in the PPPL community does not equal the "
-            "number of items collected. Review the list of collections we "
-            "search through (variable COLLECTION_IDS) and ensure that all "
-            "PPPL collections are included. Or write a recursive function "
-            "to prevent this from happening again."
-        )
+            # Confirm that all collections were included
+            url_all = f"{DATASPACE_URI}/rest/communities/{PPPL_COMMUNITY_ID}"
+            r = requests.get(url_all)
+            self.log.info(f"countItems: {json.loads(r.text)['countItems']}")
+            self.log.info(f"all_items: {len(all_items)}")
+            assert json.loads(r.text)["countItems"] == len(all_items), (
+                "The number of items in the PPPL community does not equal the "
+                "number of items collected. Review the list of collections we "
+                "search through (variable COLLECTION_IDS) and ensure that all "
+                "PPPL collections are included. Or write a recursive function "
+                "to prevent this from happening again."
+            )
+        elif self.princeton_source == "pdc":
+            next_page = 1
+            while True:
+                query = PDC_QUERY | {"page": next_page}
+                r = requests.get(PDC_URI, params=urlencode(query, safe="+"))
+                j = r.json()
+                all_items.extend(j["data"])
+                next_page = j["meta"]["pages"]["next_page"]
+                if j["meta"]["pages"]["last_page?"]:
+                    break
 
-        self.log.info(f"Pulled {len(all_items)} records from DSpace.")
+        self.log.info(f"Pulled {len(all_items)} records from {repo_name}.")
 
         state = "Updating" if self.princeton_scrape.exists() else "Writing"
         self.log.info(f"[yellow]{state}: {self.princeton_scrape}")
         with open(self.princeton_scrape, "w") as f:
             json.dump(all_items, f, indent=4)
 
-        self.log.info("[bold green]✔ DataSpace metadata collected!")
-
-    def get_pdc_metadata(self) -> None:
-        """Collect metadata on all items from all PDC PPPL collections"""
-        self.log.info("[bold yellow]Collecting PDC metadata")
-
-        all_items = []
-        next_page = 1
-        while True:
-            query = PDC_QUERY | {"page": next_page}
-            r = requests.get(PDC_URI, params=urlencode(query, safe="+"))
-            j = r.json()
-            all_items.extend(j["data"])
-            next_page = j["meta"]["pages"]["next_page"]
-            if j["meta"]["pages"]["last_page?"]:
-                break
-
-        self.log.info(f"Pulled {len(all_items)} records from PDC.")
-
-        state = "Updating" if self.princeton_scrape.exists() else "Writing"
-        self.log.info(f"[yellow]{state}: {self.princeton_scrape}")
-        with open(self.princeton_scrape, "w") as f:
-            json.dump(all_items, f, indent=4)
-
-        self.log.info("[bold green]✔ PDC metadata collected!")
+        self.log.info(f"[bold green]✔ {repo_name} metadata collected!")
 
     def get_unposted_metadata(self) -> None:
         """Compare OSTI and DataSpace/PDC JSON to identify records for uploading"""
@@ -403,10 +398,7 @@ class Scraper:
         self.log.info(f"[bold yellow]Running {SCRIPT_NAME} pipeline")
         if scrape:
             self.get_existing_datasets()
-            if self.princeton_source == "dspace":
-                self.get_dspace_metadata()
-            elif self.princeton_source == "pdc":
-                self.get_pdc_metadata()
+            self.get_princeton_metadata()
 
         self.get_unposted_metadata()
         self.generate_contract_entry_form()
