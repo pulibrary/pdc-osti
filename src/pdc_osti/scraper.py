@@ -461,7 +461,7 @@ def main() -> None:
         required=False,
         default="",
         type=str,
-        help="Mode of KPI operation (dry-run or execute)",
+        help="Source for Princeton data (dspace or pdc)",
     )
     args = parser.parse_args()
 
