@@ -23,7 +23,7 @@ requires-python = ">=3.8"
 dependencies = [
     "requests",
     "pandas",
-    "dicttoxml>=1.7.8,<2.0.0",
+    "dicttoxml<2.0.0",
     "ostiapi @ git+https://github.com/doecode/ostiapi.git",
     "pydantic[dotenv]<2.0.0",
     "rich",
