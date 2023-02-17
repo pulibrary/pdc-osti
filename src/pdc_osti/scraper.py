@@ -110,7 +110,6 @@ class Scraper:
         redirects: str = "redirects.json",
         log: Logger = pdc_log,
     ) -> None:
-
         self.log = log
         self.osti_scrape = data_dir / osti_scrape
         self.dspace_scrape = data_dir / dspace_scrape
