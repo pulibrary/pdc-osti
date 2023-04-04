@@ -5,7 +5,6 @@ import ssl
 from logging import Logger
 from pathlib import Path
 from typing import Dict, List
-from urllib.parse import urlencode
 
 import pandas as pd
 import requests
@@ -13,7 +12,7 @@ import requests.adapters
 import urllib3
 from rich.prompt import Prompt
 
-from . import DATASPACE_URI, DSPACE_ID, PDC_QUERY, PDC_URI
+from . import DATASPACE_URI, DSPACE_ID, PDC_URI
 from .commons import get_dc_value
 from .logger import pdc_log, script_log_end, script_log_init
 
@@ -113,7 +112,7 @@ class Scraper:
         princeton_source: str = "dspace",
         entry_form_full_path: str = "entry_form.tsv",
         form_input_full_path: str = "form_input.tsv",
-        to_upload: str = "dataset_metadata_to_upload.json",
+        to_upload: str = "metadata_to_upload.json",
         redirects: str = "redirects.json",
         log: Logger = pdc_log,
     ) -> None:
@@ -122,10 +121,10 @@ class Scraper:
         self.princeton_source = princeton_source
         self.entry_form = Path(entry_form_full_path)
         self.form_input = Path(form_input_full_path)
-        self.to_upload = data_dir / to_upload
         self.redirects = data_dir / redirects
 
         self.princeton_scrape = data_dir / f"{princeton_source}_scrape.json"
+        self.to_upload = data_dir / f"{princeton_source}_{to_upload}"
 
         if not data_dir.exists():
             data_dir.mkdir()
@@ -196,15 +195,9 @@ class Scraper:
                 "to prevent this from happening again."
             )
         elif self.princeton_source == "pdc":
-            next_page = 1
-            while True:
-                query = PDC_QUERY | {"page": next_page}
-                r = requests.get(PDC_URI, params=urlencode(query, safe="+"))
-                j = r.json()
-                all_items.extend(j["data"])
-                next_page = j["meta"]["pages"]["next_page"]
-                if j["meta"]["pages"]["last_page?"]:
-                    break
+            r = requests.get(PDC_URI)
+            j = r.json()
+            all_items.extend(j)
 
         self.log.info(f"Pulled {len(all_items)} records from {repo_name}.")
 
@@ -228,6 +221,11 @@ class Scraper:
             else:
                 return redirects_j[doi]
 
+        def princeton_metadata_handle(record: dict):
+            """Retrieves ARK handle depending on Princeton source"""
+            h_key = "handle" if self.princeton_source == "dspace" else "handle_ssi"
+            return record[h_key]
+
         self.log.info("[bold yellow]Identifying new records for uploading")
 
         self.log.info(f"[yellow]Loading: {self.redirects}")
@@ -248,7 +246,7 @@ class Scraper:
 
         to_be_published = []
         for record in princeton_j:
-            if record["handle"] not in osti_handles:
+            if princeton_metadata_handle(record) not in osti_handles:
                 to_be_published.append(record)
 
         state = "Updating" if self.to_upload.exists() else "Writing"
@@ -261,8 +259,10 @@ class Scraper:
         with open(self.redirects, "w") as f:
             json.dump(redirects_j, f, indent=4)
 
-        # Check for records in OSTI but not DSpace
-        princeton_handles = [record["handle"] for record in princeton_j]
+        # Check for records in OSTI but not DataSpace/PDC
+        princeton_handles = [
+            princeton_metadata_handle(record) for record in princeton_j
+        ]
         errors = [
             record
             for record in osti_j
@@ -292,10 +292,15 @@ class Scraper:
 
         df = pd.DataFrame()
         df[DSPACE_ID] = [item["id"] for item in to_upload_j]
+        if self.princeton_source == "dspace":
+            title_key = "name"
+        elif self.princeton_source == "pdc":
+            title_key = "title_tesim"
+
         df["Issue Date"] = [
             get_dc_value(item, "dc.date.issued")[0] for item in to_upload_j
         ]
-        df["Title"] = [item["name"] for item in to_upload_j]
+        df["Title"] = [item[title_key] for item in to_upload_j]
         df["Author"] = [
             ";".join(get_dc_value(item, "dc.contributor.author"))
             for item in to_upload_j

@@ -28,7 +28,7 @@ class Poster:
         self,
         mode: str,
         data_dir: Path = Path("data"),
-        to_upload: str = "dataset_metadata_to_upload.json",
+        to_upload: str = "dspace_metadata_to_upload.json",
         form_input_full_path: str = "form_input.tsv",
         osti_upload: str = "osti.json",
         response_dir: Path = Path("responses"),
