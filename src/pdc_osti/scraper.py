@@ -197,7 +197,8 @@ class Scraper:
         elif self.princeton_source == "pdc":
             r = requests.get(PDC_URI)
             j = r.json()
-            all_items.extend(j)
+            for j_item in j:
+                all_items.append(json.loads(j_item["pdc_describe_json_ss"]))
 
         self.log.info(f"Pulled {len(all_items)} records from {repo_name}.")
 
@@ -223,8 +224,12 @@ class Scraper:
 
         def princeton_metadata_handle(record: dict):
             """Retrieves ARK handle depending on Princeton source"""
-            h_key = "handle" if self.princeton_source == "dspace" else "handle_ssi"
-            return record[h_key]
+            if self.princeton_source == "dspace":
+                return record["handle"]
+            elif self.princeton_source == "pdc":
+                return record["resource"]["ark"]
+            else:
+                raise NotImplementedError
 
         self.log.info("[bold yellow]Identifying new records for uploading")
 

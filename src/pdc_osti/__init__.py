@@ -5,4 +5,6 @@ LOG_NAME = "pdc-osti"
 DATASPACE_URI = "https://dataspace.princeton.edu"
 DSPACE_ID = "DSpace ID"
 
-PDC_URI = "https://datacommons.princeton.edu/discovery/pppl.json"
+PDC_URI = (
+    "https://pdc-discovery-staging.princeton.edu/discovery/pppl_reporting_feed.json"
+)
