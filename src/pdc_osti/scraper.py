@@ -2,6 +2,7 @@ import argparse
 import json
 import re
 import ssl
+from datetime import datetime
 from logging import Logger
 from pathlib import Path
 from typing import Dict, List
@@ -13,7 +14,7 @@ import urllib3
 from rich.prompt import Prompt
 
 from . import DATASPACE_URI, DSPACE_ID, PDC_URI
-from .commons import get_dc_value
+from .commons import get_datacite_awards, get_dc_value
 from .logger import pdc_log, script_log_end, script_log_init
 
 SCRIPT_NAME = Path(__file__).stem
@@ -227,7 +228,7 @@ class Scraper:
             if self.princeton_source == "dspace":
                 return record["handle"]
             elif self.princeton_source == "pdc":
-                return record["resource"]["ark"]
+                return record["resource"]["ark"].replace("ark:/", "")
             else:
                 raise NotImplementedError
 
@@ -296,28 +297,40 @@ class Scraper:
             to_upload_j = json.load(f)
 
         df = pd.DataFrame()
-        df[DSPACE_ID] = [item["id"] for item in to_upload_j]
         if self.princeton_source == "dspace":
-            title_key = "name"
+            df[DSPACE_ID] = [item["id"] for item in to_upload_j]
+            df["Issue Date"] = [
+                get_dc_value(item, "dc.date.issued")[0] for item in to_upload_j
+            ]
+            df["Title"] = [item["name"] for item in to_upload_j]
+            df["Author"] = [
+                ";".join(get_dc_value(item, "dc.contributor.author"))
+                for item in to_upload_j
+            ]
+            df["Dataspace Link"] = [
+                f"{DATASPACE_URI}/handle/{item['handle']}" for item in to_upload_j
+            ]
+
+            # Retrieve funding data
+            funding_text_list = [
+                get_dc_value(item, "dc.contributor.funder") for item in to_upload_j
+            ]
         elif self.princeton_source == "pdc":
-            title_key = "title_tesim"
+            df["Issue Date"] = [
+                f"{datetime.fromisoformat(item['collection']['created_at']):%Y-%m-%d}"
+                for item in to_upload_j
+            ]
+            df["Title"] = [
+                item["resource"]["titles"][0]["title"] for item in to_upload_j
+            ]
+            df["Author"] = [
+                ";".join([value["value"] for value in item["resource"]["creators"]])
+                for item in to_upload_j
+            ]
 
-        df["Issue Date"] = [
-            get_dc_value(item, "dc.date.issued")[0] for item in to_upload_j
-        ]
-        df["Title"] = [item[title_key] for item in to_upload_j]
-        df["Author"] = [
-            ";".join(get_dc_value(item, "dc.contributor.author"))
-            for item in to_upload_j
-        ]
-        df["Dataspace Link"] = [
-            f"{DATASPACE_URI}/handle/{item['handle']}" for item in to_upload_j
-        ]
-
-        # Retrieve funding data
-        funding_text_list = [
-            get_dc_value(item, "dc.contributor.funder") for item in to_upload_j
-        ]
+            funding_text_list = [get_datacite_awards(item) for item in to_upload_j]
+        else:
+            raise NotImplementedError
 
         # Generate lists of lists per each dc.contributor.funder entry
         funding_result = [
@@ -357,7 +370,8 @@ class Scraper:
         )
         for i, row in df.iterrows():
             self.log.info(f"\t{repr(row['Title'])}")
-            self.log.info(f"\t\t{row['Dataspace Link']}")
+            if "Dataspace Link" in df.columns:
+                self.log.info(f"\t\t{row['Dataspace Link']}")
 
         self.log.info("[bold green]✔ Entry form generated!")
 
