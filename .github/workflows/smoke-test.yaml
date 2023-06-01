@@ -28,7 +28,7 @@ jobs:
     - name: Run scraper
       run: scraper -s dspace
     - name: Run poster
-      run: poster --dry-run
+      run: poster -s dspace -m dry-run
       env:
         OSTI_USERNAME_TEST: my-test-osti-username
         OSTI_PASSWORD_TEST: my-test-osti-password

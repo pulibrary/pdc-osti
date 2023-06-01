@@ -120,8 +120,8 @@ class Scraper:
         self.log = log
         self.osti_scrape = data_dir / osti_scrape
         self.princeton_source = princeton_source
-        self.entry_form = Path(entry_form_full_path)
-        self.form_input = Path(form_input_full_path)
+        self.entry_form = Path(f"{princeton_source}_{entry_form_full_path}")
+        self.form_input = Path(f"{princeton_source}_{form_input_full_path}")
         self.redirects = data_dir / redirects
 
         self.princeton_scrape = data_dir / f"{princeton_source}_scrape.json"
@@ -385,10 +385,10 @@ class Scraper:
         """
         self.log.info("[bold yellow]Updating form input")
 
+        entry_df = pd.read_csv(self.entry_form, index_col=DSPACE_ID, sep="\t")
         if self.form_input.exists():
             self.log.info(f"File exists. Will update: {self.form_input}")
 
-            entry_df = pd.read_csv(self.entry_form, index_col=DSPACE_ID, sep="\t")
             input_df = pd.read_csv(self.form_input, index_col=DSPACE_ID, sep="\t")
             self.log.info("Identifying DataSpace/PDC records to add and remove ...")
             entry_id = set(entry_df.index)
@@ -406,15 +406,14 @@ class Scraper:
 
             # "AS" is a placeholder - not included in DataSpace metadata
             revised_df.loc[adds, "Datatype"] = "AS"
-
-            state = "Updating" if self.form_input.exists() else "Writing"
-            self.log.info(f"[yellow]{state}: {self.form_input}")
-            revised_df.to_csv(self.form_input, sep="\t")
         else:
-            self.log.warning(
-                f"[bold red]{(msg := f'{self.form_input} does not exist!')}"
-            )
-            raise FileNotFoundError(msg)
+            self.log.warning(f"[bold red]{self.form_input} does not exist!")
+            revised_df = entry_df.copy()
+            revised_df.loc["Datatype"] = "AS"
+
+        state = "Updating" if self.form_input.exists() else "Writing"
+        self.log.info(f"[yellow]{state}: {self.form_input}")
+        revised_df.to_csv(self.form_input, sep="\t")
 
         self.log.info("[bold green]✔ Form input updated!")
 

@@ -1,12 +1,12 @@
+import argparse
 import datetime
 import json
-import sys
 from logging import Logger
 from pathlib import Path
 
 import ostiapi
 import pandas as pd
-from rich.prompt import Confirm
+from rich.prompt import Confirm, Prompt
 
 from . import DATASPACE_URI, DSPACE_ID
 from .commons import get_dc_value
@@ -27,21 +27,23 @@ class Poster:
     def __init__(
         self,
         mode: str,
+        princeton_source: str = "dspace",
         data_dir: Path = Path("data"),
-        to_upload: str = "dspace_metadata_to_upload.json",
+        to_upload: str = "metadata_to_upload.json",
         form_input_full_path: str = "form_input.tsv",
         osti_upload: str = "osti.json",
         response_dir: Path = Path("responses"),
         log: Logger = pdc_log,
     ) -> None:
-        self.mode = mode
         self.log = log
+        self.mode = mode
+        self.princeton_source = princeton_source
 
         # Prepare all paths
-        self.form_input = form_input_full_path
+        self.form_input = f"{princeton_source}_{form_input_full_path}"
         self.data_dir = data_dir
-        self.to_upload = data_dir / to_upload
-        self.osti_upload = data_dir / osti_upload
+        self.to_upload = data_dir / f"{princeton_source}_{to_upload}"
+        self.osti_upload = data_dir / f"{princeton_source}_{osti_upload}"
 
         timestamp = str(datetime.datetime.now()).replace(":", "")
         self.response_output = response_dir / f"{mode}_osti_response_{timestamp}.json"
@@ -87,7 +89,8 @@ class Poster:
 
         self.log.info(f"[yellow]Loading: {self.form_input}")
         df = pd.read_csv(self.form_input, sep="\t", keep_default_na=False)
-        df = df.set_index(DSPACE_ID)
+        if self.princeton_source == "dspace":
+            df = df.set_index(DSPACE_ID)
 
         # Validate Input CSV
         def no_empty_cells(series) -> bool:
@@ -255,35 +258,51 @@ class Poster:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Script to post new Princeton datasets to DOE/OSTI"
+    )
+    parser.add_argument(
+        "-s",
+        "--source",
+        required=False,
+        default="",
+        type=str,
+        help="Source for Princeton data (dspace or pdc)",
+    )
+    parser.add_argument(
+        "-m",
+        "--mode",
+        default="dry-run",
+        type=str,
+        help="Mode of KPI operation (dry-run, test, or execute)",
+    )
+    args = parser.parse_args()
+
     log = script_log_init(SCRIPT_NAME)
-    args = sys.argv
 
-    help_s = """
-    Choose one of the following options:
-    --dry-run: Make fake requests locally to test workflow.
-    --test: Post to OSTI's test server.
-    --prod: Post to OSTI's prod server.
-    """
-
-    commands = ["--dry-run", "--test", "--prod"]
-
-    if (len(args) != 2) or (args[1] in ["--help", "-h"]) or (args[1] not in commands):
-        print(help_s)
+    if not args.source:
+        princeton_source = Prompt.ask(
+            "Princeton data repository source?",
+            choices=["dspace", "pdc"],
+            default="dspace",
+        )
     else:
-        mode = args[1][2:]
-        p = Poster(mode)
-        if mode == "dry-run":
-            user_response = True
-        if mode in ["test", "prod"]:
-            log.warning(
-                "[bold red]"
-                f"Running in {mode} mode will trigger emails to PPPL and OSTI!"
-            )
-            user_response = Confirm.ask("Are you sure you wish you proceed?")
-        log.info(f"{user_response=}")
-        if user_response:
-            p.run_pipeline()
-        else:
-            log.info("[bold red]Exiting!!! You must respond with a Y/y")
+        princeton_source = args.source
+    log.info(f"Will use data from {princeton_source}")
+
+    mode = args.mode
+    p = Poster(mode)
+    if mode == "dry-run":
+        user_response = True
+    if mode in ["test", "prod"]:
+        log.warning(
+            "[bold red]" f"Running in {mode} mode will trigger emails to PPPL and OSTI!"
+        )
+        user_response = Confirm.ask("Are you sure you wish you proceed?")
+    log.info(f"{user_response=}")
+    if user_response:
+        p.run_pipeline()
+    else:
+        log.info("[bold red]Exiting!!! You must respond with a Y/y")
 
     script_log_end(SCRIPT_NAME, log)
