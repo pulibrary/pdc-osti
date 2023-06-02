@@ -14,7 +14,7 @@ import urllib3
 from rich.prompt import Prompt
 
 from . import DATASPACE_URI, DSPACE_ID, PDC_URI
-from .commons import get_datacite_awards, get_dc_value
+from .commons import get_ark, get_datacite_awards, get_dc_value
 from .logger import pdc_log, script_log_end, script_log_init
 
 SCRIPT_NAME = Path(__file__).stem
@@ -243,7 +243,7 @@ class Scraper:
 
         to_be_published = []
         for record in princeton_j:
-            if self.princeton_metadata_handle(record) not in osti_handles:
+            if self.get_handle(record) not in osti_handles:
                 to_be_published.append(record)
 
         state = "Updating" if self.to_upload.exists() else "Writing"
@@ -257,9 +257,7 @@ class Scraper:
             json.dump(redirects_j, f, indent=4)
 
         # Check for records in OSTI but not DataSpace/PDC
-        princeton_handles = [
-            self.princeton_metadata_handle(record) for record in princeton_j
-        ]
+        princeton_handles = [self.get_handle(record) for record in princeton_j]
         errors = [
             record
             for record in osti_j
@@ -288,7 +286,7 @@ class Scraper:
             to_upload_j = json.load(f)
 
         df = pd.DataFrame()
-        df["ARK"] = list(map(self.princeton_metadata_handle, to_upload_j))
+        df["ARK"] = list(map(self.get_handle, to_upload_j))
         if self.princeton_source == "dspace":
             df[DSPACE_ID] = [item["id"] for item in to_upload_j]
             df["Issue Date"] = [
@@ -367,14 +365,9 @@ class Scraper:
 
         self.log.info("[bold green]✔ Entry form generated!")
 
-    def princeton_metadata_handle(self, record: dict):
-        """Retrieves ARK handle depending on Princeton source"""
-        if self.princeton_source == "dspace":
-            return record["handle"]
-        elif self.princeton_source == "pdc":
-            return record["resource"]["ark"].replace("ark:/", "")
-        else:
-            raise NotImplementedError
+    def get_handle(self, record: dict) -> str:
+        """Retrieves ARK depending on Princeton source"""
+        return get_ark(record, self.princeton_source)
 
     def update_form_input(self) -> None:
         """

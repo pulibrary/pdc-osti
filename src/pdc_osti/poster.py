@@ -8,7 +8,7 @@ import ostiapi
 import pandas as pd
 from rich.prompt import Confirm, Prompt
 
-from .commons import get_dc_value
+from .commons import get_ark, get_dc_value
 from .config import settings
 from .logger import pdc_log, script_log_end, script_log_init
 
@@ -82,12 +82,7 @@ class Poster:
         """
 
         def _get_ark(it: dict):
-            if self.princeton_source == "dspace":
-                return it["handle"]
-            elif self.princeton_source == "pdc":
-                return it["resource"]["ark"].replace("ark:/", "")
-            else:
-                raise NotImplementedError
+            return get_ark(it, self.princeton_source)
 
         self.log.info("[bold yellow]Generating upload data")
 
