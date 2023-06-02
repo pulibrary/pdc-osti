@@ -409,7 +409,7 @@ class Scraper:
         else:
             self.log.warning(f"[bold red]{self.form_input} does not exist!")
             revised_df = entry_df.copy()
-            revised_df.loc["Datatype"] = "AS"
+            revised_df["Datatype"] = "AS"
 
         state = "Updating" if self.form_input.exists() else "Writing"
         self.log.info(f"[yellow]{state}: {self.form_input}")
