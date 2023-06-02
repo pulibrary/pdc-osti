@@ -309,7 +309,7 @@ class Scraper:
             ]
         elif self.princeton_source == "pdc":
             df["Issue Date"] = [
-                f"{datetime.fromisoformat(item['collection']['created_at']):%Y-%m-%d}"
+                f"{datetime.fromisoformat(item['group']['created_at']):%Y-%m-%d}"
                 for item in to_upload_j
             ]
             df["Title"] = [
