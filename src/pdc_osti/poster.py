@@ -8,7 +8,7 @@ import ostiapi
 import pandas as pd
 from rich.prompt import Confirm, Prompt
 
-from .commons import get_ark, get_dc_value
+from .commons import get_ark, get_description, get_is_referenced_by, get_keywords
 from .config import settings
 from .logger import pdc_log, script_log_end, script_log_init
 
@@ -136,31 +136,24 @@ class Poster:
                 "accession_num": ark,
                 "publication_date": row["Issue Date"],
                 "othnondoe_contract_nos": row["Non-DOE Contract"],
+                "abstract": get_description(princeton_data, self.princeton_source),
+                "keywords": get_keywords(princeton_data, self.princeton_source),
             }
 
             # Collect optional required information
-            if self.princeton_source == "dspace":
-                abstract = get_dc_value(princeton_data, "dc.description.abstract")
-                if len(abstract) != 0:
-                    item_dict["description"] = "\n\n".join(abstract)
-
-                keywords = get_dc_value(princeton_data, "dc.subject")
-                if len(keywords) != 0:
-                    item_dict["keywords"] = "; ".join(keywords)
-
-                is_referenced_by = get_dc_value(
-                    princeton_data, "dc.relation.isreferencedby"
-                )
-                if len(is_referenced_by) != 0:
-                    item_dict["related_identifiers"] = []
-                    for irb in is_referenced_by:
-                        item_dict["related_identifiers"].append(
-                            {
-                                "related_identifier": irb.split("doi.org/")[1],
-                                "relation_type": "IsReferencedBy",
-                                "related_identifier_type": "DOI",
-                            }
-                        )
+            is_referenced_by = get_is_referenced_by(
+                princeton_data, self.princeton_source
+            )
+            if len(is_referenced_by) != 0:
+                item_dict["related_identifiers"] = []
+                for irb in is_referenced_by:
+                    item_dict["related_identifiers"].append(
+                        {
+                            "related_identifier": irb.split("doi.org/")[1],
+                            "relation_type": "IsReferencedBy",
+                            "related_identifier_type": "DOI",
+                        }
+                    )
 
             osti_format.append(item_dict)
 
