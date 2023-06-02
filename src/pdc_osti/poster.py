@@ -8,7 +8,6 @@ import ostiapi
 import pandas as pd
 from rich.prompt import Confirm, Prompt
 
-from . import DATASPACE_URI, DSPACE_ID
 from .commons import get_dc_value
 from .config import settings
 from .logger import pdc_log, script_log_end, script_log_init
@@ -81,6 +80,15 @@ class Poster:
         Validate the form input provided by the user and combine new data with
         DSpace data to generate JSON that is prepared for OSTI ingestion
         """
+
+        def _get_ark(it: dict):
+            if self.princeton_source == "dspace":
+                return it["handle"]
+            elif self.princeton_source == "pdc":
+                return it["resource"]["ark"].replace("ark:/", "")
+            else:
+                raise NotImplementedError
+
         self.log.info("[bold yellow]Generating upload data")
 
         self.log.info(f"[yellow]Loading: {self.to_upload}")
@@ -88,9 +96,9 @@ class Poster:
             to_upload_j = json.load(f)
 
         self.log.info(f"[yellow]Loading: {self.form_input}")
-        df = pd.read_csv(self.form_input, sep="\t", keep_default_na=False)
-        if self.princeton_source == "dspace":
-            df = df.set_index(DSPACE_ID)
+        df = pd.read_csv(
+            self.form_input, index_col="ARK", sep="\t", keep_default_na=False
+        )
 
         # Validate Input CSV
         def no_empty_cells(series) -> bool:
@@ -116,54 +124,48 @@ class Poster:
 
         # Generate final JSON to post to OSTI
         osti_format = []
-        for dspace_id, row in df.iterrows():
-            dspace_data = [item for item in to_upload_j if item["id"] == dspace_id]
-            assert len(dspace_data) == 1, dspace_data
-            dspace_data = dspace_data[0]
-
-            # get publication date
-            date_info = get_dc_value(dspace_data, "dc.date.available")
-            assert len(date_info) == 1
-            date_info = date_info[0]
-            pub_dt = datetime.datetime.strptime(date_info, "%Y-%m-%dT%H:%M:%S%z")
-            pub_date = pub_dt.strftime("%m/%d/%Y")
+        for ark, row in df.iterrows():
+            princeton_data = [item for item in to_upload_j if _get_ark(item) == ark]
+            assert len(princeton_data) == 1, princeton_data
+            princeton_data = princeton_data[0]
 
             # Collect all required information
             item_dict = {
-                "title": dspace_data["name"],
-                "creators": ";".join(
-                    get_dc_value(dspace_data, "dc.contributor.author")
-                ),
+                "title": row["Title"],
+                "creators": row["Author"],
                 "dataset_type": row["Datatype"],
-                "site_url": f"{DATASPACE_URI}/handle/{dspace_data['handle']}",
+                "site_url": f"https://arks.princeton.edu/ark:/{ark}",
                 "contract_nos": row["DOE Contract"],
                 "sponsor_org": row["Sponsoring Organizations"],
                 "research_org": "PPPL",
-                "accession_num": dspace_data["handle"],
-                "publication_date": pub_date,
+                "accession_num": ark,
+                "publication_date": row["Issue Date"],
                 "othnondoe_contract_nos": row["Non-DOE Contract"],
             }
 
             # Collect optional required information
-            abstract = get_dc_value(dspace_data, "dc.description.abstract")
-            if len(abstract) != 0:
-                item_dict["description"] = "\n\n".join(abstract)
+            if self.princeton_source == "dspace":
+                abstract = get_dc_value(princeton_data, "dc.description.abstract")
+                if len(abstract) != 0:
+                    item_dict["description"] = "\n\n".join(abstract)
 
-            keywords = get_dc_value(dspace_data, "dc.subject")
-            if len(keywords) != 0:
-                item_dict["keywords"] = "; ".join(keywords)
+                keywords = get_dc_value(princeton_data, "dc.subject")
+                if len(keywords) != 0:
+                    item_dict["keywords"] = "; ".join(keywords)
 
-            is_referenced_by = get_dc_value(dspace_data, "dc.relation.isreferencedby")
-            if len(is_referenced_by) != 0:
-                item_dict["related_identifiers"] = []
-                for irb in is_referenced_by:
-                    item_dict["related_identifiers"].append(
-                        {
-                            "related_identifier": irb.split("doi.org/")[1],
-                            "relation_type": "IsReferencedBy",
-                            "related_identifier_type": "DOI",
-                        }
-                    )
+                is_referenced_by = get_dc_value(
+                    princeton_data, "dc.relation.isreferencedby"
+                )
+                if len(is_referenced_by) != 0:
+                    item_dict["related_identifiers"] = []
+                    for irb in is_referenced_by:
+                        item_dict["related_identifiers"].append(
+                            {
+                                "related_identifier": irb.split("doi.org/")[1],
+                                "relation_type": "IsReferencedBy",
+                                "related_identifier_type": "DOI",
+                            }
+                        )
 
             osti_format.append(item_dict)
 
@@ -291,7 +293,7 @@ def main() -> None:
     log.info(f"Will use data from {princeton_source}")
 
     mode = args.mode
-    p = Poster(mode)
+    p = Poster(mode, princeton_source=princeton_source)
     if mode == "dry-run":
         user_response = True
     if mode in ["test", "prod"]:

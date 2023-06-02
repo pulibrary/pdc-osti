@@ -223,15 +223,6 @@ class Scraper:
             else:
                 return redirects_j[doi]
 
-        def princeton_metadata_handle(record: dict):
-            """Retrieves ARK handle depending on Princeton source"""
-            if self.princeton_source == "dspace":
-                return record["handle"]
-            elif self.princeton_source == "pdc":
-                return record["resource"]["ark"].replace("ark:/", "")
-            else:
-                raise NotImplementedError
-
         self.log.info("[bold yellow]Identifying new records for uploading")
 
         self.log.info(f"[yellow]Loading: {self.redirects}")
@@ -252,7 +243,7 @@ class Scraper:
 
         to_be_published = []
         for record in princeton_j:
-            if princeton_metadata_handle(record) not in osti_handles:
+            if self.princeton_metadata_handle(record) not in osti_handles:
                 to_be_published.append(record)
 
         state = "Updating" if self.to_upload.exists() else "Writing"
@@ -267,7 +258,7 @@ class Scraper:
 
         # Check for records in OSTI but not DataSpace/PDC
         princeton_handles = [
-            princeton_metadata_handle(record) for record in princeton_j
+            self.princeton_metadata_handle(record) for record in princeton_j
         ]
         errors = [
             record
@@ -297,6 +288,7 @@ class Scraper:
             to_upload_j = json.load(f)
 
         df = pd.DataFrame()
+        df["ARK"] = list(map(self.princeton_metadata_handle, to_upload_j))
         if self.princeton_source == "dspace":
             df[DSPACE_ID] = [item["id"] for item in to_upload_j]
             df["Issue Date"] = [
@@ -375,6 +367,15 @@ class Scraper:
 
         self.log.info("[bold green]✔ Entry form generated!")
 
+    def princeton_metadata_handle(self, record: dict):
+        """Retrieves ARK handle depending on Princeton source"""
+        if self.princeton_source == "dspace":
+            return record["handle"]
+        elif self.princeton_source == "pdc":
+            return record["resource"]["ark"].replace("ark:/", "")
+        else:
+            raise NotImplementedError
+
     def update_form_input(self) -> None:
         """
         Update form_input.tsv by adding new records or removing DataSpace/PDC
@@ -385,11 +386,11 @@ class Scraper:
         """
         self.log.info("[bold yellow]Updating form input")
 
-        entry_df = pd.read_csv(self.entry_form, index_col=DSPACE_ID, sep="\t")
+        entry_df = pd.read_csv(self.entry_form, index_col="ARK", sep="\t")
         if self.form_input.exists():
             self.log.info(f"File exists. Will update: {self.form_input}")
 
-            input_df = pd.read_csv(self.form_input, index_col=DSPACE_ID, sep="\t")
+            input_df = pd.read_csv(self.form_input, index_col="ARK", sep="\t")
             self.log.info("Identifying DataSpace/PDC records to add and remove ...")
             entry_id = set(entry_df.index)
             input_id = set(input_df.index)
