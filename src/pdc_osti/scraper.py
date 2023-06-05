@@ -13,7 +13,7 @@ import requests.adapters
 import urllib3
 from rich.prompt import Prompt
 
-from . import DATASPACE_URI, DSPACE_ID, PDC_URI
+from . import DATASPACE_URI, DSPACE_ID, PDC_QUERY, PDC_URI
 from .commons import get_ark, get_datacite_awards, get_dc_value
 from .logger import pdc_log, script_log_end, script_log_init
 
@@ -196,10 +196,17 @@ class Scraper:
                 "to prevent this from happening again."
             )
         elif self.princeton_source == "pdc":
-            r = requests.get(PDC_URI)
-            j = r.json()
-            for j_item in j:
-                all_items.append(json.loads(j_item["pdc_describe_json_ss"]))
+            next_page = 1
+            while True:
+                query = PDC_QUERY | {"page": next_page}
+                r = requests.get(PDC_URI, params=query)
+                j = r.json()
+                if not j:  # End of records
+                    break
+                else:
+                    for j_item in j:
+                        all_items.append(json.loads(j_item["pdc_describe_json_ss"]))
+                    next_page += 1
 
         self.log.info(f"Pulled {len(all_items)} records from {repo_name}.")
 
