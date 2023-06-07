@@ -202,6 +202,13 @@ class Poster:
         Post the collected metadata to OSTI's test or prod server. If in
         dry-run mode, call our _fake_post method
         """
+
+        def _log_status(record):
+            if record["status"] == "SUCCESS":
+                self.log.info(f"[green]\t✔ {record['title']}")
+            else:
+                self.log.info(f"[red]\t✗ {record['title']}")
+
         self.log.info("[bold yellow]Posting to OSTI")
         if self.mode == "test":
             ostiapi.testmode()
@@ -221,14 +228,21 @@ class Poster:
             json.dump(response_data, f, indent=4)
 
         # output results to the shell:
-        for item in response_data["record"]:
-            if item["status"] == "SUCCESS":
-                self.log.info(f"[green]\t✔ {item['title']}")
-            else:
-                self.log.info(f"[red]\t✗ {item['title']}")
+        if isinstance(response_data["record"], list):
+            for item in response_data["record"]:
+                _log_status(item)
+        elif isinstance(response_data["record"], dict):
+            _log_status(response_data["record"])
 
         if self.mode != "dry-run":
-            status = [item["status"] == "SUCCESS" for item in response_data["record"]]
+            status = []
+            if isinstance(response_data["record"], list):
+                status.extend(
+                    [item["status"] == "SUCCESS" for item in response_data["record"]]
+                )
+            elif isinstance(response_data["record"], dict):
+                status.extend([response_data["record"]["status"] == "SUCCESS"])
+
             if all(status):
                 self.log.info("Congrats 🚀 OSTI says that all records were uploaded!")
             else:
