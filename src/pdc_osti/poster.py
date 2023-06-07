@@ -140,6 +140,15 @@ class Poster:
                 "keywords": get_keywords(princeton_data, self.princeton_source),
             }
 
+            # Add existing DOI if it exists
+            if self.princeton_source == "pdc":
+                doi = princeton_data.get("doi")
+                if doi:
+                    if not doi.startswith("10.11578"):
+                        item_dict["doi"] = doi
+                    else:
+                        self.log.debug(f"OSTI DOI minted: {doi}")
+
             # Collect optional required information
             is_referenced_by = get_is_referenced_by(
                 princeton_data, self.princeton_source
