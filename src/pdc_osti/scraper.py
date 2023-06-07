@@ -13,8 +13,8 @@ import requests.adapters
 import urllib3
 from rich.prompt import Prompt
 
-from . import DATASPACE_URI, DSPACE_ID, PDC_URI
-from .commons import get_datacite_awards, get_dc_value
+from . import DATASPACE_URI, DSPACE_ID, PDC_QUERY, PDC_URI
+from .commons import get_ark, get_datacite_awards, get_dc_value
 from .logger import pdc_log, script_log_end, script_log_init
 
 SCRIPT_NAME = Path(__file__).stem
@@ -120,8 +120,8 @@ class Scraper:
         self.log = log
         self.osti_scrape = data_dir / osti_scrape
         self.princeton_source = princeton_source
-        self.entry_form = Path(entry_form_full_path)
-        self.form_input = Path(form_input_full_path)
+        self.entry_form = Path(f"{princeton_source}_{entry_form_full_path}")
+        self.form_input = Path(f"{princeton_source}_{form_input_full_path}")
         self.redirects = data_dir / redirects
 
         self.princeton_scrape = data_dir / f"{princeton_source}_scrape.json"
@@ -196,10 +196,17 @@ class Scraper:
                 "to prevent this from happening again."
             )
         elif self.princeton_source == "pdc":
-            r = requests.get(PDC_URI)
-            j = r.json()
-            for j_item in j:
-                all_items.append(json.loads(j_item["pdc_describe_json_ss"]))
+            next_page = 1
+            while True:
+                query = PDC_QUERY | {"page": next_page}
+                r = requests.get(PDC_URI, params=query)
+                j = r.json()
+                if not j:  # End of records
+                    break
+                else:
+                    for j_item in j:
+                        all_items.append(json.loads(j_item["pdc_describe_json_ss"]))
+                    next_page += 1
 
         self.log.info(f"Pulled {len(all_items)} records from {repo_name}.")
 
@@ -223,15 +230,6 @@ class Scraper:
             else:
                 return redirects_j[doi]
 
-        def princeton_metadata_handle(record: dict):
-            """Retrieves ARK handle depending on Princeton source"""
-            if self.princeton_source == "dspace":
-                return record["handle"]
-            elif self.princeton_source == "pdc":
-                return record["resource"]["ark"].replace("ark:/", "")
-            else:
-                raise NotImplementedError
-
         self.log.info("[bold yellow]Identifying new records for uploading")
 
         self.log.info(f"[yellow]Loading: {self.redirects}")
@@ -252,7 +250,7 @@ class Scraper:
 
         to_be_published = []
         for record in princeton_j:
-            if princeton_metadata_handle(record) not in osti_handles:
+            if self.get_handle(record) not in osti_handles:
                 to_be_published.append(record)
 
         state = "Updating" if self.to_upload.exists() else "Writing"
@@ -266,9 +264,7 @@ class Scraper:
             json.dump(redirects_j, f, indent=4)
 
         # Check for records in OSTI but not DataSpace/PDC
-        princeton_handles = [
-            princeton_metadata_handle(record) for record in princeton_j
-        ]
+        princeton_handles = [self.get_handle(record) for record in princeton_j]
         errors = [
             record
             for record in osti_j
@@ -297,6 +293,7 @@ class Scraper:
             to_upload_j = json.load(f)
 
         df = pd.DataFrame()
+        df["ARK"] = list(map(self.get_handle, to_upload_j))
         if self.princeton_source == "dspace":
             df[DSPACE_ID] = [item["id"] for item in to_upload_j]
             df["Issue Date"] = [
@@ -317,7 +314,7 @@ class Scraper:
             ]
         elif self.princeton_source == "pdc":
             df["Issue Date"] = [
-                f"{datetime.fromisoformat(item['collection']['created_at']):%Y-%m-%d}"
+                f"{datetime.fromisoformat(item['group']['created_at']):%Y-%m-%d}"
                 for item in to_upload_j
             ]
             df["Title"] = [
@@ -375,6 +372,10 @@ class Scraper:
 
         self.log.info("[bold green]✔ Entry form generated!")
 
+    def get_handle(self, record: dict) -> str:
+        """Retrieves ARK depending on Princeton source"""
+        return get_ark(record, self.princeton_source)
+
     def update_form_input(self) -> None:
         """
         Update form_input.tsv by adding new records or removing DataSpace/PDC
@@ -385,11 +386,11 @@ class Scraper:
         """
         self.log.info("[bold yellow]Updating form input")
 
+        entry_df = pd.read_csv(self.entry_form, index_col="ARK", sep="\t")
         if self.form_input.exists():
             self.log.info(f"File exists. Will update: {self.form_input}")
 
-            entry_df = pd.read_csv(self.entry_form, index_col=DSPACE_ID, sep="\t")
-            input_df = pd.read_csv(self.form_input, index_col=DSPACE_ID, sep="\t")
+            input_df = pd.read_csv(self.form_input, index_col="ARK", sep="\t")
             self.log.info("Identifying DataSpace/PDC records to add and remove ...")
             entry_id = set(entry_df.index)
             input_id = set(input_df.index)
@@ -406,15 +407,14 @@ class Scraper:
 
             # "AS" is a placeholder - not included in DataSpace metadata
             revised_df.loc[adds, "Datatype"] = "AS"
-
-            state = "Updating" if self.form_input.exists() else "Writing"
-            self.log.info(f"[yellow]{state}: {self.form_input}")
-            revised_df.to_csv(self.form_input, sep="\t")
         else:
-            self.log.warning(
-                f"[bold red]{(msg := f'{self.form_input} does not exist!')}"
-            )
-            raise FileNotFoundError(msg)
+            self.log.warning(f"[bold red]{self.form_input} does not exist!")
+            revised_df = entry_df.copy()
+            revised_df["Datatype"] = "AS"
+
+        state = "Updating" if self.form_input.exists() else "Writing"
+        self.log.info(f"[yellow]{state}: {self.form_input}")
+        revised_df.to_csv(self.form_input, sep="\t")
 
         self.log.info("[bold green]✔ Form input updated!")
 

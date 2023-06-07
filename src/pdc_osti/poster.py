@@ -1,15 +1,14 @@
+import argparse
 import datetime
 import json
-import sys
 from logging import Logger
 from pathlib import Path
 
 import ostiapi
 import pandas as pd
-from rich.prompt import Confirm
+from rich.prompt import Confirm, Prompt
 
-from . import DATASPACE_URI, DSPACE_ID
-from .commons import get_dc_value
+from .commons import get_ark, get_description, get_is_referenced_by, get_keywords
 from .config import settings
 from .logger import pdc_log, script_log_end, script_log_init
 
@@ -27,21 +26,23 @@ class Poster:
     def __init__(
         self,
         mode: str,
+        princeton_source: str = "dspace",
         data_dir: Path = Path("data"),
-        to_upload: str = "dspace_metadata_to_upload.json",
+        to_upload: str = "metadata_to_upload.json",
         form_input_full_path: str = "form_input.tsv",
         osti_upload: str = "osti.json",
         response_dir: Path = Path("responses"),
         log: Logger = pdc_log,
     ) -> None:
-        self.mode = mode
         self.log = log
+        self.mode = mode
+        self.princeton_source = princeton_source
 
         # Prepare all paths
-        self.form_input = form_input_full_path
+        self.form_input = f"{princeton_source}_{form_input_full_path}"
         self.data_dir = data_dir
-        self.to_upload = data_dir / to_upload
-        self.osti_upload = data_dir / osti_upload
+        self.to_upload = data_dir / f"{princeton_source}_{to_upload}"
+        self.osti_upload = data_dir / f"{princeton_source}_{osti_upload}"
 
         timestamp = str(datetime.datetime.now()).replace(":", "")
         self.response_output = response_dir / f"{mode}_osti_response_{timestamp}.json"
@@ -79,6 +80,10 @@ class Poster:
         Validate the form input provided by the user and combine new data with
         DSpace data to generate JSON that is prepared for OSTI ingestion
         """
+
+        def _get_ark(it: dict):
+            return get_ark(it, self.princeton_source)
+
         self.log.info("[bold yellow]Generating upload data")
 
         self.log.info(f"[yellow]Loading: {self.to_upload}")
@@ -86,8 +91,9 @@ class Poster:
             to_upload_j = json.load(f)
 
         self.log.info(f"[yellow]Loading: {self.form_input}")
-        df = pd.read_csv(self.form_input, sep="\t", keep_default_na=False)
-        df = df.set_index(DSPACE_ID)
+        df = pd.read_csv(
+            self.form_input, index_col="ARK", sep="\t", keep_default_na=False
+        )
 
         # Validate Input CSV
         def no_empty_cells(series) -> bool:
@@ -113,44 +119,31 @@ class Poster:
 
         # Generate final JSON to post to OSTI
         osti_format = []
-        for dspace_id, row in df.iterrows():
-            dspace_data = [item for item in to_upload_j if item["id"] == dspace_id]
-            assert len(dspace_data) == 1, dspace_data
-            dspace_data = dspace_data[0]
-
-            # get publication date
-            date_info = get_dc_value(dspace_data, "dc.date.available")
-            assert len(date_info) == 1
-            date_info = date_info[0]
-            pub_dt = datetime.datetime.strptime(date_info, "%Y-%m-%dT%H:%M:%S%z")
-            pub_date = pub_dt.strftime("%m/%d/%Y")
+        for ark, row in df.iterrows():
+            princeton_data = [item for item in to_upload_j if _get_ark(item) == ark]
+            assert len(princeton_data) == 1, princeton_data
+            princeton_data = princeton_data[0]
 
             # Collect all required information
             item_dict = {
-                "title": dspace_data["name"],
-                "creators": ";".join(
-                    get_dc_value(dspace_data, "dc.contributor.author")
-                ),
+                "title": row["Title"],
+                "creators": row["Author"],
                 "dataset_type": row["Datatype"],
-                "site_url": f"{DATASPACE_URI}/handle/{dspace_data['handle']}",
+                "site_url": f"https://arks.princeton.edu/ark:/{ark}",
                 "contract_nos": row["DOE Contract"],
                 "sponsor_org": row["Sponsoring Organizations"],
                 "research_org": "PPPL",
-                "accession_num": dspace_data["handle"],
-                "publication_date": pub_date,
+                "accession_num": ark,
+                "publication_date": row["Issue Date"],
                 "othnondoe_contract_nos": row["Non-DOE Contract"],
+                "abstract": get_description(princeton_data, self.princeton_source),
+                "keywords": get_keywords(princeton_data, self.princeton_source),
             }
 
             # Collect optional required information
-            abstract = get_dc_value(dspace_data, "dc.description.abstract")
-            if len(abstract) != 0:
-                item_dict["description"] = "\n\n".join(abstract)
-
-            keywords = get_dc_value(dspace_data, "dc.subject")
-            if len(keywords) != 0:
-                item_dict["keywords"] = "; ".join(keywords)
-
-            is_referenced_by = get_dc_value(dspace_data, "dc.relation.isreferencedby")
+            is_referenced_by = get_is_referenced_by(
+                princeton_data, self.princeton_source
+            )
             if len(is_referenced_by) != 0:
                 item_dict["related_identifiers"] = []
                 for irb in is_referenced_by:
@@ -255,35 +248,51 @@ class Poster:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Script to post new Princeton datasets to DOE/OSTI"
+    )
+    parser.add_argument(
+        "-s",
+        "--source",
+        required=False,
+        default="",
+        type=str,
+        help="Source for Princeton data (dspace or pdc)",
+    )
+    parser.add_argument(
+        "-m",
+        "--mode",
+        default="dry-run",
+        type=str,
+        help="Mode of KPI operation (dry-run, test, or execute)",
+    )
+    args = parser.parse_args()
+
     log = script_log_init(SCRIPT_NAME)
-    args = sys.argv
 
-    help_s = """
-    Choose one of the following options:
-    --dry-run: Make fake requests locally to test workflow.
-    --test: Post to OSTI's test server.
-    --prod: Post to OSTI's prod server.
-    """
-
-    commands = ["--dry-run", "--test", "--prod"]
-
-    if (len(args) != 2) or (args[1] in ["--help", "-h"]) or (args[1] not in commands):
-        print(help_s)
+    if not args.source:
+        princeton_source = Prompt.ask(
+            "Princeton data repository source?",
+            choices=["dspace", "pdc"],
+            default="dspace",
+        )
     else:
-        mode = args[1][2:]
-        p = Poster(mode)
-        if mode == "dry-run":
-            user_response = True
-        if mode in ["test", "prod"]:
-            log.warning(
-                "[bold red]"
-                f"Running in {mode} mode will trigger emails to PPPL and OSTI!"
-            )
-            user_response = Confirm.ask("Are you sure you wish you proceed?")
-        log.info(f"{user_response=}")
-        if user_response:
-            p.run_pipeline()
-        else:
-            log.info("[bold red]Exiting!!! You must respond with a Y/y")
+        princeton_source = args.source
+    log.info(f"Will use data from {princeton_source}")
+
+    mode = args.mode
+    p = Poster(mode, princeton_source=princeton_source)
+    if mode == "dry-run":
+        user_response = True
+    if mode in ["test", "prod"]:
+        log.warning(
+            "[bold red]" f"Running in {mode} mode will trigger emails to PPPL and OSTI!"
+        )
+        user_response = Confirm.ask("Are you sure you wish you proceed?")
+    log.info(f"{user_response=}")
+    if user_response:
+        p.run_pipeline()
+    else:
+        log.info("[bold red]Exiting!!! You must respond with a Y/y")
 
     script_log_end(SCRIPT_NAME, log)
