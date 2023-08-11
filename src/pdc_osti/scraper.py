@@ -317,6 +317,7 @@ class Scraper:
                 f"{datetime.fromisoformat(item['group']['created_at']):%Y-%m-%d}"
                 for item in to_upload_j
             ]
+            df["DOI"] = [item["resource"].get("doi") for item in to_upload_j]
             df["Title"] = [
                 item["resource"]["titles"][0]["title"] for item in to_upload_j
             ]
