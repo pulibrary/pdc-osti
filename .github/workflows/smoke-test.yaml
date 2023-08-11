@@ -26,9 +26,13 @@ jobs:
     - name: OpenSSL version
       run: openssl version
     - name: Run scraper
-      run: scraper -s dspace
+      run: |
+        scraper -s dspace
+        scraper -s pdc
     - name: Run poster
-      run: poster -s dspace -m dry-run
+      run: |
+        poster -s dspace -m dry-run
+        poster -s pdc -m dry-run
       env:
         OSTI_USERNAME_TEST: my-test-osti-username
         OSTI_PASSWORD_TEST: my-test-osti-password
