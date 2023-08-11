@@ -142,12 +142,14 @@ class Poster:
 
             # Add existing DOI if it exists
             if self.princeton_source == "pdc":
-                doi = princeton_data.get("doi")
+                doi = row["DOI"]
                 if doi:
                     if not doi.startswith("10.11578"):
                         item_dict["doi"] = doi
                     else:
                         self.log.debug(f"OSTI DOI minted: {doi}")
+                else:
+                    self.log.warning("[bold red] No DOI!!!")
 
             # Collect optional required information
             is_referenced_by = get_is_referenced_by(
