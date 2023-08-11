@@ -160,12 +160,11 @@ class Poster:
                 for irb in is_referenced_by:
                     item_dict["related_identifiers"].append(
                         {
-                            "related_identifier": irb.split("doi.org/")[1],
+                            "related_identifier": irb,
                             "relation_type": "IsReferencedBy",
                             "related_identifier_type": "DOI",
                         }
                     )
-
             osti_format.append(item_dict)
 
         state = "Updating" if self.osti_upload.exists() else "Writing"
@@ -198,7 +197,9 @@ class Poster:
                     "contract_nos": record["contract_nos"],
                     "other_identifying_nos": None,
                     "othnondoe_contract_nos": record["othnondoe_contract_nos"],
-                    "doi": "10.11578/1488485",
+                    "doi": record.get("doi")
+                    if record.get("doi")
+                    else "10.11578/1488485",
                     "doi_status": "PENDING",
                     "status": "SUCCESS",
                     "status_message": None,
