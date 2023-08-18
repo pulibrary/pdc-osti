@@ -125,6 +125,7 @@ class Poster:
             princeton_data = princeton_data[0]
 
             # Collect all required information
+            # site_url and accession_num are initial settings
             item_dict = {
                 "title": row["Title"],
                 "creators": row["Author"],
@@ -146,10 +147,13 @@ class Poster:
                 if doi:
                     if not doi.startswith("10.11578"):
                         item_dict["doi"] = doi
+                        # Uses DOI moving forward
+                        item_dict["accession_num"] = doi
+                        item_dict["site_url"] = f"https://doi.org/{doi}"
                     else:
                         self.log.debug(f"OSTI DOI minted: {doi}")
                 else:
-                    self.log.warning("[bold red] No DOI!!!")
+                    self.log.warning("[bold red]No DOI!!!")
 
             # Collect optional required information
             is_referenced_by = get_is_referenced_by(
