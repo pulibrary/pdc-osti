@@ -35,14 +35,17 @@ def get_description(item: dict, princeton_source: str) -> str:
 def get_is_referenced_by(item: dict, princeton_source: str) -> str:
     """Retrieve IsReferencedBy for dataset"""
     if princeton_source == "dspace":
-        isreferencedby = get_dc_value(item, "dc.relation.isreferencedby")
+        isreferencedby = [
+            val.split("doi.org/")[1]
+            for val in get_dc_value(item, "dc.relation.isreferencedby")
+        ]
     elif princeton_source == "pdc":
         related_objects = item["resource"].get("related_objects")
         if related_objects:
             isreferencedby = [
                 m["related_identifier"]
                 for m in related_objects
-                if m["relation_type"] == "IsCitedBy"
+                if m["relation_type"] in ["IsCitedBy", "IsReferencedBy"]
             ]
         else:
             isreferencedby = []

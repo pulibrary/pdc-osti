@@ -2,7 +2,6 @@ import argparse
 import json
 import re
 import ssl
-from datetime import datetime
 from logging import Logger
 from pathlib import Path
 from typing import Dict, List
@@ -314,9 +313,9 @@ class Scraper:
             ]
         elif self.princeton_source == "pdc":
             df["Issue Date"] = [
-                f"{datetime.fromisoformat(item['group']['created_at']):%Y-%m-%d}"
-                for item in to_upload_j
+                f"{item['resource']['publication_year']}" for item in to_upload_j
             ]
+            df["DOI"] = [item["resource"].get("doi") for item in to_upload_j]
             df["Title"] = [
                 item["resource"]["titles"][0]["title"] for item in to_upload_j
             ]
