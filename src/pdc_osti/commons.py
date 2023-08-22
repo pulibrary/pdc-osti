@@ -1,3 +1,6 @@
+from typing import List
+
+
 def get_ark(record: dict, princeton_source: str) -> str:
     """Retrieves ARK (e.g., 88435/dsp012j62s808w) depending on Princeton source"""
     if princeton_source == "dspace":
@@ -6,6 +9,32 @@ def get_ark(record: dict, princeton_source: str) -> str:
         return record["resource"]["ark"].replace("ark:/", "")
     else:
         raise NotImplementedError
+
+
+def get_author(creator: dict) -> dict:
+    """Retrieve individual author from PDC metadata"""
+
+    c_dict = {
+        "first_name": creator.get("given_name"),
+        "last_name": creator.get("family_name"),
+    }
+
+    c_id = creator["identifier"]
+    if c_id:
+        c_dict["orcid_id"] = c_id["value"]
+
+    affils = creator["affiliations"]
+    if affils:
+        c_dict["affiliation_name"] = ";".join(item["value"] for item in affils)
+    return c_dict
+
+
+def get_authors(record: dict) -> List[dict]:
+    """Retrieve author with ORCID and affiliation from PDC"""
+
+    creators = record["resource"].get("creators")
+    if creators:
+        return [get_author(creator) for creator in creators]
 
 
 def get_dc_value(item: dict, key: str) -> list:
