@@ -8,7 +8,13 @@ import ostiapi
 import pandas as pd
 from rich.prompt import Confirm, Prompt
 
-from .commons import get_ark, get_description, get_is_referenced_by, get_keywords
+from .commons import (
+    get_ark,
+    get_authors,
+    get_description,
+    get_is_referenced_by,
+    get_keywords,
+)
 from .config import settings
 from .logger import pdc_log, script_log_end, script_log_init
 
@@ -128,7 +134,6 @@ class Poster:
             # site_url and accession_num are initial settings
             item_dict = {
                 "title": row["Title"],
-                "creators": row["Author"],
                 "dataset_type": row["Datatype"],
                 "site_url": f"https://arks.princeton.edu/ark:/{ark}",
                 "contract_nos": row["DOE Contract"],
@@ -147,13 +152,22 @@ class Poster:
                 if doi:
                     if not doi.startswith("10.11578"):
                         item_dict["doi"] = doi
-                        # Uses DOI moving forward
+                        # Uses DOI moving forward #50
                         item_dict["accession_num"] = doi
                         item_dict["site_url"] = f"https://doi.org/{doi}"
                     else:
                         self.log.debug(f"OSTI DOI minted: {doi}")
                 else:
                     self.log.warning("[bold red]No DOI!!!")
+
+            if self.princeton_source == "dspace":
+                item_dict["creators"] = row["Author"]
+            elif self.princeton_source == "pdc":
+                authors = get_authors(princeton_data)
+                if authors:
+                    item_dict["authors"] = authors
+                else:
+                    item_dict["creators"] = row["Author"]
 
             # Collect optional required information
             is_referenced_by = get_is_referenced_by(
