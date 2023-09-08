@@ -219,15 +219,14 @@ class Scraper:
     def get_unposted_metadata(self) -> None:
         """Compare OSTI and DataSpace/PDC JSON to identify records for uploading"""
 
-        def get_handle(doi: str, redirects_j: List[dict]) -> str:
-            if doi not in redirects_j:
-                r = get_legacy_session().get(doi)  # fix for #31
-                assert r.status_code == 200, f"Error parsing DOI: {doi}"
-                handle = r.url.split("handle/")[-1]
-                redirects_j[doi] = handle
+        def get_handle(record: dict, redirects: dict) -> str:
+            doi = record["doi"]
+            if doi not in redirects:
+                handle = record["site_url"].split("ark:/")[-1]
+                redirects[doi] = handle
                 return handle
             else:
-                return redirects_j[doi]
+                return redirects[doi]
 
         self.log.info("[bold yellow]Identifying new records for uploading")
 
@@ -245,7 +244,7 @@ class Scraper:
 
         # Find handles in DSpace whose handles aren't linked in OSTI's DOIs
         # HACK: returning proper DOI while also updating redirects_j
-        osti_handles = [get_handle(record["doi"], redirects_j) for record in osti_j]
+        osti_handles = [get_handle(record, redirects_j) for record in osti_j]
 
         to_be_published = []
         for record in princeton_j:
