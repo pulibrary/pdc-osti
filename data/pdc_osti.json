@@ -1,0 +1,97 @@
+[
+    {
+        "title": "Data for \"The value of fusion energy to a decarbonized United States electric grid\"",
+        "dataset_type": "AS",
+        "site_url": "https://doi.org/10.34770/f8em-3c49",
+        "contract_nos": "AC02-09CH11466",
+        "sponsor_org": "USDOE Office of Science (SC)",
+        "research_org": "PPPL",
+        "accession_num": "10.34770/f8em-3c49",
+        "publication_date": 2022,
+        "othnondoe_contract_nos": "",
+        "abstract": "Fusion could be a part of future decarbonized electricity systems, but it will need to compete with other technologies. In particular, pulsed tokamaks plants have a unique operational mode, and evaluating which characteristics make them economically competitive can help select between design pathways. Using a capacity expansion and operations model, we determined cost thresholds for pulsed tokamaks to reach a range of penetration levels in a future decarbonized US Eastern Interconnection. The required capital cost to reach a fusion capacity of 100 GW varied from $3000 to $7200/kW, and the equilibrium penetration increases rapidly with decreasing cost. The value per unit power capacity depends on the variable operational cost and on cost of its competition, particularly fission, much more than on the pulse cycle parameters. These findings can therefore provide initial cost targets for fusion more generally in the United States.",
+        "keywords": "fusion; economics; cost; value; tokamak; power plant",
+        "doi": "10.34770/f8em-3c49",
+        "authors": [
+            {
+                "first_name": "Jacob A.",
+                "last_name": "Schwartz",
+                "orcid_id": "0000-0001-9636-8181",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Wilson",
+                "last_name": "Ricks"
+            },
+            {
+                "first_name": "Egemen",
+                "last_name": "Kolemen",
+                "orcid_id": "0000-0003-4212-3247",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Jesse D.",
+                "last_name": "Jenkins",
+                "orcid_id": "0000-0002-9670-7793"
+            }
+        ],
+        "related_identifiers": [
+            {
+                "related_identifier": "10.1016/j.joule.2023.02.006",
+                "relation_type": "IsReferencedBy",
+                "related_identifier_type": "DOI"
+            }
+        ]
+    },
+    {
+        "title": "A novel scheme for error field correction in permanent magnet stellarators",
+        "dataset_type": "AS",
+        "site_url": "https://doi.org/10.34770/7ev8-8b25",
+        "contract_nos": "AC02-09CH11466",
+        "sponsor_org": "USDOE Office of Science (SC)",
+        "research_org": "PPPL",
+        "accession_num": "10.34770/7ev8-8b25",
+        "publication_date": 2022,
+        "othnondoe_contract_nos": "",
+        "abstract": "Stellarators offer a promising path towards fusion reactors, but their design and construction are complicated by stringent tolerance requirements on highly complex 3D coils. A potential way to simplify the engineering requirements for stellarators is to use simple planar toroidal field coils along with permanent magnet arrays to generate shaping fields. In order to ensure sufficient field accuracy while minimizing engineering complexity and system cost, new techniques are required to correct the field produced by the permanent magnet arrays to within requirements set by plasma physics. This work describes a novel correction method developed for this purpose. This analysis is applied to the design of a quasi-axisymmetric stellarator that employs a combination of permanent magnets and planar toroidal field coils to generate its magnetic field. Analysis techniques and initial results using the method for error correction on a proposed permanent magnet stellarator are shown, and it is demonstrated that the method successfully meets the design requirements of the project.\r\n\r\nThese files provide the data to reproduce plots for \"A novel scheme for error field correction in permanent magnet stellarators\"",
+        "keywords": "Stellarators",
+        "doi": "10.34770/7ev8-8b25",
+        "authors": [
+            {
+                "first_name": "Adam",
+                "last_name": "Rutkowski"
+            },
+            {
+                "first_name": "Kenneth",
+                "last_name": "Hammond",
+                "orcid_id": "0000-0002-1104-4434",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Caoxiang",
+                "last_name": "Zhu",
+                "orcid_id": "0000-0003-2337-3232",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "David",
+                "last_name": "Gates",
+                "orcid_id": "0000-0001-5679-3124",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Amelia",
+                "last_name": "Chambliss",
+                "orcid_id": "0000-0003-4559-2970",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            }
+        ],
+        "related_identifiers": [
+            {
+                "related_identifier": "10.1088/1741-4326/aca98d",
+                "relation_type": "IsReferencedBy",
+                "related_identifier_type": "DOI"
+            }
+        ]
+    }
+]
