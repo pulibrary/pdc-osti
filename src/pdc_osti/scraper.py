@@ -134,6 +134,14 @@ class Scraper:
         Paginate through OSTI's Data Explorer API to find datasets that have
         been submitted
         """
+
+        def _extract_id(obj):  # For iss#55
+            """Extract OSTI_ID for sorting"""
+            try:
+                return int(obj["osti_id"])
+            except KeyError:
+                return 0
+
         self.log.info("[bold yellow]Get existing datasets")
 
         MAX_PAGE_COUNT = 15
@@ -156,10 +164,17 @@ class Scraper:
             self.log.error(f"[bold red]{msg}")
             raise BaseException(msg)
 
+        existing_datasets.sort(key=_extract_id)  # Sort by ID iss#55
+        clean_existing_dataset = [  # Remove duplicates iss#7
+            i
+            for n, i in enumerate(existing_datasets)
+            if i not in existing_datasets[n + 1 :]
+        ]
+
         state = "Updating" if self.osti_scrape.exists() else "Writing"
         self.log.info(f"[yellow]{state}: {self.osti_scrape}")
         with open(self.osti_scrape, "w") as f:
-            json.dump(existing_datasets, f, indent=4)
+            json.dump(clean_existing_dataset, f, indent=4)
         self.log.info("[bold green]✔ Existing datasets obtained!")
 
     def get_princeton_metadata(self) -> None:
