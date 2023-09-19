@@ -171,6 +171,10 @@ class Scraper:
             if i not in existing_datasets[n + 1 :]
         ]
 
+        self.log.info(
+            f"OSTI list has been truncated to {len(existing_datasets)} records."
+        )
+
         state = "Updating" if self.osti_scrape.exists() else "Writing"
         self.log.info(f"[yellow]{state}: {self.osti_scrape}")
         with open(self.osti_scrape, "w") as f:
