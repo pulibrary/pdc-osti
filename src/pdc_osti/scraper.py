@@ -347,7 +347,8 @@ class Scraper:
         # Sponsoring organizations is always Office of Science
         df["Sponsoring Organizations"] = "USDOE Office of Science (SC)"
 
-        df["Datatype"] = None  # To be filled in
+        # Fixes #56
+        # df["Datatype"] = None  # To be filled in
 
         df = df.sort_values("Issue Date")
         state = "Updating" if self.entry_form.exists() else "Writing"
