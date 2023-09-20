@@ -2,6 +2,7 @@ import argparse
 import json
 import re
 import ssl
+from functools import partial
 from logging import Logger
 from pathlib import Path
 from typing import Dict, List
@@ -347,8 +348,9 @@ class Scraper:
             raise NotImplementedError
 
         # Generate lists of lists per each dc.contributor.funder entry
+        fund_func = partial(get_funder, princeton_source=self.princeton_source)
         funding_result = [
-            list(filter(None, map(get_funder, f_list))) for f_list in funding_text_list
+            list(filter(None, map(fund_func, f_list))) for f_list in funding_text_list
         ]
         funding_result_simple = [  # All grants for each DSpace record
             ";".join([";".join(value) if value else "" for value in res])
@@ -448,7 +450,7 @@ class Scraper:
         self.log.info(f"[bold green]✔ Pipeline run completed for {SCRIPT_NAME}!")
 
 
-def get_funder(text: str) -> List[str]:
+def get_funder(text: str, princeton_source: str = "dspace") -> List[str]:
     """Aggregate funding grant numbers from text"""
 
     # Clean up text by fixing any whitespace to get full grant no.
@@ -462,8 +464,12 @@ def get_funder(text: str) -> List[str]:
     if base_match:  # DOE/FES funded but no grant number
         return ["AC02-09CH11466"]
     else:
-        matches = re.finditer(REGEX_FUNDING, text)
-        return [m.group() for m in matches]
+        if princeton_source == "dspace":
+            matches = re.finditer(REGEX_FUNDING, text)
+            return [m.group() for m in matches]
+        elif princeton_source == "pdc":
+            if text and text != "N/A":
+                return [text]
 
 
 def get_doe_funding(grant_nos: str) -> Dict[str, set]:
