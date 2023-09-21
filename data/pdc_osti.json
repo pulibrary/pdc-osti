@@ -1,5 +1,79 @@
 [
     {
+        "title": "Feasibility study of a high spatial and time resolution beam emission spectroscopy diagnostic for localized density fluctuation measurements in Lithium Tokamak eXperiment-\u03b2 (LTX-\u03b2)",
+        "dataset_type": "ND",
+        "site_url": "https://doi.org/10.34770/gkye-wc69",
+        "contract_nos": "AC02-09CH11466",
+        "sponsor_org": "USDOE Office of Science (SC)",
+        "research_org": "PPPL",
+        "accession_num": "10.34770/gkye-wc69",
+        "publication_date": 2022,
+        "othnondoe_contract_nos": "",
+        "abstract": "Datasets for the plots used in the aforesaid publication\r\n",
+        "keywords": "Beam emission spectroscopy; system design",
+        "doi": "10.34770/gkye-wc69",
+        "authors": [
+            {
+                "first_name": "Santanu",
+                "last_name": "Banerjee",
+                "orcid_id": "0000-0003-0859-8855",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Dennis",
+                "last_name": "Boyle",
+                "orcid_id": "0000-0001-8091-8169",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Anurag",
+                "last_name": "Maan",
+                "orcid_id": "0000-0001-7474-2785",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Richard",
+                "last_name": "Majeski",
+                "orcid_id": "0000-0001-9437-0958",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Robert",
+                "last_name": "Kaita",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "David",
+                "last_name": "Smith",
+                "orcid_id": "0000-0003-0972-3638"
+            },
+            {
+                "first_name": "Manfred",
+                "last_name": "von Hellermann"
+            },
+            {
+                "first_name": "Christopher",
+                "last_name": "Hansen",
+                "orcid_id": "0000-0001-6928-5815"
+            },
+            {
+                "first_name": "William",
+                "last_name": "Capecchi"
+            },
+            {
+                "first_name": "Drew",
+                "last_name": "Elliott"
+            }
+        ],
+        "related_identifiers": [
+            {
+                "related_identifier": "10.1063/5.0101834",
+                "relation_type": "IsReferencedBy",
+                "related_identifier_type": "DOI"
+            }
+        ]
+    },
+    {
         "title": "3D full wave fast wave modeling with realistic HHFW antenna geometry and SOL plasma in NSTX-U",
         "dataset_type": "SM",
         "site_url": "https://doi.org/10.34770/bm4s-t361",
@@ -35,40 +109,6 @@
         "related_identifiers": [
             {
                 "related_identifier": "10.1088/1741-4326/ac9690",
-                "relation_type": "IsReferencedBy",
-                "related_identifier_type": "DOI"
-            }
-        ]
-    },
-    {
-        "title": "Examination of OH and H2O2 production by uniform and non-uniform modes of dielectric barrier discharge in He/air mixture",
-        "dataset_type": "ND",
-        "site_url": "https://doi.org/10.34770/1avt-h679",
-        "contract_nos": "AC02-09CH11466;SC0021379",
-        "sponsor_org": "USDOE Office of Science (SC)",
-        "research_org": "PPPL",
-        "accession_num": "10.34770/1avt-h679",
-        "publication_date": 2022,
-        "othnondoe_contract_nos": "",
-        "abstract": "In this work we have carried out a parametrical study of hydroxyl radical (OH) generation in nanosecond dielectric barrier discharge (DBD) in He/air mixture using a laser-induced fluorescence approach. The foci of the study are the investigation of differences between uniform and non-uniform modes of the discharges and the difference in production of OH and H2O2 Nanosecond-time scale imaging of the discharge shows transition from streamer to diffuse mode when applied electric field to the discharge gap approaches \u223c90 kV cm\u22121. The results show that both OH production in the gas phase and downstream H2O2 delivery rates to liquid depend on the discharge mode operation and are respectively 30% and 3 times higher for the non-uniform DBD compared to the diffuse discharge.",
-        "keywords": "dielectric barrier discharge; laser induced fluorescence; hydroxyl radical; hydrogen peroxide",
-        "doi": "10.34770/1avt-h679",
-        "authors": [
-            {
-                "first_name": "Shurik",
-                "last_name": "Yatom",
-                "orcid_id": "0000-0001-8716-8487",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            },
-            {
-                "first_name": "Danil",
-                "last_name": "Dobrynin",
-                "orcid_id": "0000-0003-4671-5370"
-            }
-        ],
-        "related_identifiers": [
-            {
-                "related_identifier": "10.1088/1361-6463/ac95a6",
                 "relation_type": "IsReferencedBy",
                 "related_identifier_type": "DOI"
             }
@@ -116,61 +156,34 @@
         ]
     },
     {
-        "title": "Energetic particle optimization of quasi-axisymmetric stellarator equilibria",
+        "title": "Examination of OH and H2O2 production by uniform and non-uniform modes of dielectric barrier discharge in He/air mixture",
         "dataset_type": "ND",
-        "site_url": "https://doi.org/10.34770/wnjn-m776",
-        "contract_nos": "AC02-09CH11466",
+        "site_url": "https://doi.org/10.34770/1avt-h679",
+        "contract_nos": "AC02-09CH11466;SC0021379",
         "sponsor_org": "USDOE Office of Science (SC)",
         "research_org": "PPPL",
-        "accession_num": "10.34770/wnjn-m776",
+        "accession_num": "10.34770/1avt-h679",
         "publication_date": 2022,
         "othnondoe_contract_nos": "",
-        "abstract": "An important goal of stellarator optimization is to achieve good confinement of\r\nenergetic particles such as, in the case of a reactor, alphas created by Deuterium-Tritium\r\n(D-T) fusion. In this work, a fixed-boundary stellarator equilibrium was re-optimized for\r\nenergetic particle confinement via a two-step process: first, by minimizing deviations from quasi-axisymmetry (QA) on a single flux surface near the mid-radius, and secondly by maintaining this improved quasi-axisymmetry while minimizing the analytical quantity \u0393C , which represents the angle between magnetic flux surfaces and contours of J||, the second adiabatic invariant.This was performed multiple times, resulting in a group of equilibria with significantly reduced energetic particle losses, as evaluated by Monte Carlo simulations of alpha particles in scaled-up versions of the equilibria. This is the first time that energetic particle losses in a QA stellarator have successfully been reduced by optimizing \u0393C . The relationship between energetic particle losses and metrics such as QA error (Eqa) and \u0393C in this set of equilibria were examined via statistical methods and a nearly linear relationship between volume-averaged \u0393C and prompt particle losses was found.\r\n\r\nData for all figures in \"Energetic particle optimization of quasi-axisymmetric stellarator equilibria\" by LeViness et al., accepted by Nuclear Fusion 2022.",
-        "keywords": "",
-        "doi": "10.34770/wnjn-m776",
+        "abstract": "In this work we have carried out a parametrical study of hydroxyl radical (OH) generation in nanosecond dielectric barrier discharge (DBD) in He/air mixture using a laser-induced fluorescence approach. The foci of the study are the investigation of differences between uniform and non-uniform modes of the discharges and the difference in production of OH and H2O2 Nanosecond-time scale imaging of the discharge shows transition from streamer to diffuse mode when applied electric field to the discharge gap approaches \u223c90 kV cm\u22121. The results show that both OH production in the gas phase and downstream H2O2 delivery rates to liquid depend on the discharge mode operation and are respectively 30% and 3 times higher for the non-uniform DBD compared to the diffuse discharge.",
+        "keywords": "dielectric barrier discharge; laser induced fluorescence; hydroxyl radical; hydrogen peroxide",
+        "doi": "10.34770/1avt-h679",
         "authors": [
             {
-                "first_name": "Alexandra",
-                "last_name": "LeViness",
-                "orcid_id": "0000-0002-2552-0411",
+                "first_name": "Shurik",
+                "last_name": "Yatom",
+                "orcid_id": "0000-0001-8716-8487",
                 "affiliation_name": "Princeton Plasma Physics Laboratory"
             },
             {
-                "first_name": "John",
-                "last_name": "Schmitt",
-                "orcid_id": "0000-0002-9137-9540"
-            },
-            {
-                "first_name": "Samuel",
-                "last_name": "Lazerson",
-                "orcid_id": "0000-0001-8002-0121"
-            },
-            {
-                "first_name": "Aaron",
-                "last_name": "Bader",
-                "orcid_id": "0000-0002-6003-374X"
-            },
-            {
-                "first_name": "Benjamin",
-                "last_name": "Faber",
-                "orcid_id": "0000-0003-4934-400X"
-            },
-            {
-                "first_name": "Kenneth",
-                "last_name": "Hammond",
-                "orcid_id": "0000-0002-1104-4434",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            },
-            {
-                "first_name": "David",
-                "last_name": "Gates",
-                "orcid_id": "0000-0001-5679-3124",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
+                "first_name": "Danil",
+                "last_name": "Dobrynin",
+                "orcid_id": "0000-0003-4671-5370"
             }
         ],
         "related_identifiers": [
             {
-                "related_identifier": "10.1088/1741-4326/aca4e3",
+                "related_identifier": "10.1088/1361-6463/ac95a6",
                 "relation_type": "IsReferencedBy",
                 "related_identifier_type": "DOI"
             }
@@ -206,6 +219,57 @@
         "related_identifiers": [
             {
                 "related_identifier": "10.1126/sciadv.add8041",
+                "relation_type": "IsReferencedBy",
+                "related_identifier_type": "DOI"
+            }
+        ]
+    },
+    {
+        "title": "A novel scheme for error field correction in permanent magnet stellarators",
+        "dataset_type": "SM",
+        "site_url": "https://doi.org/10.34770/7ev8-8b25",
+        "contract_nos": "AC02-09CH11466",
+        "sponsor_org": "USDOE Office of Science (SC)",
+        "research_org": "PPPL",
+        "accession_num": "10.34770/7ev8-8b25",
+        "publication_date": 2022,
+        "othnondoe_contract_nos": "",
+        "abstract": "Stellarators offer a promising path towards fusion reactors, but their design and construction are complicated by stringent tolerance requirements on highly complex 3D coils. A potential way to simplify the engineering requirements for stellarators is to use simple planar toroidal field coils along with permanent magnet arrays to generate shaping fields. In order to ensure sufficient field accuracy while minimizing engineering complexity and system cost, new techniques are required to correct the field produced by the permanent magnet arrays to within requirements set by plasma physics. This work describes a novel correction method developed for this purpose. This analysis is applied to the design of a quasi-axisymmetric stellarator that employs a combination of permanent magnets and planar toroidal field coils to generate its magnetic field. Analysis techniques and initial results using the method for error correction on a proposed permanent magnet stellarator are shown, and it is demonstrated that the method successfully meets the design requirements of the project.\r\n\r\nThese files provide the data to reproduce plots for \"A novel scheme for error field correction in permanent magnet stellarators\"",
+        "keywords": "Stellarators",
+        "doi": "10.34770/7ev8-8b25",
+        "authors": [
+            {
+                "first_name": "Adam",
+                "last_name": "Rutkowski"
+            },
+            {
+                "first_name": "Kenneth",
+                "last_name": "Hammond",
+                "orcid_id": "0000-0002-1104-4434",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Caoxiang",
+                "last_name": "Zhu",
+                "orcid_id": "0000-0003-2337-3232",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "David",
+                "last_name": "Gates",
+                "orcid_id": "0000-0001-5679-3124",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Amelia",
+                "last_name": "Chambliss",
+                "orcid_id": "0000-0003-4559-2970",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            }
+        ],
+        "related_identifiers": [
+            {
+                "related_identifier": "10.1088/1741-4326/aca98d",
                 "relation_type": "IsReferencedBy",
                 "related_identifier_type": "DOI"
             }
@@ -276,7 +340,7 @@
         "title": "Global gyrokinetic study of shaping effects on electromagnetic modes at NSTX aspect ratio with ad hoc parallel magnetic perturbation effects",
         "dataset_type": "ND",
         "site_url": "https://doi.org/10.34770/415v-8p16",
-        "contract_nos": "AC02-05CH11231;AC02-09CH11466;FES-ERCAP",
+        "contract_nos": "AC02-05CH11231;AC02-09CH11466;FES-ERCAPm499",
         "sponsor_org": "USDOE Office of Science (SC)",
         "research_org": "PPPL",
         "accession_num": "10.34770/415v-8p16",
@@ -354,96 +418,44 @@
         ]
     },
     {
-        "title": "Feasibility study of a high spatial and time resolution beam emission spectroscopy diagnostic for localized density fluctuation measurements in Lithium Tokamak eXperiment-\u03b2 (LTX-\u03b2)",
+        "title": "Energetic particle optimization of quasi-axisymmetric stellarator equilibria",
         "dataset_type": "ND",
-        "site_url": "https://doi.org/10.34770/gkye-wc69",
+        "site_url": "https://doi.org/10.34770/wnjn-m776",
         "contract_nos": "AC02-09CH11466",
         "sponsor_org": "USDOE Office of Science (SC)",
         "research_org": "PPPL",
-        "accession_num": "10.34770/gkye-wc69",
+        "accession_num": "10.34770/wnjn-m776",
         "publication_date": 2022,
         "othnondoe_contract_nos": "",
-        "abstract": "Datasets for the plots used in the aforesaid publication\r\n",
-        "keywords": "Beam emission spectroscopy; system design",
-        "doi": "10.34770/gkye-wc69",
+        "abstract": "An important goal of stellarator optimization is to achieve good confinement of\r\nenergetic particles such as, in the case of a reactor, alphas created by Deuterium-Tritium\r\n(D-T) fusion. In this work, a fixed-boundary stellarator equilibrium was re-optimized for\r\nenergetic particle confinement via a two-step process: first, by minimizing deviations from quasi-axisymmetry (QA) on a single flux surface near the mid-radius, and secondly by maintaining this improved quasi-axisymmetry while minimizing the analytical quantity \u0393C , which represents the angle between magnetic flux surfaces and contours of J||, the second adiabatic invariant.This was performed multiple times, resulting in a group of equilibria with significantly reduced energetic particle losses, as evaluated by Monte Carlo simulations of alpha particles in scaled-up versions of the equilibria. This is the first time that energetic particle losses in a QA stellarator have successfully been reduced by optimizing \u0393C . The relationship between energetic particle losses and metrics such as QA error (Eqa) and \u0393C in this set of equilibria were examined via statistical methods and a nearly linear relationship between volume-averaged \u0393C and prompt particle losses was found.\r\n\r\nData for all figures in \"Energetic particle optimization of quasi-axisymmetric stellarator equilibria\" by LeViness et al., accepted by Nuclear Fusion 2022.",
+        "keywords": "",
+        "doi": "10.34770/wnjn-m776",
         "authors": [
             {
-                "first_name": "Santanu",
-                "last_name": "Banerjee",
-                "orcid_id": "0000-0003-0859-8855",
+                "first_name": "Alexandra",
+                "last_name": "LeViness",
+                "orcid_id": "0000-0002-2552-0411",
                 "affiliation_name": "Princeton Plasma Physics Laboratory"
             },
             {
-                "first_name": "Dennis",
-                "last_name": "Boyle",
-                "orcid_id": "0000-0001-8091-8169",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
+                "first_name": "John",
+                "last_name": "Schmitt",
+                "orcid_id": "0000-0002-9137-9540"
             },
             {
-                "first_name": "Anurag",
-                "last_name": "Maan",
-                "orcid_id": "0000-0001-7474-2785",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
+                "first_name": "Samuel",
+                "last_name": "Lazerson",
+                "orcid_id": "0000-0001-8002-0121"
             },
             {
-                "first_name": "Richard",
-                "last_name": "Majeski",
-                "orcid_id": "0000-0001-9437-0958",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
+                "first_name": "Aaron",
+                "last_name": "Bader",
+                "orcid_id": "0000-0002-6003-374X"
             },
             {
-                "first_name": "Robert",
-                "last_name": "Kaita",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            },
-            {
-                "first_name": "David",
-                "last_name": "Smith",
-                "orcid_id": "0000-0003-0972-3638"
-            },
-            {
-                "first_name": "Manfred",
-                "last_name": "von Hellermann"
-            },
-            {
-                "first_name": "Christopher",
-                "last_name": "Hansen",
-                "orcid_id": "0000-0001-6928-5815"
-            },
-            {
-                "first_name": "William",
-                "last_name": "Capecchi"
-            },
-            {
-                "first_name": "Drew",
-                "last_name": "Elliott"
-            }
-        ],
-        "related_identifiers": [
-            {
-                "related_identifier": "10.1063/5.0101834",
-                "relation_type": "IsReferencedBy",
-                "related_identifier_type": "DOI"
-            }
-        ]
-    },
-    {
-        "title": "A novel scheme for error field correction in permanent magnet stellarators",
-        "dataset_type": "SM",
-        "site_url": "https://doi.org/10.34770/7ev8-8b25",
-        "contract_nos": "AC02-09CH11466",
-        "sponsor_org": "USDOE Office of Science (SC)",
-        "research_org": "PPPL",
-        "accession_num": "10.34770/7ev8-8b25",
-        "publication_date": 2022,
-        "othnondoe_contract_nos": "",
-        "abstract": "Stellarators offer a promising path towards fusion reactors, but their design and construction are complicated by stringent tolerance requirements on highly complex 3D coils. A potential way to simplify the engineering requirements for stellarators is to use simple planar toroidal field coils along with permanent magnet arrays to generate shaping fields. In order to ensure sufficient field accuracy while minimizing engineering complexity and system cost, new techniques are required to correct the field produced by the permanent magnet arrays to within requirements set by plasma physics. This work describes a novel correction method developed for this purpose. This analysis is applied to the design of a quasi-axisymmetric stellarator that employs a combination of permanent magnets and planar toroidal field coils to generate its magnetic field. Analysis techniques and initial results using the method for error correction on a proposed permanent magnet stellarator are shown, and it is demonstrated that the method successfully meets the design requirements of the project.\r\n\r\nThese files provide the data to reproduce plots for \"A novel scheme for error field correction in permanent magnet stellarators\"",
-        "keywords": "Stellarators",
-        "doi": "10.34770/7ev8-8b25",
-        "authors": [
-            {
-                "first_name": "Adam",
-                "last_name": "Rutkowski"
+                "first_name": "Benjamin",
+                "last_name": "Faber",
+                "orcid_id": "0000-0003-4934-400X"
             },
             {
                 "first_name": "Kenneth",
@@ -452,27 +464,15 @@
                 "affiliation_name": "Princeton Plasma Physics Laboratory"
             },
             {
-                "first_name": "Caoxiang",
-                "last_name": "Zhu",
-                "orcid_id": "0000-0003-2337-3232",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            },
-            {
                 "first_name": "David",
                 "last_name": "Gates",
                 "orcid_id": "0000-0001-5679-3124",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            },
-            {
-                "first_name": "Amelia",
-                "last_name": "Chambliss",
-                "orcid_id": "0000-0003-4559-2970",
                 "affiliation_name": "Princeton Plasma Physics Laboratory"
             }
         ],
         "related_identifiers": [
             {
-                "related_identifier": "10.1088/1741-4326/aca98d",
+                "related_identifier": "10.1088/1741-4326/aca4e3",
                 "relation_type": "IsReferencedBy",
                 "related_identifier_type": "DOI"
             }
@@ -707,52 +707,6 @@
         ]
     },
     {
-        "title": "Dataset for the letter \"Shifting and Splitting of Resonance Lines due to Dynamical Friction in Plasmas\" Phys. Rev. Lett. 130, 105101 (2023)",
-        "dataset_type": "ND",
-        "site_url": "https://doi.org/10.34770/vesb-kq11",
-        "contract_nos": "AC02-09CH11466",
-        "sponsor_org": "USDOE Office of Science (SC)",
-        "research_org": "PPPL",
-        "accession_num": "10.34770/vesb-kq11",
-        "publication_date": 2023,
-        "othnondoe_contract_nos": "",
-        "abstract": "Dataset for the letter \"Shifting and Splitting of Resonance Lines due to Dynamical Friction in Plasmas\" Phys. Rev. Lett. 130, 105101 (2023)",
-        "keywords": "Fusion products; Plasma instabilities; Plasma stability; Plasma-beam interactions",
-        "doi": "10.34770/vesb-kq11",
-        "authors": [
-            {
-                "first_name": "Vin\u00edcius",
-                "last_name": "Duarte",
-                "orcid_id": "0000-0001-8096-7518",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            },
-            {
-                "first_name": "Jeff",
-                "last_name": "Lestz",
-                "orcid_id": "0000-0002-6975-1537"
-            },
-            {
-                "first_name": "Nikolai",
-                "last_name": "Gorelenkov",
-                "orcid_id": "0000-0002-7345-8149",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            },
-            {
-                "first_name": "Roscoe",
-                "last_name": "White",
-                "orcid_id": "0000-0002-4239-2685",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            }
-        ],
-        "related_identifiers": [
-            {
-                "related_identifier": "10.1103/PhysRevLett.130.105101",
-                "relation_type": "IsReferencedBy",
-                "related_identifier_type": "DOI"
-            }
-        ]
-    },
-    {
         "title": "A reduced-turbulence regime in the Large Helical Device upon injection of low-Z materials powders",
         "dataset_type": "ND",
         "site_url": "https://doi.org/10.34770/g0cf-b557",
@@ -899,6 +853,140 @@
         ]
     },
     {
+        "title": "Dataset for the letter \"Shifting and Splitting of Resonance Lines due to Dynamical Friction in Plasmas\" Phys. Rev. Lett. 130, 105101 (2023)",
+        "dataset_type": "ND",
+        "site_url": "https://doi.org/10.34770/vesb-kq11",
+        "contract_nos": "AC02-09CH11466",
+        "sponsor_org": "USDOE Office of Science (SC)",
+        "research_org": "PPPL",
+        "accession_num": "10.34770/vesb-kq11",
+        "publication_date": 2023,
+        "othnondoe_contract_nos": "",
+        "abstract": "Dataset for the letter \"Shifting and Splitting of Resonance Lines due to Dynamical Friction in Plasmas\" Phys. Rev. Lett. 130, 105101 (2023)",
+        "keywords": "Fusion products; Plasma instabilities; Plasma stability; Plasma-beam interactions",
+        "doi": "10.34770/vesb-kq11",
+        "authors": [
+            {
+                "first_name": "Vin\u00edcius",
+                "last_name": "Duarte",
+                "orcid_id": "0000-0001-8096-7518",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Jeff",
+                "last_name": "Lestz",
+                "orcid_id": "0000-0002-6975-1537"
+            },
+            {
+                "first_name": "Nikolai",
+                "last_name": "Gorelenkov",
+                "orcid_id": "0000-0002-7345-8149",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Roscoe",
+                "last_name": "White",
+                "orcid_id": "0000-0002-4239-2685",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            }
+        ],
+        "related_identifiers": [
+            {
+                "related_identifier": "10.1103/PhysRevLett.130.105101",
+                "relation_type": "IsReferencedBy",
+                "related_identifier_type": "DOI"
+            }
+        ]
+    },
+    {
+        "title": "Density Limits as Disruption Forecasters for Spherical Tokamaks",
+        "dataset_type": "ND",
+        "site_url": "https://doi.org/10.34770/67tb-0988",
+        "contract_nos": "AC02-09CH11466",
+        "sponsor_org": "USDOE Office of Science (SC)",
+        "research_org": "PPPL",
+        "accession_num": "10.34770/67tb-0988",
+        "publication_date": 2023,
+        "othnondoe_contract_nos": "",
+        "abstract": "Fusion power output from spherical tokamaks would benefit from increased confined plasma density, but there exists a limit on the density before confinement is lost and the plasma current is disrupted. This density limit has long been characterized by a simple, global Greenwald limit proportional to the plasma current and inversely proportional to the cross sectional area of the plasma. It is shown that in the database of discharges from the NSTX and MAST spherical tokamaks, the likelihood of disruption does increase above the Greenwald limit, and especially in the plasma current rampdown phase. The physics of the density limit has been recently theoretically explored through local criteria. Several of these are tested using the disruption event characterization and forecasting (DECAFTM) code for their potential effectiveness as disruption warning signals. For a limited set of NSTX discharges, a local island power balance criteria was found to be less reliable, presently, than the Greenwald limit. An empirical critical edge line density and a boundary turbulent transport limit were both tested for MAST-U, which has an electron density profile measurement with high spatial resolution in the outer part of the plasma. Both were found to have similar dependencies on key plasma parameters. In a limited set of MAST-U discharges that appear to disrupt due to rising density at values under the Greenwald limit, crossing of the boundary turbulent transport limit occurred close to the time of disruption. Finally, these limits were evaluated for their potential use in real-time, and it was found that with the necessary real-time inputs and with refinement through further testing, these limits could be implemented in a real-time disruption forecasting system.",
+        "keywords": "density limit; disruptions; tokamak",
+        "doi": "10.34770/67tb-0988",
+        "authors": [
+            {
+                "first_name": "John",
+                "last_name": "Berkery",
+                "orcid_id": "0000-0002-8062-3210",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            }
+        ],
+        "related_identifiers": [
+            {
+                "related_identifier": "10.1088/1361-6587/ace476",
+                "relation_type": "IsReferencedBy",
+                "related_identifier_type": "DOI"
+            }
+        ]
+    },
+    {
+        "title": "Laboratory study of the failed torus mechanism in arched, line-tied, magnetic flux ropes",
+        "dataset_type": "SM",
+        "site_url": "https://doi.org/10.34770/k547-cq20",
+        "contract_nos": "AC02-09CH11466;SC0019049",
+        "sponsor_org": "USDOE Office of Science (SC)",
+        "research_org": "PPPL",
+        "accession_num": "10.34770/k547-cq20",
+        "publication_date": 2023,
+        "othnondoe_contract_nos": "80HQTR17T0005",
+        "abstract": "Coronal mass ejections (CMEs) are some of the most energetic and violent events in our solar system. The prediction and understanding of CMEs is of particular importance due to the impact that they can have on Earth-based satellite systems, and in extreme cases, ground-based electronics. CMEs often occur when long-lived magnetic flux ropes (MFRs) anchored to the solar surface destabilize and erupt away from the Sun. One potential cause for these eruptions is an ideal magnetohydrodynamic (MHD) instability such as the kink or torus instability. Previous experiments on the Magnetic Reconnection eXperiment (MRX) revealed a class of MFRs that were torus-unstable but kink-stable, which failed to erupt. These \u201cfailed-tori\u201d went through a process similar to Taylor relaxation where the toroidal current was redistributed before the eruption ultimately failed. We have investigated this behavior through additional diagnostics that measure the current distribution at the foot points and the energy distribution before and after an event. These measurements indicate that ideal MHD effects are sufficient to explain the energy distribution changes during failed torus events. This excludes Taylor relaxation as a possible mechanism of current redistribution during an event. A new model that only requires non-ideal effects in a thin layer above the electrodes is presented to explain the observed phenomena. This work broadens our understanding of the stability of MFRs and the mechanism behind the failed torus through the improved prediction of the torus instability and through new diagnostics to measure the energy inventory and current profile at the foot points.",
+        "keywords": "Laboratory plasma; Flux rope; Coronal mass ejection; Laboratory Astrophysics; MHD; MRX",
+        "doi": "10.34770/k547-cq20",
+        "authors": [
+            {
+                "first_name": "Andrew",
+                "last_name": "Alt",
+                "orcid_id": "0000-0001-9475-8282",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Hantao",
+                "last_name": "Ji",
+                "orcid_id": "0000-0001-9600-9963",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Jongsoo",
+                "last_name": "Yoo",
+                "orcid_id": "0000-0003-3881-1995",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Sayak",
+                "last_name": "Bose",
+                "orcid_id": "0000-0001-8093-9322",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Aaron",
+                "last_name": "Goodman",
+                "orcid_id": "0000-0003-3639-6572",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            },
+            {
+                "first_name": "Masaaki",
+                "last_name": "Yamada",
+                "orcid_id": "0000-0003-4996-1649",
+                "affiliation_name": "Princeton Plasma Physics Laboratory"
+            }
+        ],
+        "related_identifiers": [
+            {
+                "related_identifier": "10.1063/5.0137457",
+                "relation_type": "IsReferencedBy",
+                "related_identifier_type": "DOI"
+            }
+        ]
+    },
+    {
         "title": "Neoclassical transport in strong gradient regions of large aspect ratio tokamaks",
         "dataset_type": "SM",
         "site_url": "https://doi.org/10.34770/0hs8-8242",
@@ -943,82 +1031,6 @@
         "related_identifiers": [
             {
                 "related_identifier": "10.1017/S0022377823000430",
-                "relation_type": "IsReferencedBy",
-                "related_identifier_type": "DOI"
-            }
-        ]
-    },
-    {
-        "title": "Density Limits as Disruption Forecasters for Spherical Tokamaks",
-        "dataset_type": "ND",
-        "site_url": "https://doi.org/10.34770/67tb-0988",
-        "contract_nos": "AC02-09CH11466",
-        "sponsor_org": "USDOE Office of Science (SC)",
-        "research_org": "PPPL",
-        "accession_num": "10.34770/67tb-0988",
-        "publication_date": 2023,
-        "othnondoe_contract_nos": "",
-        "abstract": "Fusion power output from spherical tokamaks would benefit from increased confined plasma density, but there exists a limit on the density before confinement is lost and the plasma current is disrupted. This density limit has long been characterized by a simple, global Greenwald limit proportional to the plasma current and inversely proportional to the cross sectional area of the plasma. It is shown that in the database of discharges from the NSTX and MAST spherical tokamaks, the likelihood of disruption does increase above the Greenwald limit, and especially in the plasma current rampdown phase. The physics of the density limit has been recently theoretically explored through local criteria. Several of these are tested using the disruption event characterization and forecasting (DECAFTM) code for their potential effectiveness as disruption warning signals. For a limited set of NSTX discharges, a local island power balance criteria was found to be less reliable, presently, than the Greenwald limit. An empirical critical edge line density and a boundary turbulent transport limit were both tested for MAST-U, which has an electron density profile measurement with high spatial resolution in the outer part of the plasma. Both were found to have similar dependencies on key plasma parameters. In a limited set of MAST-U discharges that appear to disrupt due to rising density at values under the Greenwald limit, crossing of the boundary turbulent transport limit occurred close to the time of disruption. Finally, these limits were evaluated for their potential use in real-time, and it was found that with the necessary real-time inputs and with refinement through further testing, these limits could be implemented in a real-time disruption forecasting system.",
-        "keywords": "density limit; disruptions; tokamak",
-        "doi": "10.34770/67tb-0988",
-        "authors": [
-            {
-                "first_name": "John",
-                "last_name": "Berkery",
-                "orcid_id": "0000-0002-8062-3210",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            }
-        ],
-        "related_identifiers": [
-            {
-                "related_identifier": "10.1088/1361-6587/ace476",
-                "relation_type": "IsReferencedBy",
-                "related_identifier_type": "DOI"
-            }
-        ]
-    },
-    {
-        "title": "Reduced Physics Model of the Tokamak Scrape-off-Layer for Pulse Design",
-        "dataset_type": "SM",
-        "site_url": "https://doi.org/10.34770/nh4z-kh27",
-        "contract_nos": "AC02-09CH11466",
-        "sponsor_org": "USDOE Office of Science (SC)",
-        "research_org": "PPPL",
-        "accession_num": "10.34770/nh4z-kh27",
-        "publication_date": 2023,
-        "othnondoe_contract_nos": "",
-        "abstract": "The dynamic interplay between the core and the edge plasma has important consequences in the confinement and heating of fusion plasma. The transport of the Scrape-Off-Layer (SOL) plasma imposes boundary conditions on the core plasma, and neutral transport through the SOL influences the core plasma sourcing. In order to better study these effects in a self-consistent, time-dependent fashion with reasonable turn-around time, a reduced model is needed. In this paper we introduce the SOL Box Model, a reduced SOL model that calculates the plasma temperature and density in the SOL given the core-to-edge particle and power fluxes and recycling coefficients. The analytic nature of the Box Model allows one to readily incorporate SOL physics in time-dependent transport solvers for pulse design applications in the control room. Here we demonstrate such a coupling with the core transport solver TRANSP and compare the results with density and temperature measurements, obtained through Thomson scattering and Langmuir probes, of an NSTX discharge. Implications for future interpretive and predictive simulations are discussed.",
-        "keywords": "Scrape Off Layer; Reduced modeling; Time dependent simulations; TRANSP",
-        "doi": "10.34770/nh4z-kh27",
-        "authors": [
-            {
-                "first_name": "Xin",
-                "last_name": "Zhang",
-                "orcid_id": "0000-0003-3775-5821",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            },
-            {
-                "first_name": "F. M.",
-                "last_name": "Poli",
-                "orcid_id": "0000-0003-3959-4371",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            },
-            {
-                "first_name": "E. D.",
-                "last_name": "Emdee",
-                "orcid_id": "0000-0003-3334-2077",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            },
-            {
-                "first_name": "M.",
-                "last_name": "Podesta",
-                "orcid_id": "0000-0003-4975-0585",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            }
-        ],
-        "related_identifiers": [
-            {
-                "related_identifier": "10.1016/j.nme.2022.101354",
                 "relation_type": "IsReferencedBy",
                 "related_identifier_type": "DOI"
             }
@@ -1172,7 +1184,7 @@
         "research_org": "PPPL",
         "accession_num": "10.34770/hj83-n134",
         "publication_date": 2023,
-        "othnondoe_contract_nos": "",
+        "othnondoe_contract_nos": "SciDAC-4",
         "abstract": "Ion orbit loss has been used to model the formation of a strong negative radial electric field Er in the tokamak edge, as well as edge momentum transport and toroidal rotation. To quantitatively measure ion orbit loss, an orbit-flux formulation has been developed and numerically applied to the gyrokinetic particle-in-cell code XGC. We study collisional ion orbit loss in an axisymmetric DIII-D L-mode plasma using gyrokinetic ions and drift-kinetic electrons. Numerical simulations, where the plasma density and temperature profiles are maintained through neutral ionization and heating, show the formation of a quasisteady negative Er in the edge. We have measured a radially outgoing ion gyrocenter flux due to collisional scattering of ions into the loss orbits, which is balanced by the radially incoming ion gyrocenter flux from confined orbits on the collisional time scale. This suggests that collisional ion orbit loss can shift Er in the negative direction compared to that in plasmas without orbit loss. It is also found that collisional ion orbit loss can contribute to a radially outgoing (counter-current) toroidal-angular-momentum flux, which is not balanced by the toroidal-angular-momentum flux carried by ions on the confined orbits. Therefore, the edge toroidal rotation shifts in the co-current direction on the collisional time scale.",
         "keywords": "ion orbit loss; radial electric field; tokamak edge plasmas; gyrokinetic simulations",
         "doi": "10.34770/hj83-n134",
@@ -1217,59 +1229,47 @@
         ]
     },
     {
-        "title": "Laboratory study of the failed torus mechanism in arched, line-tied, magnetic flux ropes",
+        "title": "Reduced Physics Model of the Tokamak Scrape-off-Layer for Pulse Design",
         "dataset_type": "SM",
-        "site_url": "https://doi.org/10.34770/k547-cq20",
-        "contract_nos": "AC02-09CH11466;SC0019049",
+        "site_url": "https://doi.org/10.34770/nh4z-kh27",
+        "contract_nos": "AC02-09CH11466",
         "sponsor_org": "USDOE Office of Science (SC)",
         "research_org": "PPPL",
-        "accession_num": "10.34770/k547-cq20",
+        "accession_num": "10.34770/nh4z-kh27",
         "publication_date": 2023,
-        "othnondoe_contract_nos": "80HQTR17T0005",
-        "abstract": "Coronal mass ejections (CMEs) are some of the most energetic and violent events in our solar system. The prediction and understanding of CMEs is of particular importance due to the impact that they can have on Earth-based satellite systems, and in extreme cases, ground-based electronics. CMEs often occur when long-lived magnetic flux ropes (MFRs) anchored to the solar surface destabilize and erupt away from the Sun. One potential cause for these eruptions is an ideal magnetohydrodynamic (MHD) instability such as the kink or torus instability. Previous experiments on the Magnetic Reconnection eXperiment (MRX) revealed a class of MFRs that were torus-unstable but kink-stable, which failed to erupt. These \u201cfailed-tori\u201d went through a process similar to Taylor relaxation where the toroidal current was redistributed before the eruption ultimately failed. We have investigated this behavior through additional diagnostics that measure the current distribution at the foot points and the energy distribution before and after an event. These measurements indicate that ideal MHD effects are sufficient to explain the energy distribution changes during failed torus events. This excludes Taylor relaxation as a possible mechanism of current redistribution during an event. A new model that only requires non-ideal effects in a thin layer above the electrodes is presented to explain the observed phenomena. This work broadens our understanding of the stability of MFRs and the mechanism behind the failed torus through the improved prediction of the torus instability and through new diagnostics to measure the energy inventory and current profile at the foot points.",
-        "keywords": "Laboratory plasma; Flux rope; Coronal mass ejection; Laboratory Astrophysics; MHD; MRX",
-        "doi": "10.34770/k547-cq20",
+        "othnondoe_contract_nos": "",
+        "abstract": "The dynamic interplay between the core and the edge plasma has important consequences in the confinement and heating of fusion plasma. The transport of the Scrape-Off-Layer (SOL) plasma imposes boundary conditions on the core plasma, and neutral transport through the SOL influences the core plasma sourcing. In order to better study these effects in a self-consistent, time-dependent fashion with reasonable turn-around time, a reduced model is needed. In this paper we introduce the SOL Box Model, a reduced SOL model that calculates the plasma temperature and density in the SOL given the core-to-edge particle and power fluxes and recycling coefficients. The analytic nature of the Box Model allows one to readily incorporate SOL physics in time-dependent transport solvers for pulse design applications in the control room. Here we demonstrate such a coupling with the core transport solver TRANSP and compare the results with density and temperature measurements, obtained through Thomson scattering and Langmuir probes, of an NSTX discharge. Implications for future interpretive and predictive simulations are discussed.",
+        "keywords": "Scrape Off Layer; Reduced modeling; Time dependent simulations; TRANSP",
+        "doi": "10.34770/nh4z-kh27",
         "authors": [
             {
-                "first_name": "Andrew",
-                "last_name": "Alt",
-                "orcid_id": "0000-0001-9475-8282",
+                "first_name": "Xin",
+                "last_name": "Zhang",
+                "orcid_id": "0000-0003-3775-5821",
                 "affiliation_name": "Princeton Plasma Physics Laboratory"
             },
             {
-                "first_name": "Hantao",
-                "last_name": "Ji",
-                "orcid_id": "0000-0001-9600-9963",
+                "first_name": "F. M.",
+                "last_name": "Poli",
+                "orcid_id": "0000-0003-3959-4371",
                 "affiliation_name": "Princeton Plasma Physics Laboratory"
             },
             {
-                "first_name": "Jongsoo",
-                "last_name": "Yoo",
-                "orcid_id": "0000-0003-3881-1995",
+                "first_name": "E. D.",
+                "last_name": "Emdee",
+                "orcid_id": "0000-0003-3334-2077",
                 "affiliation_name": "Princeton Plasma Physics Laboratory"
             },
             {
-                "first_name": "Sayak",
-                "last_name": "Bose",
-                "orcid_id": "0000-0001-8093-9322",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            },
-            {
-                "first_name": "Aaron",
-                "last_name": "Goodman",
-                "orcid_id": "0000-0003-3639-6572",
-                "affiliation_name": "Princeton Plasma Physics Laboratory"
-            },
-            {
-                "first_name": "Masaaki",
-                "last_name": "Yamada",
-                "orcid_id": "0000-0003-4996-1649",
+                "first_name": "M.",
+                "last_name": "Podesta",
+                "orcid_id": "0000-0003-4975-0585",
                 "affiliation_name": "Princeton Plasma Physics Laboratory"
             }
         ],
         "related_identifiers": [
             {
-                "related_identifier": "10.1063/5.0137457",
+                "related_identifier": "10.1016/j.nme.2022.101354",
                 "relation_type": "IsReferencedBy",
                 "related_identifier_type": "DOI"
             }
