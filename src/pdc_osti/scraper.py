@@ -1,8 +1,6 @@
-import argparse
 import json
 import re
 import ssl
-from functools import partial
 from logging import Logger
 from pathlib import Path
 from typing import Dict, List
@@ -11,40 +9,16 @@ import pandas as pd
 import requests
 import requests.adapters
 import urllib3
-from rich.prompt import Prompt
 
-from . import DATASPACE_URI, DSPACE_ID, PDC_QUERY, PDC_URI
-from .commons import get_ark, get_datacite_awards, get_dc_value
+from . import PDC_QUERY, PDC_URI
+from .commons import get_ark, get_datacite_awards
 from .logger import pdc_log, script_log_end, script_log_init
 
 SCRIPT_NAME = Path(__file__).stem
 
-# NOTE: The Dataspace REST API can now support requests from handles.
-#  Shifting this scrape to collection handles instead of IDs may make
-#  this script clearer and easier to change if necessary.
-PPPL_COLLECTIONS = {
-    "NSTX": 1282,
-    "NSTX-U": 1304,
-    "Stellarators": 1308,
-    "Plasma Science & Technology": 1422,
-    "Theory and Computation": 2266,
-    "ITER and Tokamaks PPPL Collaborations": 3378,
-    "Theory": 3379,
-    "Computational Science PPPL Collaborations": 3380,
-    "Engineering Research": 3381,
-    "ESH Technical Reports": 3382,
-    "IT PPPL Collaborations": 3383,
-    "Advanced Projects Other Projects": 3386,
-    "Advanced Projects System Studies": 1309,
-    "MAST-U": 3515,
-}
-
-PPPL_COMMUNITY_ID = 346
-
 # All possible prefix: https://regex101.com/r/SxNHJg
 REGEX_DOE = r"^(DE|AC|SC|FC|FG|AR|EE|EM|FE|NA|NE)"
 REGEX_DOE_SUB = "^(DE)+(-?)"  # https://regex101.com/r/NsZbRJ
-REGEX_FUNDING = r"\b(?:[A-Z0-9\/\-]{6,})"  # https://regex101.com/r/4fNYVm
 REGEX_BARE_DOE = re.compile(
     r"(^((U.S.|U. S.) (Department of Energy))|FES)$"
 )  # https://regex101.com/r/2s3dA3
@@ -87,7 +61,6 @@ class Scraper:
 
     :param data_dir: Local data folder for save files
     :param osti_scrape: JSON output file containing OSTI metadata
-    :param princeton_source: Princeton data repository name
     :param entry_form_full_path: TSV file containing DataSpace/PDC
            records not in OSTI
     :param form_input_full_path: TSV file containing DataSpace/PDC
@@ -97,7 +70,6 @@ class Scraper:
     :param log: ``Logger`` for stdout and file logging
 
     :ivar osti_scrape: JSON output file containing OSTI metadata
-    :ivar princeton_source: Princeton data repository name
     :ivar entry_form: TSV file containing DataSpace/PDC records not in OSTI
     :ivar form_input: TSV file containing DataSpace/PDC
            records and DOE metadata for submission
@@ -110,7 +82,6 @@ class Scraper:
         self,
         data_dir: Path = Path("data"),
         osti_scrape: str = "osti_scrape.json",
-        princeton_source: str = "dspace",
         entry_form_full_path: str = "entry_form.tsv",
         form_input_full_path: str = "form_input.tsv",
         to_upload: str = "metadata_to_upload.json",
@@ -119,13 +90,12 @@ class Scraper:
     ) -> None:
         self.log = log
         self.osti_scrape = data_dir / osti_scrape
-        self.princeton_source = princeton_source
-        self.entry_form = Path(f"{princeton_source}_{entry_form_full_path}")
-        self.form_input = Path(f"{princeton_source}_{form_input_full_path}")
+        self.entry_form = Path(f"pdc_{entry_form_full_path}")
+        self.form_input = Path(f"pdc_{form_input_full_path}")
         self.redirects = data_dir / redirects
 
-        self.princeton_scrape = data_dir / f"{princeton_source}_scrape.json"
-        self.to_upload = data_dir / f"{princeton_source}_{to_upload}"
+        self.princeton_scrape = data_dir / "pdc_scrape.json"
+        self.to_upload = data_dir / f"pdc_{to_upload}"
 
         if not data_dir.exists():
             data_dir.mkdir()
@@ -185,47 +155,23 @@ class Scraper:
     def get_princeton_metadata(self) -> None:
         """Collect metadata on all items from all DataSpace/PDC PPPL collections"""
 
-        if self.princeton_source == "dspace":
-            repo_name = "DataSpace"
-        elif self.princeton_source == "pdc":
-            repo_name = "PDC"
-        else:
-            raise ValueError("Incorrect repository source!!!")
+        repo_name = "PDC"
 
         self.log.info(f"[bold yellow]Collecting {repo_name} metadata")
 
         all_items = []
-        if self.princeton_source == "dspace":
-            for c_name, c_id in PPPL_COLLECTIONS.items():
-                url = f"{DATASPACE_URI}/rest/collections/{c_id}/items?expand=metadata"
-                r = requests.get(url)
-                j = json.loads(r.text)
-                all_items.extend(j)
 
-            # Confirm that all collections were included
-            url_all = f"{DATASPACE_URI}/rest/communities/{PPPL_COMMUNITY_ID}"
-            r = requests.get(url_all)
-            self.log.info(f"countItems: {json.loads(r.text)['countItems']}")
-            self.log.info(f"all_items: {len(all_items)}")
-            assert json.loads(r.text)["countItems"] == len(all_items), (
-                "The number of items in the PPPL community does not equal the "
-                "number of items collected. Review the list of collections we "
-                "search through (variable COLLECTION_IDS) and ensure that all "
-                "PPPL collections are included. Or write a recursive function "
-                "to prevent this from happening again."
-            )
-        elif self.princeton_source == "pdc":
-            next_page = 1
-            while True:
-                query = PDC_QUERY | {"page": next_page}
-                r = requests.get(PDC_URI, params=query)
-                j = r.json()
-                if not j:  # End of records
-                    break
-                else:
-                    for j_item in j:
-                        all_items.append(json.loads(j_item["pdc_describe_json_ss"]))
-                    next_page += 1
+        next_page = 1
+        while True:
+            query = PDC_QUERY | {"page": next_page}
+            r = requests.get(PDC_URI, params=query)
+            j = r.json()
+            if not j:  # End of records
+                break
+            else:
+                for j_item in j:
+                    all_items.append(json.loads(j_item["pdc_describe_json_ss"]))
+                next_page += 1
 
         self.log.info(f"Pulled {len(all_items)} records from {repo_name}.")
 
@@ -312,47 +258,24 @@ class Scraper:
 
         df = pd.DataFrame()
         df["ARK"] = list(map(self.get_handle, to_upload_j))
-        if self.princeton_source == "dspace":
-            df[DSPACE_ID] = [item["id"] for item in to_upload_j]
-            df["Issue Date"] = [
-                get_dc_value(item, "dc.date.issued")[0] for item in to_upload_j
-            ]
-            df["Title"] = [item["name"] for item in to_upload_j]
-            df["Author"] = [
-                ";".join(get_dc_value(item, "dc.contributor.author"))
-                for item in to_upload_j
-            ]
-            df["Dataspace Link"] = [
-                f"{DATASPACE_URI}/handle/{item['handle']}" for item in to_upload_j
-            ]
 
-            # Retrieve funding data
-            funding_text_list = [
-                get_dc_value(item, "dc.contributor.funder") for item in to_upload_j
-            ]
-        elif self.princeton_source == "pdc":
-            df["Issue Date"] = [
-                f"{item['resource']['publication_year']}" for item in to_upload_j
-            ]
-            df["DOI"] = [item["resource"].get("doi") for item in to_upload_j]
-            df["Title"] = [
-                item["resource"]["titles"][0]["title"] for item in to_upload_j
-            ]
-            df["Author"] = [
-                ";".join([value["value"] for value in item["resource"]["creators"]])
-                for item in to_upload_j
-            ]
+        df["Issue Date"] = [
+            f"{item['resource']['publication_year']}" for item in to_upload_j
+        ]
+        df["DOI"] = [item["resource"].get("doi") for item in to_upload_j]
+        df["Title"] = [item["resource"]["titles"][0]["title"] for item in to_upload_j]
+        df["Author"] = [
+            ";".join([value["value"] for value in item["resource"]["creators"]])
+            for item in to_upload_j
+        ]
 
-            funding_text_list = [get_datacite_awards(item) for item in to_upload_j]
-        else:
-            raise NotImplementedError
+        funding_text_list = [get_datacite_awards(item) for item in to_upload_j]
 
         # Generate lists of lists per each dc.contributor.funder entry
-        fund_func = partial(get_funder, princeton_source=self.princeton_source)
         funding_result = [
-            list(filter(None, map(fund_func, f_list))) for f_list in funding_text_list
+            list(filter(None, map(get_funder, f_list))) for f_list in funding_text_list
         ]
-        funding_result_simple = [  # All grants for each DSpace record
+        funding_result_simple = [
             ";".join([";".join(value) if value else "" for value in res])
             for res in funding_result
         ]
@@ -378,7 +301,7 @@ class Scraper:
 
         self.log.info(
             f"[purple]{df.shape[0]} unpublished records were found in the PPPL "
-            f"Dataspace/PDC community that have not been registered with OSTI."
+            "PDC community that have not been registered with OSTI."
         )
         self.log.info(f"[purple]They've been saved to the form {self.entry_form}.")
         self.log.info(
@@ -387,14 +310,12 @@ class Scraper:
         )
         for i, row in df.iterrows():
             self.log.info(f"\t{repr(row['Title'])}")
-            if "Dataspace Link" in df.columns:
-                self.log.info(f"\t\t{row['Dataspace Link']}")
 
         self.log.info("[bold green]✔ Entry form generated!")
 
     def get_handle(self, record: dict) -> str:
         """Retrieves ARK depending on Princeton source"""
-        return get_ark(record, self.princeton_source)
+        return get_ark(record, "pdc")
 
     def update_form_input(self) -> None:
         """
@@ -450,7 +371,7 @@ class Scraper:
         self.log.info(f"[bold green]✔ Pipeline run completed for {SCRIPT_NAME}!")
 
 
-def get_funder(text: str, princeton_source: str = "dspace") -> List[str]:
+def get_funder(text: str) -> List[str]:
     """Aggregate funding grant numbers from text"""
 
     # Clean up text by fixing any whitespace to get full grant no.
@@ -464,12 +385,8 @@ def get_funder(text: str, princeton_source: str = "dspace") -> List[str]:
     if base_match:  # DOE/FES funded but no grant number
         return ["AC02-09CH11466"]
     else:
-        if princeton_source == "dspace":
-            matches = re.finditer(REGEX_FUNDING, text)
-            return [m.group() for m in matches]
-        elif princeton_source == "pdc":
-            if text and text != "N/A":
-                return [text]
+        if text and text != "N/A":
+            return [text]
 
 
 def get_doe_funding(grant_nos: str) -> Dict[str, set]:
@@ -500,32 +417,11 @@ def get_legacy_session():
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Script to retrieve Princeton data repository and DOE/OSTI records"
-    )
-    parser.add_argument(
-        "-s",
-        "--source",
-        required=False,
-        default="",
-        type=str,
-        help="Source for Princeton data (dspace or pdc)",
-    )
-    args = parser.parse_args()
-
     log = script_log_init(SCRIPT_NAME)
 
-    if not args.source:
-        princeton_source = Prompt.ask(
-            "Princeton data repository source?",
-            choices=["dspace", "pdc"],
-            default="dspace",
-        )
-    else:
-        princeton_source = args.source
-    log.info(f"Will retrieve Princeton data repository data from {princeton_source}")
+    log.info("Will retrieve Princeton data repository data from PDC")
 
-    s = Scraper(log=log, princeton_source=princeton_source)
+    s = Scraper(log=log)
     # NOTE: It may be useful to implement a CLI command (e.g. --no-scrape) to
     #       allow for debugging the get_unposted_metadata or
     #       generate_contract_entry_form functions

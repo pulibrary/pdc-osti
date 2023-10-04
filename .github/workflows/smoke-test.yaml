@@ -27,7 +27,7 @@ jobs:
       run: openssl version
     - name: Run scraper
       run: |
-        scraper -s pdc
+        scraper
     - name: Run poster
       run: |
         poster -s pdc -m dry-run
