@@ -140,29 +140,29 @@
             "bitstreams",
             "all"
         ],
-        "lastModified": "2023-01-31 14:00:21.102",
+        "lastModified": "2023-08-29 16:00:42.973",
         "parentCollection": null,
         "parentCollectionList": null,
         "parentCommunityList": null,
         "metadata": [
             {
                 "key": "dc.contributor",
-                "value": "Mate, Lampert",
+                "value": "Lampert, Mate",
                 "language": null
             },
             {
                 "key": "dc.contributor.author",
-                "value": "Mate, Lampert",
+                "value": "Lampert, Mate",
                 "language": null
             },
             {
                 "key": "dc.contributor.author",
-                "value": "Ahmed, Diallo",
+                "value": "Diallo, Ahmed",
                 "language": null
             },
             {
                 "key": "dc.contributor.author",
-                "value": "Stewart, Zweben",
+                "value": "Zweben, Stewart",
                 "language": null
             },
             {
@@ -258,7 +258,7 @@
             "bitstreams",
             "all"
         ],
-        "lastModified": "2023-04-10 13:11:45.801",
+        "lastModified": "2023-08-29 16:05:49.749",
         "parentCollection": null,
         "parentCollectionList": null,
         "parentCommunityList": null,
@@ -375,7 +375,7 @@
             },
             {
                 "key": "dc.subject",
-                "value": "Kinetic-MHD simulatoin",
+                "value": "Kinetic-MHD simulation",
                 "language": "en_US"
             },
             {
@@ -1092,6 +1092,447 @@
         "withdrawn": "false"
     },
     {
+        "id": 172594,
+        "name": "A reduced-turbulence regime in the Large Helical Device upon injection of low-Z materials powders",
+        "handle": "88435/dsp01bc386n47h",
+        "type": "item",
+        "link": "/rest/items/172594",
+        "expand": [
+            "parentCollection",
+            "parentCollectionList",
+            "parentCommunityList",
+            "bitstreams",
+            "all"
+        ],
+        "lastModified": "2023-06-13 09:33:08.423",
+        "parentCollection": null,
+        "parentCollectionList": null,
+        "parentCommunityList": null,
+        "metadata": [
+            {
+                "key": "dc.contributor.author",
+                "value": "Nespoli, Federico",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Tanaka, Kenji",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Masuzaki, Suguru",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Ashikawa, Naoko",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Shoji, Mamoru",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Gilson, Erik",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Lunsford, Robert",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Oishi, Tetsutarou",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Ida, Katsumi",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Yoshinuma, Mikirou",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Takemura, Yuki",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Kinoshita, Toshiki",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Motojima, Gen",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Osakabe, Masaki",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Kenmochi, Naoki",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Kawamura, Gakushi",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Suzuki, Chihiro",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Nagy, Alex",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Bortolon, Alessandro",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Pablant, Novimir",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Mollen, Albert",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Tamura, Naoki",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Gates, David",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Morisaki, Tomohiro",
+                "language": null
+            },
+            {
+                "key": "dc.date.accessioned",
+                "value": "2023-06-13T13:33:06Z",
+                "language": null
+            },
+            {
+                "key": "dc.date.available",
+                "value": "2023-06-13T13:33:06Z",
+                "language": null
+            },
+            {
+                "key": "dc.date.issued",
+                "value": "2023-05-19",
+                "language": null
+            },
+            {
+                "key": "dc.identifier.uri",
+                "value": "http://arks.princeton.edu/ark:/88435/dsp01bc386n47h",
+                "language": null
+            },
+            {
+                "key": "dc.description.abstract",
+                "value": "Recently an improved confinement regime, characterized by reduced turbulent fluctuations has been observed in the Large Helical Device upon the injection of boron powder into the plasma (Nespoli et al 2022 Nat. Phys.18 350\u201356). In this article, we report in more detail the experimental observations of increased plasma temperature and the decrease of turbulent fluctuations across the plasma cross section, on an extended database. In particular, we compare powders of different materials (B, C, BN), finding similar temperature improvement and turbulence response for the three cases. Modeling of the powder penetration into the plasma and of neoclassical electric field and fluxes support the interpretation of the experimental results. Additionally, we report evidence of the temperature improvement increasing with powder injection rates and decreasing for both increasing density and heating power. Though, plasma turbulence response varies depending on the initial conditions of the plasma, making it difficult to draw an inclusive description of the phenomenon.",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.description.tableofcontents",
+                "value": "Please see README.txt for data description",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.language.iso",
+                "value": "en_US",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.publisher",
+                "value": "Princeton Plasma Physics Laboratory, Princeton University",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.relation",
+                "value": "F. Nespoli et al, A reduced-turbulence regime in the Large Helical Device upon injection of low-Z materials powders, 2023 Nuclear Fusion 63 076001",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.relation.isreferencedby",
+                "value": "https://doi.org/10.1088/1741-4326/acd465",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.source",
+                "value": "https://www-lhd.nifs.ac.jp/pub/Repository.html",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.title",
+                "value": "A reduced-turbulence regime in the Large Helical Device upon injection of low-Z materials powders",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.type",
+                "value": "Dataset",
+                "language": "en_US"
+            },
+            {
+                "key": "pu.projectgrantnumber",
+                "value": "31016 G0001 10003086 101",
+                "language": null
+            },
+            {
+                "key": "pu.depositor",
+                "value": "Nespoli, Federico",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.funder",
+                "value": "U. S. Department of Energy contract number DE-AC02-09CH11466",
+                "language": "en_US"
+            }
+        ],
+        "bitstreams": null,
+        "archived": "true",
+        "withdrawn": "false"
+    },
+    {
+        "id": 172609,
+        "name": "Observation of a reduced-turbulence regime with boron powder injection in a stellarator",
+        "handle": "88435/dsp010z709069v",
+        "type": "item",
+        "link": "/rest/items/172609",
+        "expand": [
+            "parentCollection",
+            "parentCollectionList",
+            "parentCommunityList",
+            "bitstreams",
+            "all"
+        ],
+        "lastModified": "2023-06-14 09:39:39.773",
+        "parentCollection": null,
+        "parentCollectionList": null,
+        "parentCommunityList": null,
+        "metadata": [
+            {
+                "key": "dc.contributor.author",
+                "value": "Nespoli, Federico",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Masuzaki, Suguru",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Tanaka, Kenji",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Ashikawa, Naoko",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Shoji, Mamoru",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Gilson, Erik",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Lunsford, Robert",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Oishi, Tetsutarou",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Ida, Katsumi",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Yoshinuma, Mikirou",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Takemura, Yuki",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Kinoshita, Toshiki",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Motojima, Gen",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Kenmochi, Naoki",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Kawamura, Gakushi",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Suzuki, Chihiro",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Nagy, Alex",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Bortolon, Alessandro",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Pablant, Novimir",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Mollen, Albert",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Tamura, Naoki",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Gates, David",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Morisaki, Tomohiro",
+                "language": null
+            },
+            {
+                "key": "dc.date.accessioned",
+                "value": "2023-06-14T13:39:38Z",
+                "language": null
+            },
+            {
+                "key": "dc.date.available",
+                "value": "2023-06-14T13:39:38Z",
+                "language": null
+            },
+            {
+                "key": "dc.date.issued",
+                "value": "2022-01-10",
+                "language": null
+            },
+            {
+                "key": "dc.identifier.uri",
+                "value": "http://arks.princeton.edu/ark:/88435/dsp010z709069v",
+                "language": null
+            },
+            {
+                "key": "dc.description.abstract",
+                "value": "In state-of-the-art stellarators, turbulence is a major cause of the degradation of plasma confinement. To maximize confinement, which eventually determines the amount of nuclear fusion reactions, turbulent transport needs to be reduced. Here we report the observation of a confinement regime in a stellarator plasma that is characterized by increased confinement and reduced turbulent fluctuations. The transition to this regime is driven by the injection of submillimetric boron powder grains into the plasma. With the line-averaged electron density being kept constant, we observe a substantial increase of stored energy and electron and ion temperatures. At the same time, the amplitude of the plasma turbulent fluctuations is halved. While lower frequency fluctuations are damped, higher frequency modes in the range between 100 and 200\u2009kHz are excited. We have observed this regime for different heating schemes, namely with both electron and ion cyclotron resonant radio frequencies and neutral beams, for both directions of the magnetic field and both hydrogen and deuterium plasmas.",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.description.tableofcontents",
+                "value": "Please see README.txt for description of data files.",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.language.iso",
+                "value": "en_US",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.publisher",
+                "value": "Princeton Plasma Physics Laboratory, Princeton University",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.relation",
+                "value": "F. Nespoli et al., Observation of a reduced-turbulence regime with boron powder injection in a stellarator, Nature Physics volume 18, pages350\u2013356 (2022)",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.relation.isreferencedby",
+                "value": "https://doi.org/10.1038/s41567-021-01460-4",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.source",
+                "value": "https://www-lhd.nifs.ac.jp/pub/Repository.html",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.title",
+                "value": "Observation of a reduced-turbulence regime with boron powder injection in a stellarator",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.type",
+                "value": "Dataset",
+                "language": "en_US"
+            },
+            {
+                "key": "pu.projectgrantnumber",
+                "value": "31016 G0001 10003086 101",
+                "language": null
+            },
+            {
+                "key": "pu.depositor",
+                "value": "Nespoli, Federico",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.funder",
+                "value": "U. S. Department of Energy contract number DE-AC02-09CH11466",
+                "language": "en_US"
+            }
+        ],
+        "bitstreams": null,
+        "archived": "true",
+        "withdrawn": "false"
+    },
+    {
         "id": 153992,
         "name": "Feasibility study of a high spatial and time resolution beam emission spectroscopy diagnostic for localized density fluctuation measurements in Lithium Tokamak eXperiment-\u03b2 (LTX-\u03b2)",
         "handle": "88435/dsp016969z3993",
@@ -1104,7 +1545,7 @@
             "bitstreams",
             "all"
         ],
-        "lastModified": "2023-01-31 14:06:32.755",
+        "lastModified": "2023-08-29 10:30:31.188",
         "parentCollection": null,
         "parentCollectionList": null,
         "parentCommunityList": null,
@@ -1121,7 +1562,7 @@
             },
             {
                 "key": "dc.contributor.author",
-                "value": "Mann, Anurag",
+                "value": "Maan, Anurag",
                 "language": null
             },
             {
@@ -1257,7 +1698,7 @@
             "bitstreams",
             "all"
         ],
-        "lastModified": "2023-04-07 10:27:23.838",
+        "lastModified": "2023-05-10 14:23:33.603",
         "parentCollection": null,
         "parentCollectionList": null,
         "parentCommunityList": null,
@@ -1310,6 +1751,11 @@
             {
                 "key": "dc.identifier.uri",
                 "value": "https://app.globus.org/file-manager?destination_id=dc43f461-0ca7-4203-848c-33a9fc00a464&destination_path=%2Ff8em-3c49%2F",
+                "language": null
+            },
+            {
+                "key": "dc.identifier.uri",
+                "value": "https://doi.org/10.34770/f8em-3c49",
                 "language": null
             },
             {
@@ -1581,6 +2027,109 @@
         "withdrawn": "false"
     },
     {
+        "id": 160080,
+        "name": "Examination of OH and H2O2 production by uniform and non-uniform modes of dielectric barrier discharge in He/air mixture",
+        "handle": "88435/dsp01j3860b20c",
+        "type": "item",
+        "link": "/rest/items/160080",
+        "expand": [
+            "parentCollection",
+            "parentCollectionList",
+            "parentCommunityList",
+            "bitstreams",
+            "all"
+        ],
+        "lastModified": "2023-08-31 13:34:38.489",
+        "parentCollection": null,
+        "parentCollectionList": null,
+        "parentCommunityList": null,
+        "metadata": [
+            {
+                "key": "dc.contributor",
+                "value": "Yatom, Shurik",
+                "language": null
+            },
+            {
+                "key": "dc.contributor",
+                "value": "Dobrynin, Danil",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Yatom, Shurik",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Dobrynin, Danil",
+                "language": null
+            },
+            {
+                "key": "dc.date.accessioned",
+                "value": "2023-07-10T15:21:58Z",
+                "language": null
+            },
+            {
+                "key": "dc.date.available",
+                "value": "2023-07-10T15:21:58Z",
+                "language": null
+            },
+            {
+                "key": "dc.date.issued",
+                "value": "2022-10-17",
+                "language": null
+            },
+            {
+                "key": "dc.identifier.uri",
+                "value": "http://arks.princeton.edu/ark:/88435/dsp01j3860b20c",
+                "language": null
+            },
+            {
+                "key": "dc.language.iso",
+                "value": "en_US",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.publisher",
+                "value": "Princeton Plasma Physics Laboratory, Princeton University",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.relation.isreferencedby",
+                "value": "https://doi.org/10.1088/1361-6463/ac95a6",
+                "language": null
+            },
+            {
+                "key": "dc.title",
+                "value": "Examination of OH and H2O2 production by uniform and non-uniform modes of dielectric barrier discharge in He/air mixture",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.type",
+                "value": "Image",
+                "language": "en_US"
+            },
+            {
+                "key": "pu.projectgrantnumber",
+                "value": "31016 G0001 10003086 101",
+                "language": null
+            },
+            {
+                "key": "pu.depositor",
+                "value": "Yatom, Shurik",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.funder",
+                "value": "U. S. Department of Energy contract number DE-AC02-09CH11466",
+                "language": "en_US"
+            }
+        ],
+        "bitstreams": null,
+        "archived": "true",
+        "withdrawn": "false"
+    },
+    {
         "id": 167739,
         "name": "Effects of collisional ion orbit loss on tokamak radial electric field and toroidal rotation in an L-mode plasma",
         "handle": "88435/dsp01r494vp42z",
@@ -1593,7 +2142,7 @@
             "bitstreams",
             "all"
         ],
-        "lastModified": "2023-04-03 09:33:52.408",
+        "lastModified": "2023-05-16 16:44:30.51",
         "parentCollection": null,
         "parentCollectionList": null,
         "parentCommunityList": null,
@@ -1710,12 +2259,12 @@
             },
             {
                 "key": "dc.contributor.funder",
-                "value": "U.S. Department of Energy, DE-AC02\u201309CH11466",
+                "value": "U.S. Department of Energy, DE-AC02-09CH11466",
                 "language": "en_US"
             },
             {
                 "key": "dc.contributor.funder",
-                "value": "U.S. Department of Energy, DE-AC02- 05CH11231",
+                "value": "U.S. Department of Energy, DE-AC02-05CH11231",
                 "language": "en_US"
             },
             {
@@ -1726,6 +2275,149 @@
             {
                 "key": "dc.contributor.funder",
                 "value": "Princeton Research Computing",
+                "language": "en_US"
+            }
+        ],
+        "bitstreams": null,
+        "archived": "true",
+        "withdrawn": "false"
+    },
+    {
+        "id": 173862,
+        "name": "Self-consistent simulation of compressional Alfv\u00e9n eigenmodes excitation and runaway electron diffusion in tokamak disruptions",
+        "handle": "88435/dsp01x059cb607",
+        "type": "item",
+        "link": "/rest/items/173862",
+        "expand": [
+            "parentCollection",
+            "parentCollectionList",
+            "parentCommunityList",
+            "bitstreams",
+            "all"
+        ],
+        "lastModified": "2023-08-31 13:36:54.555",
+        "parentCollection": null,
+        "parentCollectionList": null,
+        "parentCommunityList": null,
+        "metadata": [
+            {
+                "key": "dc.contributor.author",
+                "value": "Liu, Chang",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Lvovskiy, Andrey",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Paz-Soldan, Carlos",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Jardin, Stephen",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.author",
+                "value": "Bhattacharjee, Amitava",
+                "language": null
+            },
+            {
+                "key": "dc.date.accessioned",
+                "value": "2023-07-18T14:12:16Z",
+                "language": null
+            },
+            {
+                "key": "dc.date.available",
+                "value": "2023-07-18T14:12:16Z",
+                "language": null
+            },
+            {
+                "key": "dc.date.issued",
+                "value": "2023",
+                "language": null
+            },
+            {
+                "key": "dc.identifier.uri",
+                "value": "http://arks.princeton.edu/ark:/88435/dsp01x059cb607",
+                "language": null
+            },
+            {
+                "key": "dc.description.abstract",
+                "value": "The data set consists of the figures in a manuscript titled \"Self-consistent simulation of compressional Alfv\u00e9n\r\neigenmodes excitation and runaway electron diffusion in tokamak disruptions\", and plotting script used for figure generation.",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.description.tableofcontents",
+                "value": "The data set consists of the data and plotting scripts for generating figures in a manuscript tilted Self-consistent simulation of compressional Alfv\u00e9n eigenmodes excitation and runaway electron diffusion in tokamak disruptions.\r\nThere are 4 figures.",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.language.iso",
+                "value": "en_US",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.publisher",
+                "value": "Princeton Plasma Physics Laboratory, Princeton University",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.relation.isreferencedby",
+                "value": "https://doi.org/10.1103/PhysRevLett.131.085102",
+                "language": null
+            },
+            {
+                "key": "dc.subject",
+                "value": "Runaway electron",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.subject",
+                "value": "Tokamak",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.subject",
+                "value": "Alfv\u00e9n mode",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.subject",
+                "value": "Disruption",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.subject",
+                "value": "Kinetic-MHD simulation",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.title",
+                "value": "Self-consistent simulation of compressional Alfv\u00e9n eigenmodes excitation and runaway electron diffusion in tokamak disruptions",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.type",
+                "value": "Dataset",
+                "language": "en_US"
+            },
+            {
+                "key": "pu.depositor",
+                "value": "Liu, Chang",
+                "language": null
+            },
+            {
+                "key": "dc.contributor.funder",
+                "value": "US Department of Energy (DE-AC02-09CH11466)",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.contributor.funder",
+                "value": "US Department of Energy (DE-SC0016268)",
                 "language": "en_US"
             }
         ],
@@ -2032,7 +2724,7 @@
             "bitstreams",
             "all"
         ],
-        "lastModified": "2023-04-05 16:20:03.782",
+        "lastModified": "2023-06-07 14:19:52.538",
         "parentCollection": null,
         "parentCollectionList": null,
         "parentCommunityList": null,
@@ -2109,7 +2801,7 @@
             },
             {
                 "key": "dc.relation.isreferencedby",
-                "value": "https://doi.org/10.48550/arXiv.2301.07080",
+                "value": "https://doi.org/10.1017/S0022377823000430",
                 "language": "en_US"
             },
             {
@@ -2274,6 +2966,104 @@
                 "key": "dc.contributor.funder",
                 "value": "U. S. Department of Energy contract number DE-AC02-09CH11466",
                 "language": null
+            }
+        ],
+        "bitstreams": null,
+        "archived": "true",
+        "withdrawn": "false"
+    },
+    {
+        "id": 172704,
+        "name": "Density Limits as Disruption Forecasters for Spherical Tokamaks",
+        "handle": "88435/dsp01rn3014659",
+        "type": "item",
+        "link": "/rest/items/172704",
+        "expand": [
+            "parentCollection",
+            "parentCollectionList",
+            "parentCommunityList",
+            "bitstreams",
+            "all"
+        ],
+        "lastModified": "2023-07-18 14:45:34.624",
+        "parentCollection": null,
+        "parentCollectionList": null,
+        "parentCommunityList": null,
+        "metadata": [
+            {
+                "key": "dc.contributor.author",
+                "value": "Berkery, John",
+                "language": null
+            },
+            {
+                "key": "dc.date.accessioned",
+                "value": "2023-07-18T18:45:33Z",
+                "language": null
+            },
+            {
+                "key": "dc.date.available",
+                "value": "2023-07-18T18:45:33Z",
+                "language": null
+            },
+            {
+                "key": "dc.date.created",
+                "value": "2023-06-30",
+                "language": null
+            },
+            {
+                "key": "dc.date.issued",
+                "value": "2023-06-30",
+                "language": null
+            },
+            {
+                "key": "dc.identifier.uri",
+                "value": "http://arks.princeton.edu/ark:/88435/dsp01rn3014659",
+                "language": null
+            },
+            {
+                "key": "dc.description.abstract",
+                "value": "Fusion power output from spherical tokamaks would benefit from increased confined plasma density, but there exists a limit on the density before confinement is lost and the plasma current is disrupted. This density limit has long been characterized by a simple, global Greenwald limit proportional to the plasma current and inversely proportional to the cross sectional area of the plasma. It is shown that in the database of discharges from the NSTX and MAST spherical tokamaks, the likelihood of disruption does increase above the Greenwald limit, and especially in the plasma current rampdown phase. The physics of the density limit has been recently theoretically explored through local criteria. Several of these are tested using the disruption event characterization and forecasting (DECAFTM) code for their potential effectiveness as disruption warning signals. For a limited set of NSTX discharges, a local island power balance criteria was found to be less reliable, presently, than the Greenwald limit. An empirical critical edge line density and a boundary turbulent transport limit were both tested for MAST-U, which has an electron density profile measurement with high spatial resolution in the outer part of the plasma. Both were found to have similar dependencies on key plasma parameters. In a limited set of MAST-U discharges that appear to disrupt due to rising density at values under the Greenwald limit, crossing of the boundary turbulent transport limit occurred close to the time of disruption. Finally, these limits were evaluated for their potential use in real-time, and it was found that with the necessary real-time inputs and with refinement through further testing, these limits could be implemented in a real-time disruption forecasting system.",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.description.sponsorship",
+                "value": "This work was supported by the U.S. Department of Energy under contract numbers DE-AC02-09CH11466 and DE-SC0018623. The United States Government retains a non-exclusive, paid-up, irrevocable, world-wide license to publish or reproduce the published form of this manuscript, or allow others to do so, for United States Government purposes.\r\nThis work has been carried out within the framework of the EUROfusion Consortium, funded by the European Union via the Euratom Research and Training Programme (Grant Agreement No 101052200 \u2014 EUROfusion). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Commission. Neither the European Union nor the European Commission can be held responsible for them. This work has also been funded by the EPSRC [grant number EP/T012250/1] and the EPSRC Energy Programme [grant number EP/W006839/1].",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.description.tableofcontents",
+                "value": "Readme.txt, Fig1.dat, Fig2.dat, Fig3.dat, Fig4.dat, Fig5.dat, Fig6.dat, Fig7.dat, Fig8.dat, Fig9_left.dat, Fig9_mid.dat, Fig9_right.dat, Fig10_left.dat, Fig10_mid.dat, Fig10_right.dat, Fig11.dat",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.language.iso",
+                "value": "en_US",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.publisher",
+                "value": "Princeton Plasma Physics Laboratory, Princeton University",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.subject",
+                "value": "density limit, disruptions, tokamak",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.title",
+                "value": "Density Limits as Disruption Forecasters for Spherical Tokamaks",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.type",
+                "value": "Dataset",
+                "language": "en_US"
+            },
+            {
+                "key": "dc.contributor.funder",
+                "value": "U. S. Department of Energy contract number DE-AC02-09CH11466",
+                "language": ""
             }
         ],
         "bitstreams": null,

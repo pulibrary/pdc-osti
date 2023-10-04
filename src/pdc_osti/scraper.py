@@ -2,6 +2,7 @@ import argparse
 import json
 import re
 import ssl
+from functools import partial
 from logging import Logger
 from pathlib import Path
 from typing import Dict, List
@@ -134,6 +135,14 @@ class Scraper:
         Paginate through OSTI's Data Explorer API to find datasets that have
         been submitted
         """
+
+        def _extract_id(obj):  # For iss#55
+            """Extract OSTI_ID for sorting"""
+            try:
+                return int(obj["osti_id"])
+            except KeyError:
+                return 0
+
         self.log.info("[bold yellow]Get existing datasets")
 
         MAX_PAGE_COUNT = 15
@@ -156,10 +165,21 @@ class Scraper:
             self.log.error(f"[bold red]{msg}")
             raise BaseException(msg)
 
+        existing_datasets.sort(key=_extract_id)  # Sort by ID iss#55
+        clean_existing_dataset = [  # Remove duplicates iss#7
+            i
+            for n, i in enumerate(existing_datasets)
+            if i not in existing_datasets[n + 1 :]
+        ]
+
+        self.log.info(
+            f"OSTI list has been truncated to {len(existing_datasets)} records."
+        )
+
         state = "Updating" if self.osti_scrape.exists() else "Writing"
         self.log.info(f"[yellow]{state}: {self.osti_scrape}")
         with open(self.osti_scrape, "w") as f:
-            json.dump(existing_datasets, f, indent=4)
+            json.dump(clean_existing_dataset, f, indent=4)
         self.log.info("[bold green]✔ Existing datasets obtained!")
 
     def get_princeton_metadata(self) -> None:
@@ -328,8 +348,9 @@ class Scraper:
             raise NotImplementedError
 
         # Generate lists of lists per each dc.contributor.funder entry
+        fund_func = partial(get_funder, princeton_source=self.princeton_source)
         funding_result = [
-            list(filter(None, map(get_funder, f_list))) for f_list in funding_text_list
+            list(filter(None, map(fund_func, f_list))) for f_list in funding_text_list
         ]
         funding_result_simple = [  # All grants for each DSpace record
             ";".join([";".join(value) if value else "" for value in res])
@@ -347,7 +368,8 @@ class Scraper:
         # Sponsoring organizations is always Office of Science
         df["Sponsoring Organizations"] = "USDOE Office of Science (SC)"
 
-        df["Datatype"] = None  # To be filled in
+        # Fixes #56
+        # df["Datatype"] = None  # To be filled in
 
         df = df.sort_values("Issue Date")
         state = "Updating" if self.entry_form.exists() else "Writing"
@@ -428,7 +450,7 @@ class Scraper:
         self.log.info(f"[bold green]✔ Pipeline run completed for {SCRIPT_NAME}!")
 
 
-def get_funder(text: str) -> List[str]:
+def get_funder(text: str, princeton_source: str = "dspace") -> List[str]:
     """Aggregate funding grant numbers from text"""
 
     # Clean up text by fixing any whitespace to get full grant no.
@@ -442,8 +464,12 @@ def get_funder(text: str) -> List[str]:
     if base_match:  # DOE/FES funded but no grant number
         return ["AC02-09CH11466"]
     else:
-        matches = re.finditer(REGEX_FUNDING, text)
-        return [m.group() for m in matches]
+        if princeton_source == "dspace":
+            matches = re.finditer(REGEX_FUNDING, text)
+            return [m.group() for m in matches]
+        elif princeton_source == "pdc":
+            if text and text != "N/A":
+                return [text]
 
 
 def get_doe_funding(grant_nos: str) -> Dict[str, set]:
