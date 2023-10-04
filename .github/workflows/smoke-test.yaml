@@ -30,7 +30,7 @@ jobs:
         scraper
     - name: Run poster
       run: |
-        poster -s pdc -m dry-run
+        poster -m dry-run
       env:
         OSTI_USERNAME_TEST: my-test-osti-username
         OSTI_PASSWORD_TEST: my-test-osti-password

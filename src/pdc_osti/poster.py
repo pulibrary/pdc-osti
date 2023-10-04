@@ -6,7 +6,7 @@ from pathlib import Path
 
 import ostiapi
 import pandas as pd
-from rich.prompt import Confirm, Prompt
+from rich.prompt import Confirm
 
 from .commons import (
     get_ark,
@@ -25,14 +25,13 @@ ACCEPTED_DATATYPE = ["AS", "GD", "IM", "ND", "IP", "FP", "SM", "MM", "I"]
 
 class Poster:
     """
-    Use the form input and DSpace metadata to generate the JSON necessary for
+    Use the form input and PDC metadata to generate the JSON necessary for
     OSTI ingestion. Then post to OSTI using their API
     """
 
     def __init__(
         self,
         mode: str,
-        princeton_source: str = "dspace",
         data_dir: Path = Path("data"),
         to_upload: str = "metadata_to_upload.json",
         form_input_full_path: str = "form_input.tsv",
@@ -42,13 +41,12 @@ class Poster:
     ) -> None:
         self.log = log
         self.mode = mode
-        self.princeton_source = princeton_source
 
         # Prepare all paths
-        self.form_input = f"{princeton_source}_{form_input_full_path}"
+        self.form_input = f"pdc_{form_input_full_path}"
         self.data_dir = data_dir
-        self.to_upload = data_dir / f"{princeton_source}_{to_upload}"
-        self.osti_upload = data_dir / f"{princeton_source}_{osti_upload}"
+        self.to_upload = data_dir / f"pdc_{to_upload}"
+        self.osti_upload = data_dir / f"pdc_{osti_upload}"
 
         timestamp = str(datetime.datetime.now()).replace(":", "")
         self.response_output = response_dir / f"{mode}_osti_response_{timestamp}.json"
@@ -84,11 +82,11 @@ class Poster:
     def generate_upload_json(self) -> None:
         """
         Validate the form input provided by the user and combine new data with
-        DSpace data to generate JSON that is prepared for OSTI ingestion
+        PDC data to generate JSON that is prepared for OSTI ingestion
         """
 
         def _get_ark(it: dict):
-            return get_ark(it, self.princeton_source)
+            return get_ark(it, "pdc")
 
         self.log.info("[bold yellow]Generating upload data")
 
@@ -142,37 +140,31 @@ class Poster:
                 "accession_num": ark,
                 "publication_date": row["Issue Date"],
                 "othnondoe_contract_nos": row["Non-DOE Contract"],
-                "abstract": get_description(princeton_data, self.princeton_source),
-                "keywords": get_keywords(princeton_data, self.princeton_source),
+                "abstract": get_description(princeton_data, "pdc"),
+                "keywords": get_keywords(princeton_data, "pdc"),
             }
 
             # Add existing DOI if it exists
-            if self.princeton_source == "pdc":
-                doi = row["DOI"]
-                if doi:
-                    if not doi.startswith("10.11578"):
-                        item_dict["doi"] = doi
-                        # Uses DOI moving forward #50
-                        item_dict["accession_num"] = doi
-                        item_dict["site_url"] = f"https://doi.org/{doi}"
-                    else:
-                        self.log.debug(f"OSTI DOI minted: {doi}")
+            doi = row["DOI"]
+            if doi:
+                if not doi.startswith("10.11578"):
+                    item_dict["doi"] = doi
+                    # Uses DOI moving forward #50
+                    item_dict["accession_num"] = doi
+                    item_dict["site_url"] = f"https://doi.org/{doi}"
                 else:
-                    self.log.warning("[bold red]No DOI!!!")
+                    self.log.debug(f"OSTI DOI minted: {doi}")
+            else:
+                self.log.warning("[bold red]No DOI!!!")
 
-            if self.princeton_source == "dspace":
+            authors = get_authors(princeton_data)
+            if authors:
+                item_dict["authors"] = authors
+            else:
                 item_dict["creators"] = row["Author"]
-            elif self.princeton_source == "pdc":
-                authors = get_authors(princeton_data)
-                if authors:
-                    item_dict["authors"] = authors
-                else:
-                    item_dict["creators"] = row["Author"]
 
             # Collect optional required information
-            is_referenced_by = get_is_referenced_by(
-                princeton_data, self.princeton_source
-            )
+            is_referenced_by = get_is_referenced_by(princeton_data, "pdc")
             if len(is_referenced_by) != 0:
                 item_dict["related_identifiers"] = []
                 for irb in is_referenced_by:
@@ -296,14 +288,6 @@ def main() -> None:
         description="Script to post new Princeton datasets to DOE/OSTI"
     )
     parser.add_argument(
-        "-s",
-        "--source",
-        required=False,
-        default="",
-        type=str,
-        help="Source for Princeton data (dspace or pdc)",
-    )
-    parser.add_argument(
         "-m",
         "--mode",
         default="dry-run",
@@ -314,18 +298,10 @@ def main() -> None:
 
     log = script_log_init(SCRIPT_NAME)
 
-    if not args.source:
-        princeton_source = Prompt.ask(
-            "Princeton data repository source?",
-            choices=["dspace", "pdc"],
-            default="dspace",
-        )
-    else:
-        princeton_source = args.source
-    log.info(f"Will use data from {princeton_source}")
+    log.info("Will use data from PDC")
 
     mode = args.mode
-    p = Poster(mode, princeton_source=princeton_source)
+    p = Poster(mode)
     if mode == "dry-run":
         user_response = True
     if mode in ["test", "prod"]:
