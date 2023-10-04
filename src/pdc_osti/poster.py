@@ -85,9 +85,6 @@ class Poster:
         PDC data to generate JSON that is prepared for OSTI ingestion
         """
 
-        def _get_ark(it: dict):
-            return get_ark(it, "pdc")
-
         self.log.info("[bold yellow]Generating upload data")
 
         self.log.info(f"[yellow]Loading: {self.to_upload}")
@@ -124,7 +121,7 @@ class Poster:
         # Generate final JSON to post to OSTI
         osti_format = []
         for ark, row in df.iterrows():
-            princeton_data = [item for item in to_upload_j if _get_ark(item) == ark]
+            princeton_data = [item for item in to_upload_j if get_ark(item) == ark]
             assert len(princeton_data) == 1, princeton_data
             princeton_data = princeton_data[0]
 
@@ -140,8 +137,8 @@ class Poster:
                 "accession_num": ark,
                 "publication_date": row["Issue Date"],
                 "othnondoe_contract_nos": row["Non-DOE Contract"],
-                "abstract": get_description(princeton_data, "pdc"),
-                "keywords": get_keywords(princeton_data, "pdc"),
+                "abstract": get_description(princeton_data),
+                "keywords": get_keywords(princeton_data),
             }
 
             # Add existing DOI if it exists
@@ -164,7 +161,7 @@ class Poster:
                 item_dict["creators"] = row["Author"]
 
             # Collect optional required information
-            is_referenced_by = get_is_referenced_by(princeton_data, "pdc")
+            is_referenced_by = get_is_referenced_by(princeton_data)
             if len(is_referenced_by) != 0:
                 item_dict["related_identifiers"] = []
                 for irb in is_referenced_by:
