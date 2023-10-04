@@ -214,7 +214,7 @@ class Scraper:
 
         to_be_published = []
         for record in princeton_j:
-            if self.get_handle(record) not in osti_handles:
+            if get_ark(record) not in osti_handles:
                 to_be_published.append(record)
 
         state = "Updating" if self.to_upload.exists() else "Writing"
@@ -228,7 +228,7 @@ class Scraper:
             json.dump(redirects_j, f, indent=4)
 
         # Check for records in OSTI but not DataSpace/PDC
-        princeton_handles = [self.get_handle(record) for record in princeton_j]
+        princeton_handles = [get_ark(record) for record in princeton_j]
         errors = [
             record
             for record in osti_j
@@ -257,7 +257,7 @@ class Scraper:
             to_upload_j = json.load(f)
 
         df = pd.DataFrame()
-        df["ARK"] = list(map(self.get_handle, to_upload_j))
+        df["ARK"] = list(map(get_ark, to_upload_j))
 
         df["Issue Date"] = [
             f"{item['resource']['publication_year']}" for item in to_upload_j
@@ -312,10 +312,6 @@ class Scraper:
             self.log.info(f"\t{repr(row['Title'])}")
 
         self.log.info("[bold green]✔ Entry form generated!")
-
-    def get_handle(self, record: dict) -> str:
-        """Retrieves ARK depending on Princeton source"""
-        return get_ark(record, "pdc")
 
     def update_form_input(self) -> None:
         """
