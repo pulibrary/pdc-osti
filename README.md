@@ -6,7 +6,7 @@
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/pulibrary/pdc-osti?label=version)
 ![python](https://img.shields.io/badge/python-3.8%20%7C%203.9-blue)
 
-For oversight reasons, [OSTI](https://www.osti.gov/) requires that PPPL submit its datasets' metadata through their API. OSTI is only a metadata repository, and the datasets themselves are stored in Dataspace. We are responsible for posting the metadata by the end of each fiscal year. This is not to be confused with submitting journal article metadata to OSTI, which is an entirely separate process and is handled by PPPL.
+For oversight reasons, [OSTI](https://www.osti.gov/) requires that PPPL submit its datasets' metadata through their API. OSTI is only a metadata repository, and the datasets themselves are stored in Princeton Data Commons (PDC). We are responsible for posting the metadata by the end of each fiscal year. This is not to be confused with submitting journal article metadata to OSTI, which is an entirely separate process and is handled by PPPL.
 
 ## Setup
 
@@ -49,14 +49,14 @@ Run `scraper` command-line script to collect data from OSTI & DSpace. The pipeli
 
 Copy `entry_form.tsv` to a Google Sheet and share with partners at PPPL. They will need to enter `Datatype`. [See `Datatype` codes here.](https://github.com/doecode/ostiapi#data-set-content-type-values)
 (Ideally, in the long run we would integrate these fields into DSpace's metadata.) Save the file into this folder as `form_input.tsv`.
-The `Sponsoring Organization`, `DOE Contract` and `Non-DOE Contract` may need to be modified. The latter two are retrieved from DataSpace metadata.
+The `Sponsoring Organization`, `DOE Contract` and `Non-DOE Contract` may need to be modified. The latter two are retrieved from PDC metadata.
 Note that the default `Sponsoring Organization` is "USDOE Office of Science (SC)".
 
-Note: Since we're joining by title, typos and encoding errors will inevitably lead to missed results in `entry_form.tsv`. `scraper` also checks for items that are in OSTI but not DSpace, something that shouldn't happen. The user will need to manually remove those rows from the entry form.
+Note: Since we're joining by title, typos and encoding errors will inevitably lead to missed results in `entry_form.tsv`. `scraper` also checks for items that are in OSTI but not PDC, something that shouldn't happen. The user will need to manually remove those rows from the entry form.
 
 ### Post to OSTI
 
-`poster` is used to combine the `form_input.tsv` and DSpace metadata to generate the JSON necessary for OSTI ingestion. Choose one of the three options:
+`poster` is used to combine the `form_input.tsv` and PDC metadata to generate the JSON necessary for OSTI ingestion. Choose one of the three options:
 
 ```
     --dry-run: Make fake requests locally to test workflow.
@@ -82,6 +82,3 @@ Congrats 🚀 OSTI says that all records were successfully uploaded!
 
 - [OSTI API](https://www.osti.gov/elink/241-6api.jsp)
 - [Previously submitted PPPL datasets](https://www.osti.gov/dataexplorer/api/v1/records?site_ownership_code=PPPL)
-- [PPPL DSpace Community](https://dataspace.princeton.edu/handle/88435/dsp01pz50gz45g)
-- [DSpace REST Documentation](https://dataspace.princeton.edu/rest/)
-- [OSTI's old code](https://github.com/doecode/dspace)
