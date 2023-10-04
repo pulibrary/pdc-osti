@@ -55,27 +55,27 @@ class CustomHttpAdapter(requests.adapters.HTTPAdapter):
 
 class Scraper:
     """
-    Pipeline to collect data from OSTI & DataSpace/PDC, comparing which datasets
+    Pipeline to collect data from OSTI & PDC, comparing which datasets
     are not yet posted, and generating a form for a user to manually enter
     additional needed information
 
     :param data_dir: Local data folder for save files
     :param osti_scrape: JSON output file containing OSTI metadata
-    :param entry_form_full_path: TSV file containing DataSpace/PDC
+    :param entry_form_full_path: TSV file containing PDC
            records not in OSTI
-    :param form_input_full_path: TSV file containing DataSpace/PDC
+    :param form_input_full_path: TSV file containing PDC
            records and DOE metadata for submission
     :param to_upload: JSON output file containing metadata for OSTI upload
     :param redirects: JSON output file containing DOI redirects
     :param log: ``Logger`` for stdout and file logging
 
     :ivar osti_scrape: JSON output file containing OSTI metadata
-    :ivar entry_form: TSV file containing DataSpace/PDC records not in OSTI
-    :ivar form_input: TSV file containing DataSpace/PDC
+    :ivar entry_form: TSV file containing PDC records not in OSTI
+    :ivar form_input: TSV file containing PDC
            records and DOE metadata for submission
     :ivar to_upload: JSON output file containing metadata for OSTI upload
     :ivar redirects: JSON output file containing DOI redirects
-    :ivar princeton_scrape: JSON output file containing DataSpace/PDC metadata
+    :ivar princeton_scrape: JSON output file containing PDC metadata
     """
 
     def __init__(
@@ -153,7 +153,7 @@ class Scraper:
         self.log.info("[bold green]✔ Existing datasets obtained!")
 
     def get_princeton_metadata(self) -> None:
-        """Collect metadata on all items from all DataSpace/PDC PPPL collections"""
+        """Collect metadata on all items from all PDC PPPL collections"""
 
         repo_name = "PDC"
 
@@ -183,7 +183,7 @@ class Scraper:
         self.log.info(f"[bold green]✔ {repo_name} metadata collected!")
 
     def get_unposted_metadata(self) -> None:
-        """Compare OSTI and DataSpace/PDC JSON to identify records for uploading"""
+        """Compare OSTI and PDC JSON to identify records for uploading"""
 
         def get_handle(record: dict, redirects: dict) -> str:
             doi = record["doi"]
@@ -208,7 +208,7 @@ class Scraper:
         with open(self.osti_scrape) as f:
             osti_j = json.load(f)
 
-        # Find handles in DSpace whose handles aren't linked in OSTI's DOIs
+        # Find handles in PDC whose handles aren't linked in OSTI's DOIs
         # HACK: returning proper DOI while also updating redirects_j
         osti_handles = [get_handle(record, redirects_j) for record in osti_j]
 
@@ -227,7 +227,7 @@ class Scraper:
         with open(self.redirects, "w") as f:
             json.dump(redirects_j, f, indent=4)
 
-        # Check for records in OSTI but not DataSpace/PDC
+        # Check for records in OSTI but not PDC
         princeton_handles = [get_ark(record) for record in princeton_j]
         errors = [
             record
@@ -236,7 +236,7 @@ class Scraper:
         ]
         if len(errors) > 0:
             self.log.warning(
-                "[bold red]The following records were found on OSTI but not in DSpace "
+                "[bold red]The following records were found on OSTI but not in PDC "
                 "(that shouldn't happen). If they closely resemble records we are "
                 "about to upload, please remove those records from the upload process."
             )
@@ -315,7 +315,7 @@ class Scraper:
 
     def update_form_input(self) -> None:
         """
-        Update form_input.tsv by adding new records or removing DataSpace/PDC
+        Update form_input.tsv by adding new records or removing PDC
         records that were removed/withdrawn
 
         In most cases, this will update form_input.tsv. This further
@@ -328,7 +328,7 @@ class Scraper:
             self.log.info(f"File exists. Will update: {self.form_input}")
 
             input_df = pd.read_csv(self.form_input, index_col="ARK", sep="\t")
-            self.log.info("Identifying DataSpace/PDC records to add and remove ...")
+            self.log.info("Identifying PDC records to add and remove ...")
             entry_id = set(entry_df.index)
             input_id = set(input_df.index)
             drops = input_id - entry_id
@@ -342,7 +342,7 @@ class Scraper:
             self.log.info(f"Appending : {','.join([str(add) for add in adds])}")
             revised_df = pd.concat([input_df, entry_df.loc[adds]], axis=0)
 
-            # "AS" is a placeholder - not included in DataSpace metadata
+            # "AS" is a placeholder - not included in PDC metadata
             revised_df.loc[adds, "Datatype"] = "AS"
         else:
             self.log.warning(f"[bold red]{self.form_input} does not exist!")
