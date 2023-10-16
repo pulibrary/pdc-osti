@@ -47,6 +47,12 @@ def get_description(item: dict) -> str:
         return ""
 
 
+def get_doi(record: dict) -> str:
+    """Retrieves DOI from PDC"""
+
+    return record["resource"]["doi"].replace("https://doi.org/", "")
+
+
 def get_is_referenced_by(item: dict) -> str:
     """Retrieve IsReferencedBy for dataset"""
     related_objects = item["resource"].get("related_objects")

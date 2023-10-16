@@ -11,7 +11,7 @@ import requests.adapters
 import urllib3
 
 from . import PDC_QUERY, PDC_URI
-from .commons import get_ark, get_datacite_awards
+from .commons import get_ark, get_datacite_awards, get_doi
 from .logger import pdc_log, script_log_end, script_log_init
 
 SCRIPT_NAME = Path(__file__).stem
@@ -185,15 +185,6 @@ class Scraper:
     def get_unposted_metadata(self) -> None:
         """Compare OSTI and PDC JSON to identify records for uploading"""
 
-        def get_handle(record: dict, redirects: dict) -> str:
-            doi = record["doi"]
-            if doi not in redirects:
-                handle = record["site_url"].split("ark:/")[-1]
-                redirects[doi] = handle
-                return handle
-            else:
-                return redirects[doi]
-
         self.log.info("[bold yellow]Identifying new records for uploading")
 
         self.log.info(f"[yellow]Loading: {self.redirects}")
@@ -208,24 +199,31 @@ class Scraper:
         with open(self.osti_scrape) as f:
             osti_j = json.load(f)
 
-        # Find handles in PDC whose handles aren't linked in OSTI's DOIs
-        # HACK: returning proper DOI while also updating redirects_j
-        osti_handles = [get_handle(record, redirects_j) for record in osti_j]
+        # Update redirects
+        for record in osti_j:
+            doi = record["doi"]
+            if doi not in redirects_j:
+                site_url = record["site_url"]
+                if "ark" in site_url:
+                    redirects_j[doi] = site_url.split("ark:/")[-1]
+                elif "doi" in site_url:
+                    redirects_j[doi] = site_url.split("doi.org/")[-1]
+
+        state = "Updating" if self.redirects.exists() else "Writing"
+        self.log.info(f"[yellow]{state}: {self.redirects}")
+        with open(self.redirects, "w") as f:
+            json.dump(redirects_j, f, indent=4)
 
         to_be_published = []
         for record in princeton_j:
-            if get_ark(record) not in osti_handles:
+            doi_url = f"https://doi.org/{get_doi(record)}"
+            if doi_url not in redirects_j:
                 to_be_published.append(record)
 
         state = "Updating" if self.to_upload.exists() else "Writing"
         self.log.info(f"[yellow]{state}: {self.to_upload}")
         with open(self.to_upload, "w") as f:
             json.dump(to_be_published, f, indent=4)
-
-        state = "Updating" if self.redirects.exists() else "Writing"
-        self.log.info(f"[yellow]{state}: {self.redirects}")
-        with open(self.redirects, "w") as f:
-            json.dump(redirects_j, f, indent=4)
 
         # Check for records in OSTI but not PDC
         princeton_handles = [get_ark(record) for record in princeton_j]
