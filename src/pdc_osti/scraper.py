@@ -3,7 +3,6 @@ import re
 import ssl
 from logging import Logger
 from pathlib import Path
-from typing import Dict, List
 
 import pandas as pd
 import requests
@@ -365,7 +364,7 @@ class Scraper:
         self.log.info(f"[bold green]✔ Pipeline run completed for {SCRIPT_NAME}!")
 
 
-def get_funder(text: str) -> List[str]:
+def get_funder(text: str) -> list[str]:
     """Aggregate funding grant numbers from text"""
 
     # Clean up text by fixing any whitespace to get full grant no.
@@ -383,7 +382,7 @@ def get_funder(text: str) -> List[str]:
             return [text]
 
 
-def get_doe_funding(grant_nos: str) -> Dict[str, set]:
+def get_doe_funding(grant_nos: str) -> dict[str, set]:
     """Separate DOE from other funding. Prefix DE prefix"""
 
     grant_dict = {"doe": set(), "other": set()}

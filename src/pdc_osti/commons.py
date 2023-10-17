@@ -1,6 +1,3 @@
-from typing import List
-
-
 def get_ark(record: dict) -> str:
     """Retrieves ARK (e.g., 88435/dsp012j62s808w) depending on Princeton source"""
 
@@ -25,7 +22,7 @@ def get_author(creator: dict) -> dict:
     return c_dict
 
 
-def get_authors(record: dict) -> List[dict]:
+def get_authors(record: dict) -> list[dict]:
     """Retrieve author with ORCID and affiliation from PDC"""
 
     creators = record["resource"].get("creators")
