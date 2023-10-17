@@ -6,6 +6,8 @@
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/pulibrary/pdc-osti?label=version)
 ![python](https://img.shields.io/badge/python-3.8%20%7C%203.9-blue)
 
+This software is supported on Python 3.10 and above and has been tested with 3.10 and 3.11. Support for Python 3.9 was deprecated in October 2023.
+
 For oversight reasons, [OSTI](https://www.osti.gov/) requires that PPPL submit its datasets' metadata through their API. OSTI is only a metadata repository, and the datasets themselves are stored in Princeton Data Commons (PDC). We are responsible for posting the metadata by the end of each fiscal year. This is not to be confused with submitting journal article metadata to OSTI, which is an entirely separate process and is handled by PPPL.
 
 ## Setup
