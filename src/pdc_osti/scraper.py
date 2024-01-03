@@ -229,7 +229,7 @@ class Scraper:
         errors = [
             record
             for record in osti_j
-            if redirects_j[record["doi"]] not in princeton_handles
+            if record["doi"].replace("https://doi.org/", "") not in princeton_handles
         ]
         if len(errors) > 0:
             self.log.warning(
