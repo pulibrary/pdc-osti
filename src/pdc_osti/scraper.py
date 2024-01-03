@@ -225,7 +225,7 @@ class Scraper:
             json.dump(to_be_published, f, indent=4)
 
         # Check for records in OSTI but not PDC
-        princeton_handles = [get_ark(record) for record in princeton_j]
+        princeton_handles = [get_doi(record) for record in princeton_j]
         errors = [
             record
             for record in osti_j
