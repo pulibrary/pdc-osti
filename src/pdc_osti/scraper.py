@@ -34,6 +34,8 @@ REPLACE_DICT = {
     "DOE": "",  # Remove DOE if still present
 }
 
+DATAEXPLORER_HEADER = {"accept": "application/json"}
+
 
 # Fix for OpenSSL issue: https://github.com/pulibrary/pdc-osti/issues/31
 class CustomHttpAdapter(requests.adapters.HTTPAdapter):
@@ -122,7 +124,9 @@ class Scraper:
                 "https://www.osti.gov/dataexplorer/api/v1/records?"
                 f"site_ownership_code=PPPL&page={page}"
             )
-            r = get_legacy_session().get(url)  # fix for #31
+            r = get_legacy_session().get(
+                url, headers=DATAEXPLORER_HEADER
+            )  # fix for #31
             j = json.loads(r.text)
             if len(j) != 0:
                 existing_datasets.extend(j)
