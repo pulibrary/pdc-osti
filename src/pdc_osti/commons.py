@@ -1,7 +1,10 @@
 def get_ark(record: dict) -> str:
     """Retrieves ARK (e.g., 88435/dsp012j62s808w) depending on Princeton source"""
 
-    return record["resource"]["ark"].replace("ark:/", "")
+    try:
+        return record["resource"]["ark"].replace("ark:/", "")
+    except AttributeError:
+        return ""
 
 
 def get_author(creator: dict) -> dict:
