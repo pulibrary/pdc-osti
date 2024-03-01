@@ -9,9 +9,9 @@ import pandas as pd
 from rich.prompt import Confirm
 
 from .commons import (
-    get_ark,
     get_authors,
     get_description,
+    get_doi,
     get_is_referenced_by,
     get_keywords,
 )
@@ -121,7 +121,9 @@ class Poster:
         # Generate final JSON to post to OSTI
         osti_format = []
         for ark, row in df.iterrows():
-            princeton_data = [item for item in to_upload_j if get_ark(item) == ark]
+            princeton_data = [
+                item for item in to_upload_j if get_doi(item) == row["DOI"]
+            ]
             assert len(princeton_data) == 1, princeton_data
             princeton_data = princeton_data[0]
 
