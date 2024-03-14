@@ -1717,7 +1717,7 @@
             "USDOE Office of Science (SC), Fusion Energy Sciences (FES)"
         ],
         "research_orgs": [
-            "Princeton Plasma Physics Lab. (PPPL), Princeton, NJ (United States)"
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
         ],
         "links": [
             {
@@ -1995,7 +1995,7 @@
             "USDOE Office of Science (SC), Fusion Energy Sciences (FES)"
         ],
         "research_orgs": [
-            "Princeton Plasma Physics Lab. (PPPL), Princeton, NJ (United States)"
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
         ],
         "links": [
             {
@@ -2160,7 +2160,7 @@
             "USDOE Office of Science (SC), Fusion Energy Sciences (FES)"
         ],
         "research_orgs": [
-            "Princeton Plasma Physics Lab. (PPPL), Princeton, NJ (United States)"
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
         ],
         "links": [
             {
@@ -8915,6 +8915,7 @@
         "format": "Size: 4.0 GB",
         "related_identifiers": [
             "DOI; IsCitedBy; 10.1017/s0022377823000272",
+            "CURATED; IsCitedBy; {\"related_identifier\":\"10.1017/s0022377823000272\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1897994,1975156],\"title\":\"The DESC stellarator code suite. Part 1. Quick and accurate equilibria computations\",\"authors\":\"Panici, D.; Conlin, R.; Dudt, D. W.\",\"source_name\":[\"Journal of Plasma Physics\"],\"publication_date\":\"2023-05-18T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"3\\\", \\\"journalVolume\\\": \\\"89\\\", \\\"author1LastName\\\": \\\"Panici\\\", \\\"author2LastName\\\": \\\"Conlin\\\", \\\"author3LastName\\\": \\\"Dudt\\\", \\\"author1FirstName\\\": \\\"D.\\\", \\\"author2FirstName\\\": \\\"R.\\\", \\\"author3FirstName\\\": \\\"D. W.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
             "DOI; References; 10.5281/zenodo.6539680",
             "CURATED; References; {\"related_identifier\":\"10.5281/zenodo.6539680\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1897994,1974266,1974421],\"title\":\"Inputs and Outputs for paper The DESC Stellarator Code Suite Part I: Quick and accurate equilibria computations\",\"authors\":\"Panici, Dario\",\"source_name\":[\"Zenodo\"],\"publication_date\":\"2022-01-01T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"author1LastName\\\": \\\"Panici\\\", \\\"author1FirstName\\\": \\\"Dario\\\", \\\"crossrefProductType\\\": \\\"dataset\\\"}\"]}"
         ],
@@ -8997,6 +8998,1486 @@
             {
                 "rel": "fulltext",
                 "href": "https://www.osti.gov/dataexplorer/servlets/purl/1897995"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001074",
+        "title": "Feasibility study of a high spatial and time resolution beam emission spectroscopy diagnostic for localized density fluctuation measurements in Lithium Tokamak eXperiment-\u03b2 (LTX-\u03b2)",
+        "doi": "https://doi.org/10.34770/gkye-wc69",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2022-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/gkye-wc69/84/T_low_Teplot",
+            "DOI; References; 10.34770/gkye-wc69/84/y_throughput.asc",
+            "DOI; References; 10.34770/gkye-wc69/84/rho_Teplot",
+            "DOI; References; 10.34770/gkye-wc69/84/kthetarhos_1p5cm",
+            "DOI; References; 10.34770/gkye-wc69/84/Err_low_Teplot",
+            "DOI; References; 10.34770/gkye-wc69/84/x_photonondiode.asc",
+            "DOI; References; 10.34770/gkye-wc69/84/T_high_Teplot",
+            "DOI; References; 10.34770/gkye-wc69/84/kthetarhos_1cm",
+            "DOI; References; 10.34770/gkye-wc69/84/y_powerondiode.asc",
+            "DOI; IsReferencedBy; 10.1063/5.0101834",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1063/5.0101834\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001074],\"title\":\"Feasibility study of a high spatial and time resolution beam emission spectroscopy diagnostic for localized density fluctuation measurements in Lithium Tokamak eXperiment-\u03b2 (LTX-\u03b2)\",\"authors\":\"Banerjee, Santanu; Boyle, D. P.; Maan, A.\",\"source_name\":[\"Review of Scientific Instruments\"],\"publication_date\":\"2022-11-01T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"11\\\", \\\"journalVolume\\\": \\\"93\\\", \\\"author1LastName\\\": \\\"Banerjee\\\", \\\"author2LastName\\\": \\\"Boyle\\\", \\\"author3LastName\\\": \\\"Maan\\\", \\\"author1FirstName\\\": \\\"Santanu\\\", \\\"author2FirstName\\\": \\\"D. P.\\\", \\\"author3FirstName\\\": \\\"A.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/gkye-wc69/84/x_Dopplershift.asc",
+            "DOI; References; 10.34770/gkye-wc69/84/rho_kthetarhosplot",
+            "DOI; References; 10.34770/gkye-wc69/84/x_powerondiode.asc",
+            "DOI; References; 10.34770/gkye-wc69/84/yy_BES_radiance.asc",
+            "DOI; References; 10.34770/gkye-wc69/84/Err_high_Teplot",
+            "DOI; References; 10.34770/gkye-wc69/84/SNR.asc",
+            "DOI; References; 10.34770/gkye-wc69/84/kthetarhos_1p2cm",
+            "DOI; References; 10.1063/5.0101834",
+            "CURATED; References; {\"related_identifier\":\"10.1063/5.0101834\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001074],\"title\":\"Feasibility study of a high spatial and time resolution beam emission spectroscopy diagnostic for localized density fluctuation measurements in Lithium Tokamak eXperiment-\u03b2 (LTX-\u03b2)\",\"authors\":\"Banerjee, Santanu; Boyle, D. P.; Maan, A.\",\"source_name\":[\"Review of Scientific Instruments\"],\"publication_date\":\"2022-11-01T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"11\\\", \\\"journalVolume\\\": \\\"93\\\", \\\"author1LastName\\\": \\\"Banerjee\\\", \\\"author2LastName\\\": \\\"Boyle\\\", \\\"author3LastName\\\": \\\"Maan\\\", \\\"author1FirstName\\\": \\\"Santanu\\\", \\\"author2FirstName\\\": \\\"D. P.\\\", \\\"author3FirstName\\\": \\\"A.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/gkye-wc69/84/x_throughput.asc",
+            "DOI; References; 10.34770/gkye-wc69/84/y_photonondiode.asc",
+            "DOI; References; 10.34770/gkye-wc69/84/power.asc",
+            "DOI; References; 10.34770/gkye-wc69/84/xx_BES_radiance.asc",
+            "DOI; References; 10.34770/gkye-wc69/84/y_Dopplershift.asc"
+        ],
+        "authors": [
+            "Banerjee, Santanu [Princeton Plasma Physics Laboratory] (ORCID:0000000308598855)",
+            "Boyle, Dennis [Princeton Plasma Physics Laboratory] (ORCID:0000000180918169)",
+            "Maan, Anurag [Princeton Plasma Physics Laboratory] (ORCID:0000000174742785)",
+            "Majeski, Richard [Princeton Plasma Physics Laboratory] (ORCID:0000000194370958)",
+            "Kaita, Robert [Princeton Plasma Physics Laboratory]",
+            "Smith, David (ORCID:0000000309723638)",
+            "von Hellermann, Manfred",
+            "Hansen, Christopher (ORCID:0000000169285815)",
+            "Capecchi, William",
+            "Elliott, Drew"
+        ],
+        "subjects": [
+            "Beam emission spectroscopy",
+            "system design"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/gkye-wc69",
+        "doe_contract_number": "AC02-09CH11466",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001074"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001074"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001075",
+        "title": "3D full wave fast wave modeling with realistic HHFW antenna geometry and SOL plasma in NSTX-U",
+        "doi": "https://doi.org/10.34770/bm4s-t361",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2022-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/bm4s-t361/89/Fig11a.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig16b.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig3a.png",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig10b.hdf",
+            "DOI; IsReferencedBy; 10.1088/1741-4326/ac9690",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1088/1741-4326/ac9690\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1907996,1914079,1957519,1961248,1983391,2001075,2004944],\"title\":\"3D full wave fast wave modeling with realistic HHFW antenna geometry and SOL plasma in NSTX-U\",\"authors\":\"Bertelli, N.; Shiraiwa, S.; Ono, M.\",\"source_name\":[\"Nuclear Fusion\"],\"publication_date\":\"2022-10-27T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"12\\\", \\\"journalVolume\\\": \\\"62\\\", \\\"author1LastName\\\": \\\"Bertelli\\\", \\\"author2LastName\\\": \\\"Shiraiwa\\\", \\\"author3LastName\\\": \\\"Ono\\\", \\\"author1FirstName\\\": \\\"N.\\\", \\\"author2FirstName\\\": \\\"S.\\\", \\\"author3FirstName\\\": \\\"M.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig16a.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig12_13_b.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig4.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig12_13_a.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig9a.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig10a.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig5_7_8a.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig8b.hdf",
+            "DOI; References; 10.1088/1741-4326/ac9690",
+            "CURATED; References; {\"related_identifier\":\"10.1088/1741-4326/ac9690\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1907996,1914079,1957519,1961248,1983391,2001075,2004944],\"title\":\"3D full wave fast wave modeling with realistic HHFW antenna geometry and SOL plasma in NSTX-U\",\"authors\":\"Bertelli, N.; Shiraiwa, S.; Ono, M.\",\"source_name\":[\"Nuclear Fusion\"],\"publication_date\":\"2022-10-27T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"12\\\", \\\"journalVolume\\\": \\\"62\\\", \\\"author1LastName\\\": \\\"Bertelli\\\", \\\"author2LastName\\\": \\\"Shiraiwa\\\", \\\"author3LastName\\\": \\\"Ono\\\", \\\"author1FirstName\\\": \\\"N.\\\", \\\"author2FirstName\\\": \\\"S.\\\", \\\"author3FirstName\\\": \\\"M.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig1b.png",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig9b.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/readme.txt",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig12_13_14_15_c.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig11b.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig3b.png",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig14_15_b.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig2.png",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig14_15_a.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig6.hdf",
+            "DOI; References; 10.34770/bm4s-t361/89/Fig1a.png"
+        ],
+        "authors": [
+            "Bertelli, Nicola [Princeton Plasma Physics Laboratory] (ORCID:0000000293267585)",
+            "Shiraiwa, Syun'ichi [Princeton Plasma Physics Laboratory] (ORCID:0000000152490441)",
+            "Ono, Masayuki [Princeton Plasma Physics Laboratory] (ORCID:0000000198499417)"
+        ],
+        "subjects": [
+            "HHFW",
+            "3D RF modeling",
+            "Petra-M",
+            "fast wave",
+            "NSTX-U"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/bm4s-t361",
+        "doe_contract_number": "AC02-09CH11466",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001075"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001075"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001076",
+        "title": "Novel angular velocity estimation technique for plasma filaments",
+        "doi": "https://doi.org/10.34770/styn-k539",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2022-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/styn-k539/79/fig4b.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig13_-7.5us.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig13_-2.5us.txt",
+            "DOI; IsReferencedBy; 10.1063/5.0128818",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1063/5.0128818\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001076],\"title\":\"Novel angular velocity estimation technique for plasma filaments\",\"authors\":\"Lampert, M.; Diallo, A.; Zweben, S. J.\",\"source_name\":[\"Review of Scientific Instruments\"],\"publication_date\":\"2023-01-01T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"1\\\", \\\"journalVolume\\\": \\\"94\\\", \\\"author1LastName\\\": \\\"Lampert\\\", \\\"author2LastName\\\": \\\"Diallo\\\", \\\"author3LastName\\\": \\\"Zweben\\\", \\\"author1FirstName\\\": \\\"M.\\\", \\\"author2FirstName\\\": \\\"A.\\\", \\\"author3FirstName\\\": \\\"S. J.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/styn-k539/79/fig8.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig12.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig11_484.182ms.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig13_7.5us.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig4a.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig15a.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig7.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig11_484.177ms.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig11_484.187ms.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig13_-10us.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig11_484.195ms.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig1ab.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig15b.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig4d.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig13_10us.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig13_-5us.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig11_484.180ms.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig11_484.185ms.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig11_484.190ms.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig6.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig13_5us.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig13_t_ELM.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig14.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig4c.txt",
+            "DOI; References; 10.34770/styn-k539/79/README.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig11_484.198ms.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig3abcd.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig10.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig5.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig11_484.193ms.txt",
+            "DOI; References; 10.1063/5.0128818",
+            "CURATED; References; {\"related_identifier\":\"10.1063/5.0128818\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001076],\"title\":\"Novel angular velocity estimation technique for plasma filaments\",\"authors\":\"Lampert, M.; Diallo, A.; Zweben, S. J.\",\"source_name\":[\"Review of Scientific Instruments\"],\"publication_date\":\"2023-01-01T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"1\\\", \\\"journalVolume\\\": \\\"94\\\", \\\"author1LastName\\\": \\\"Lampert\\\", \\\"author2LastName\\\": \\\"Diallo\\\", \\\"author3LastName\\\": \\\"Zweben\\\", \\\"author1FirstName\\\": \\\"M.\\\", \\\"author2FirstName\\\": \\\"A.\\\", \\\"author3FirstName\\\": \\\"S. J.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/styn-k539/79/fig9.txt",
+            "DOI; References; 10.34770/styn-k539/79/fig13_2.5us.txt"
+        ],
+        "authors": [
+            "Lampert, Mate [Princeton Plasma Physics Laboratory] (ORCID:0000000284628799)",
+            "Diallo, Ahmed [Princeton Plasma Physics Laboratory] (ORCID:000000020706060X)",
+            "Zweben, Stewart [Princeton Plasma Physics Laboratory] (ORCID:0000000217380586)"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/styn-k539",
+        "doe_contract_number": "AC02-09CH11466",
+        "subjects": [],
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001076"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001076"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001077",
+        "title": "Examination of OH and H2O2 production by uniform and non-uniform modes of dielectric barrier discharge in He/air mixture",
+        "doi": "https://doi.org/10.34770/1avt-h679",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2022-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; IsReferencedBy; 10.1088/1361-6463/ac95a6",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1088/1361-6463/ac95a6\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1960062,1996247,2001077],\"title\":\"Examination of OH and H<sub>2</sub>O<sub>2</sub> production by uniform and non-uniform modes of dielectric barrier discharge in He/air mixture\",\"authors\":\"Yatom, Shurik; Dobrynin, Danil\",\"source_name\":[\"Journal of Physics D: Applied Physics\"],\"publication_date\":\"2022-10-17T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"48\\\", \\\"journalVolume\\\": \\\"55\\\", \\\"author1LastName\\\": \\\"Yatom\\\", \\\"author2LastName\\\": \\\"Dobrynin\\\", \\\"author1FirstName\\\": \\\"Shurik\\\", \\\"author2FirstName\\\": \\\"Danil\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.1088/1361-6463/ac95a6",
+            "CURATED; References; {\"related_identifier\":\"10.1088/1361-6463/ac95a6\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1960062,1996247,2001077],\"title\":\"Examination of OH and H<sub>2</sub>O<sub>2</sub> production by uniform and non-uniform modes of dielectric barrier discharge in He/air mixture\",\"authors\":\"Yatom, Shurik; Dobrynin, Danil\",\"source_name\":[\"Journal of Physics D: Applied Physics\"],\"publication_date\":\"2022-10-17T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"48\\\", \\\"journalVolume\\\": \\\"55\\\", \\\"author1LastName\\\": \\\"Yatom\\\", \\\"author2LastName\\\": \\\"Dobrynin\\\", \\\"author1FirstName\\\": \\\"Shurik\\\", \\\"author2FirstName\\\": \\\"Danil\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}"
+        ],
+        "authors": [
+            "Yatom, Shurik [Princeton Plasma Physics Laboratory] (ORCID:0000000187168487)",
+            "Dobrynin, Danil (ORCID:0000000346715370)"
+        ],
+        "subjects": [
+            "dielectric barrier discharge",
+            "laser induced fluorescence",
+            "hydroxyl radical",
+            "hydrogen peroxide"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/1avt-h679",
+        "doe_contract_number": "AC02-09CH11466; SC0021379",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001077"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001077"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001078",
+        "title": "Topological Langmuir-cyclotron wave",
+        "doi": "https://doi.org/10.34770/75nk-0337",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2022-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/75nk-0337/82/Fig_9.pdf",
+            "DOI; References; 10.34770/75nk-0337/82/Fig_1.pdf",
+            "DOI; References; 10.34770/75nk-0337/82/Fig_7.pdf",
+            "DOI; References; 10.34770/75nk-0337/82/Fig_5.pdf",
+            "DOI; References; 10.1126/sciadv.add8041",
+            "CURATED; References; {\"related_identifier\":\"10.1126/sciadv.add8041\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1974422,2001078],\"title\":\"Topological Langmuir-cyclotron wave\",\"authors\":\"Qin, Hong; Fu, Yichen\",\"source_name\":[\"Science Advances\"],\"publication_date\":\"2023-03-31T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"13\\\", \\\"journalVolume\\\": \\\"9\\\", \\\"author1LastName\\\": \\\"Qin\\\", \\\"author2LastName\\\": \\\"Fu\\\", \\\"author1FirstName\\\": \\\"Hong\\\", \\\"author2FirstName\\\": \\\"Yichen\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/75nk-0337/82/Fig_3.pdf",
+            "DOI; IsReferencedBy; 10.1126/sciadv.add8041",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1126/sciadv.add8041\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1974422,2001078],\"title\":\"Topological Langmuir-cyclotron wave\",\"authors\":\"Qin, Hong; Fu, Yichen\",\"source_name\":[\"Science Advances\"],\"publication_date\":\"2023-03-31T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"13\\\", \\\"journalVolume\\\": \\\"9\\\", \\\"author1LastName\\\": \\\"Qin\\\", \\\"author2LastName\\\": \\\"Fu\\\", \\\"author1FirstName\\\": \\\"Hong\\\", \\\"author2FirstName\\\": \\\"Yichen\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/75nk-0337/82/Readme.txt",
+            "DOI; References; 10.34770/75nk-0337/82/Fig_8.pdf",
+            "DOI; References; 10.34770/75nk-0337/82/Fig_2.pdf",
+            "DOI; References; 10.34770/75nk-0337/82/Fig_10.pdf",
+            "DOI; References; 10.34770/75nk-0337/82/Fig_6.pdf",
+            "DOI; References; 10.34770/75nk-0337/82/Fig_4.pdf"
+        ],
+        "authors": [
+            "Fu, Yichen [Princeton Plasma Physics Laboratory] (ORCID:0000000252059827)",
+            "Qin, Hong [Princeton Plasma Physics Laboratory] (ORCID:0000000303043762)"
+        ],
+        "subjects": [
+            "Topological Langmuir-Cyclotron Wave",
+            "Topological Wave in Continuous Medium",
+            "Index Theorem",
+            "Bulk-Edge Correspondence",
+            "Chern Number in Phase Space"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/75nk-0337",
+        "doe_contract_number": "AC02-09CH11466",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001078"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001078"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001079",
+        "title": "A novel scheme for error field correction in permanent magnet stellarators",
+        "doi": "https://doi.org/10.34770/7ev8-8b25",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2022-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/7ev8-8b25/61/license.txt",
+            "DOI; References; 10.34770/7ev8-8b25/61/Data.zip",
+            "DOI; References; 10.34770/7ev8-8b25/61/README.txt",
+            "DOI; References; 10.1088/1741-4326/aca98d",
+            "CURATED; References; {\"related_identifier\":\"10.1088/1741-4326/aca98d\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1923414,2001079],\"title\":\"A novel scheme for error field correction in permanent magnet stellarators\",\"authors\":\"Rutkowski, A.; Hammond, K.; Zhu, C.\",\"source_name\":[\"Nuclear Fusion\"],\"publication_date\":\"2023-01-17T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"2\\\", \\\"journalVolume\\\": \\\"63\\\", \\\"author1LastName\\\": \\\"Rutkowski\\\", \\\"author2LastName\\\": \\\"Hammond\\\", \\\"author3LastName\\\": \\\"Zhu\\\", \\\"author1FirstName\\\": \\\"A.\\\", \\\"author2FirstName\\\": \\\"K.\\\", \\\"author3FirstName\\\": \\\"C.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; IsReferencedBy; 10.1088/1741-4326/aca98d",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1088/1741-4326/aca98d\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1923414,2001079],\"title\":\"A novel scheme for error field correction in permanent magnet stellarators\",\"authors\":\"Rutkowski, A.; Hammond, K.; Zhu, C.\",\"source_name\":[\"Nuclear Fusion\"],\"publication_date\":\"2023-01-17T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"2\\\", \\\"journalVolume\\\": \\\"63\\\", \\\"author1LastName\\\": \\\"Rutkowski\\\", \\\"author2LastName\\\": \\\"Hammond\\\", \\\"author3LastName\\\": \\\"Zhu\\\", \\\"author1FirstName\\\": \\\"A.\\\", \\\"author2FirstName\\\": \\\"K.\\\", \\\"author3FirstName\\\": \\\"C.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}"
+        ],
+        "authors": [
+            "Rutkowski, Adam",
+            "Hammond, Kenneth [Princeton Plasma Physics Laboratory] (ORCID:0000000211044434)",
+            "Zhu, Caoxiang [Princeton Plasma Physics Laboratory] (ORCID:0000000323373232)",
+            "Gates, David [Princeton Plasma Physics Laboratory] (ORCID:0000000156793124)",
+            "Chambliss, Amelia [Princeton Plasma Physics Laboratory] (ORCID:0000000345592970)"
+        ],
+        "subjects": [
+            "Stellarators"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/7ev8-8b25",
+        "doe_contract_number": "AC02-09CH11466",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001079"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001079"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001080",
+        "title": "Thermal ion kinetic effects and Landau damping in fishbone modes",
+        "doi": "https://doi.org/10.34770/31gh-r172",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2022-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/31gh-r172/80/thermal_ion_landau.zip",
+            "DOI; References; 10.1017/S0022377822000952",
+            "CURATED; References; {\"related_identifier\":\"10.1017/S0022377822000952\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1974415,2001080],\"title\":\"Thermal ion kinetic effects and Landau damping in fishbone modes\",\"authors\":\"Liu, Chang; Jardin, Stephen C.; Bao, Jian\",\"source_name\":[\"Journal of Plasma Physics\"],\"publication_date\":\"2022-11-28T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"6\\\", \\\"journalVolume\\\": \\\"88\\\", \\\"author1LastName\\\": \\\"Liu\\\", \\\"author2LastName\\\": \\\"Jardin\\\", \\\"author3LastName\\\": \\\"Bao\\\", \\\"author1FirstName\\\": \\\"Chang\\\", \\\"author2FirstName\\\": \\\"Stephen C.\\\", \\\"author3FirstName\\\": \\\"Jian\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/31gh-r172/80/license.txt",
+            "DOI; IsReferencedBy; 10.1017/S0022377822000952",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1017/S0022377822000952\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1974415,2001080],\"title\":\"Thermal ion kinetic effects and Landau damping in fishbone modes\",\"authors\":\"Liu, Chang; Jardin, Stephen C.; Bao, Jian\",\"source_name\":[\"Journal of Plasma Physics\"],\"publication_date\":\"2022-11-28T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"6\\\", \\\"journalVolume\\\": \\\"88\\\", \\\"author1LastName\\\": \\\"Liu\\\", \\\"author2LastName\\\": \\\"Jardin\\\", \\\"author3LastName\\\": \\\"Bao\\\", \\\"author1FirstName\\\": \\\"Chang\\\", \\\"author2FirstName\\\": \\\"Stephen C.\\\", \\\"author3FirstName\\\": \\\"Jian\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}"
+        ],
+        "authors": [
+            "Liu, Chang [Princeton Plasma Physics Laboratory] (ORCID:000000026747955X)",
+            "Jardin, Stephen [Princeton Plasma Physics Laboratory] (ORCID:0000000163906908)",
+            "Bao, Jian",
+            "Gorelenkov, Nikolai [Princeton Plasma Physics Laboratory] (ORCID:0000000273458149)",
+            "Brennan, Dylan",
+            "Yang, James [Princeton Plasma Physics Laboratory] (ORCID:0000000184228464)",
+            "Podesta, Mario [Princeton Plasma Physics Laboratory] (ORCID:0000000349750585)"
+        ],
+        "subjects": [
+            "Tokamak",
+            "Spherical Tokamak",
+            "Thermal ion kinetic effect",
+            "Fishbone mode",
+            "Landau damping",
+            "Kinetic-MHD simulation"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/31gh-r172",
+        "doe_contract_number": "AC02-09CH11466",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001080"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001080"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001081",
+        "title": "Global gyrokinetic study of shaping effects on electromagnetic modes at NSTX aspect ratio with ad hoc parallel magnetic perturbation effects",
+        "doi": "https://doi.org/10.34770/415v-8p16",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2022-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/415v-8p16/78/data.zip",
+            "DOI; References; 10.1063/5.0106925",
+            "CURATED; References; {\"related_identifier\":\"10.1063/5.0106925\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001081],\"title\":\"Global gyrokinetic study of shaping effects on electromagnetic modes at NSTX aspect ratio with <i>ad hoc</i> parallel magnetic perturbation effects\",\"authors\":\"Sharma, A. Y.; Cole, M. D. J.; G\u00f6rler, T.\",\"source_name\":[\"Physics of Plasmas\"],\"publication_date\":\"2022-11-01T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"11\\\", \\\"journalVolume\\\": \\\"29\\\", \\\"author1LastName\\\": \\\"Sharma\\\", \\\"author2LastName\\\": \\\"Cole\\\", \\\"author3LastName\\\": \\\"G\u00f6rler\\\", \\\"author1FirstName\\\": \\\"A. Y.\\\", \\\"author2FirstName\\\": \\\"M. D. J.\\\", \\\"author3FirstName\\\": \\\"T.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/415v-8p16/78/license.txt",
+            "DOI; IsReferencedBy; 10.1063/5.0106925",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1063/5.0106925\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001081],\"title\":\"Global gyrokinetic study of shaping effects on electromagnetic modes at NSTX aspect ratio with <i>ad hoc</i> parallel magnetic perturbation effects\",\"authors\":\"Sharma, A. Y.; Cole, M. D. J.; G\u00f6rler, T.\",\"source_name\":[\"Physics of Plasmas\"],\"publication_date\":\"2022-11-01T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"11\\\", \\\"journalVolume\\\": \\\"29\\\", \\\"author1LastName\\\": \\\"Sharma\\\", \\\"author2LastName\\\": \\\"Cole\\\", \\\"author3LastName\\\": \\\"G\u00f6rler\\\", \\\"author1FirstName\\\": \\\"A. Y.\\\", \\\"author2FirstName\\\": \\\"M. D. J.\\\", \\\"author3FirstName\\\": \\\"T.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}"
+        ],
+        "authors": [
+            "Sharma, A. Y. [Princeton Plasma Physics Laboratory]",
+            "Cole, M. D. J. [Princeton Plasma Physics Laboratory] (ORCID:000000019682989X)",
+            "G\u00f6rler, T.",
+            "Chen, Y.",
+            "Hatch, D. R.",
+            "Guttenfelder, W. [Princeton Plasma Physics Laboratory] (ORCID:000000018181058X)",
+            "Hager, R. [Princeton Plasma Physics Laboratory] (ORCID:0000000246243150)",
+            "Sturdevant, B. J. [Princeton Plasma Physics Laboratory] (ORCID:0000000211162983)",
+            "Ku, S. [Princeton Plasma Physics Laboratory] (ORCID:0000000299641208)",
+            "Mishchenko, A. (ORCID:0000000314364502)",
+            "Chang, C. S. [Princeton Plasma Physics Laboratory] (ORCID:0000000233465731)"
+        ],
+        "subjects": [
+            "Gyrokinetic simulations",
+            "Particle-in-cell method",
+            "Plasma confinement",
+            "Plasma instabilities",
+            "Tokamaks"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/415v-8p16",
+        "doe_contract_number": "AC02-05CH11231; AC02-09CH11466; FES-ERCAPm499",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001081"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001081"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001082",
+        "title": "Energetic particle optimization of quasi-axisymmetric stellarator equilibria",
+        "doi": "https://doi.org/10.34770/wnjn-m776",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2022-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/wnjn-m776/60/README.txt",
+            "DOI; References; 10.34770/wnjn-m776/60/data.zip",
+            "DOI; References; 10.34770/wnjn-m776/60/license.txt",
+            "DOI; IsReferencedBy; 10.1088/1741-4326/aca4e3",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1088/1741-4326/aca4e3\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001082],\"title\":\"Energetic particle optimization of quasi-axisymmetric stellarator equilibria\",\"authors\":\"LeViness, Alexandra; Schmitt, John C.; Lazerson, Samuel A.\",\"source_name\":[\"Nuclear Fusion\"],\"publication_date\":\"2022-12-12T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"1\\\", \\\"journalVolume\\\": \\\"63\\\", \\\"author1LastName\\\": \\\"LeViness\\\", \\\"author2LastName\\\": \\\"Schmitt\\\", \\\"author3LastName\\\": \\\"Lazerson\\\", \\\"author1FirstName\\\": \\\"Alexandra\\\", \\\"author2FirstName\\\": \\\"John C.\\\", \\\"author3FirstName\\\": \\\"Samuel A.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.1088/1741-4326/aca4e3",
+            "CURATED; References; {\"related_identifier\":\"10.1088/1741-4326/aca4e3\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001082],\"title\":\"Energetic particle optimization of quasi-axisymmetric stellarator equilibria\",\"authors\":\"LeViness, Alexandra; Schmitt, John C.; Lazerson, Samuel A.\",\"source_name\":[\"Nuclear Fusion\"],\"publication_date\":\"2022-12-12T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"1\\\", \\\"journalVolume\\\": \\\"63\\\", \\\"author1LastName\\\": \\\"LeViness\\\", \\\"author2LastName\\\": \\\"Schmitt\\\", \\\"author3LastName\\\": \\\"Lazerson\\\", \\\"author1FirstName\\\": \\\"Alexandra\\\", \\\"author2FirstName\\\": \\\"John C.\\\", \\\"author3FirstName\\\": \\\"Samuel A.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}"
+        ],
+        "authors": [
+            "LeViness, Alexandra [Princeton Plasma Physics Laboratory] (ORCID:0000000225520411)",
+            "Schmitt, John (ORCID:0000000291379540)",
+            "Lazerson, Samuel (ORCID:0000000180020121)",
+            "Bader, Aaron (ORCID:000000026003374X)",
+            "Faber, Benjamin (ORCID:000000034934400X)",
+            "Hammond, Kenneth [Princeton Plasma Physics Laboratory] (ORCID:0000000211044434)",
+            "Gates, David [Princeton Plasma Physics Laboratory] (ORCID:0000000156793124)"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/wnjn-m776",
+        "doe_contract_number": "AC02-09CH11466",
+        "subjects": [],
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001082"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001082"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001083",
+        "title": "Observation of a reduced-turbulence regime with boron powder injection in a stellarator",
+        "doi": "https://doi.org/10.34770/3f28-m424",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2022-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/3f28-m424/104/LP_166254.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Ti0_169620",
+            "DOI; References; 10.34770/3f28-m424/104/PCIdn_166256_t5.2.txt",
+            "DOI; IsReferencedBy; 10.1038/s41567-021-01460-4",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1038/s41567-021-01460-4\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1869950,1869951,1877953,1880878,1885298,1887997,1905782,1914091,1974493,1979309,1986322,2001083],\"title\":\"Observation of a reduced-turbulence regime with boron powder injection in a stellarator\",\"authors\":\"Nespoli, F.; Masuzaki, S.; Tanaka, K.\",\"source_name\":[\"Nature Physics\"],\"publication_date\":\"2022-01-10T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"3\\\", \\\"journalVolume\\\": \\\"18\\\", \\\"author1LastName\\\": \\\"Nespoli\\\", \\\"author2LastName\\\": \\\"Masuzaki\\\", \\\"author3LastName\\\": \\\"Tanaka\\\", \\\"author1FirstName\\\": \\\"F.\\\", \\\"author2FirstName\\\": \\\"S.\\\", \\\"author3FirstName\\\": \\\"K.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/3f28-m424/104/PCI_PSD_167233_t4.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCI_PSD_167234_t4.txt",
+            "DOI; References; 10.34770/3f28-m424/104/vExB_166256_t_5.25.txt",
+            "DOI; References; 10.34770/3f28-m424/104/CXSproffit_167234_t5.25.txt",
+            "DOI; References; 10.34770/3f28-m424/104/vExB_166256_t_8.5.txt",
+            "DOI; References; 10.1038/s41567-021-01460-4",
+            "CURATED; References; {\"related_identifier\":\"10.1038/s41567-021-01460-4\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1869950,1869951,1877953,1880878,1885298,1887997,1905782,1914091,1974493,1979309,1986322,2001083],\"title\":\"Observation of a reduced-turbulence regime with boron powder injection in a stellarator\",\"authors\":\"Nespoli, F.; Masuzaki, S.; Tanaka, K.\",\"source_name\":[\"Nature Physics\"],\"publication_date\":\"2022-01-10T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"3\\\", \\\"journalVolume\\\": \\\"18\\\", \\\"author1LastName\\\": \\\"Nespoli\\\", \\\"author2LastName\\\": \\\"Masuzaki\\\", \\\"author3LastName\\\": \\\"Tanaka\\\", \\\"author1FirstName\\\": \\\"F.\\\", \\\"author2FirstName\\\": \\\"S.\\\", \\\"author3FirstName\\\": \\\"K.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/3f28-m424/104/166256t5434_Zeff_ambipolarSolutions.h5",
+            "DOI; References; 10.34770/3f28-m424/104/PCI_PSD_166256_t8.5.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Te0_169620",
+            "DOI; References; 10.34770/3f28-m424/104/167234t5250_Zeff_ambipolarSolutions.h5",
+            "DOI; References; 10.34770/3f28-m424/104/input_power_167234.txt",
+            "DOI; References; 10.34770/3f28-m424/104/TSdata_167234_t5.25.txt",
+            "DOI; References; 10.34770/3f28-m424/104/169620t5959_Zeff_ambipolarSolutions.h5",
+            "DOI; References; 10.34770/3f28-m424/104/DUSTT_traj.txt",
+            "DOI; References; 10.34770/3f28-m424/104/plotEMC3.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCIdn_167234_t5.2.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Chi_i_167233.txt",
+            "DOI; References; 10.34770/3f28-m424/104/input_power_169620.txt",
+            "DOI; References; 10.34770/3f28-m424/104/mass_rate_167234.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCIdn_166256_t8.5.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCI_t_166256.txt",
+            "DOI; References; 10.34770/3f28-m424/104/CXSproffit_167233_t5.25.txt",
+            "DOI; References; 10.34770/3f28-m424/104/tau_E_166254.txt",
+            "DOI; References; 10.34770/3f28-m424/104/169619t5959_Zeff_ambipolarSolutions.h5",
+            "DOI; References; 10.34770/3f28-m424/104/Chi_e_167234.txt",
+            "DOI; References; 10.34770/3f28-m424/104/LP_166256.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCI_r_k_166256.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Bsource_164645.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Dgrad.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCI_PSD_166256_t5.2.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCI_PSD_167233_t5.2.txt",
+            "DOI; References; 10.34770/3f28-m424/104/tau_E_167233.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCI_PSD_167234_t5.2.txt",
+            "DOI; References; 10.34770/3f28-m424/104/input_power_164644.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Te0_164645.txt",
+            "DOI; References; 10.34770/3f28-m424/104/tau_E_167234.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Te0_164644.txt",
+            "DOI; References; 10.34770/3f28-m424/104/input_power_169619.txt",
+            "DOI; References; 10.34770/3f28-m424/104/tau_E_166256.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCIdn_167233_t5.2.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Ti0_166254",
+            "DOI; References; 10.34770/3f28-m424/104/input_power_166254.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Ti0_166256",
+            "DOI; References; 10.34770/3f28-m424/104/166256t9000_Zeff_ambipolarSolutions.h5",
+            "DOI; References; 10.34770/3f28-m424/104/input_power_164645.txt",
+            "DOI; References; 10.34770/3f28-m424/104/tau_E_169620.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCIdn_166254_t8.5.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCI_t_166254.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Te0_166254",
+            "DOI; References; 10.34770/3f28-m424/104/TSproffit_167233_t5.25.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Te0_166256",
+            "DOI; References; 10.34770/3f28-m424/104/CXSdata_167234_t5.25.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCIdn_166254_t5.2.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Bsource_169620.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Chi_e_167233.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCI_PSD_166254_t8.5.txt",
+            "DOI; References; 10.34770/3f28-m424/104/input_power_166256.txt",
+            "DOI; References; 10.34770/3f28-m424/104/README.txt",
+            "DOI; References; 10.34770/3f28-m424/104/mass_rate_164645.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Ti0_167233",
+            "DOI; References; 10.34770/3f28-m424/104/Ti0_167234",
+            "DOI; References; 10.34770/3f28-m424/104/Chi_i_167234.txt",
+            "DOI; References; 10.34770/3f28-m424/104/mass_rate_166256.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCI_PSD_166256.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Bsource_166256.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Bsource_167234.txt",
+            "DOI; References; 10.34770/3f28-m424/104/mass_rate_169620.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Te0_167233",
+            "DOI; References; 10.34770/3f28-m424/104/tau_E_164644.txt",
+            "DOI; References; 10.34770/3f28-m424/104/Te0_167234",
+            "DOI; References; 10.34770/3f28-m424/104/Ti0_169619",
+            "DOI; References; 10.34770/3f28-m424/104/PCI_PSD_166254_t5.2.txt",
+            "DOI; References; 10.34770/3f28-m424/104/TSdata_167233_t5.25.txt",
+            "DOI; References; 10.34770/3f28-m424/104/TSproffit_167234_t5.25.txt",
+            "DOI; References; 10.34770/3f28-m424/104/PCI_PSD_167234.txt",
+            "DOI; References; 10.34770/3f28-m424/104/167234t3800_Zeff_ambipolarSolutions.h5",
+            "DOI; References; 10.34770/3f28-m424/104/Te0_169619",
+            "DOI; References; 10.34770/3f28-m424/104/input_power_167233.txt",
+            "DOI; References; 10.34770/3f28-m424/104/CXSdata_167233_t5.25.txt",
+            "DOI; References; 10.34770/3f28-m424/104/tau_E_164645.txt",
+            "DOI; References; 10.34770/3f28-m424/104/tau_E_169619.txt"
+        ],
+        "authors": [
+            "Nespoli, Federico [Princeton Plasma Physics Laboratory] (ORCID:000000017644751X)",
+            "Masuzaki, Suguru",
+            "Tanaka, Kenji",
+            "Ashikawa, Naoko",
+            "Shoji, Mamoru",
+            "Gilson, Erik [Princeton Plasma Physics Laboratory] (ORCID:0000000168209132)",
+            "Oishi, Tetsutarou",
+            "Ida, Katsumi",
+            "Yoshinuma, Mikirou",
+            "Takemura, Yuki",
+            "Kinoshita, Toshiki",
+            "Motojima, Gen",
+            "Kenmochi, Naoki",
+            "Kawamura, Gakushi",
+            "Suzuki, Chihiro",
+            "Nagy, Alex [Princeton Plasma Physics Laboratory] (ORCID:0000000282012528)",
+            "Bortolon, Alessandro [Princeton Plasma Physics Laboratory] (ORCID:0000000200940209)",
+            "Pablant, Novimir [Princeton Plasma Physics Laboratory] (ORCID:0000000166178459)",
+            "Moll\u00e9n, Albert [Princeton Plasma Physics Laboratory] (ORCID:0000000292577864)",
+            "Tamura, Naoki",
+            "Gates, David [Princeton Plasma Physics Laboratory] (ORCID:0000000156793124)",
+            "Morisaki, Tomohiro"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/3f28-m424",
+        "doe_contract_number": "AC02-09CH11466",
+        "subjects": [],
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001083"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001083"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001084",
+        "title": "Data for \"The value of fusion energy to a decarbonized United States electric grid\"",
+        "doi": "https://doi.org/10.34770/f8em-3c49",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2022-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/LowOppNoNucOrCCS.tar.gz",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/LowOppNoNuc.tar.gz",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/HighOpp.tar.gz",
+            "DOI; References; 10.34770/f8em-3c49/64/Step5_analyses.zip",
+            "DOI; References; 10.34770/f8em-3c49/64/Step6_products.zip",
+            "DOI; References; 10.34770/f8em-3c49/64/Step1_powergenome/Eastern.zip",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/MedOppMustRun.tar.gz",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/CRMedOpp.tar.gz",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/MedOppLowNuclear.tar.gz",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/LowOpp.tar.gz",
+            "DOI; References; 10.34770/f8em-3c49/64/Step2_base_scenarios.zip",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/CRLowOpp.tar.gz",
+            "DOI; References; 10.34770/f8em-3c49/64/license.txt",
+            "DOI; References; 10.34770/f8em-3c49/64/Step1_powergenome/Eastern_EFS.zip",
+            "DOI; References; 10.5281/zenodo.7507006",
+            "CURATED; References; {\"related_identifier\":\"10.5281/zenodo.7507006\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001084],\"title\":\"cfe316/GenX: v0.2.1\",\"authors\":\"Chakrabarti, Sambuddha (Sam); Patankar, Neha; Jenkins, Jesse\",\"publication_date\":\"2023-01-05T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"author1LastName\\\": \\\"Chakrabarti\\\", \\\"author2LastName\\\": \\\"Patankar\\\", \\\"author3LastName\\\": \\\"Jenkins\\\", \\\"author1FirstName\\\": \\\"Sambuddha (Sam)\\\", \\\"author2FirstName\\\": \\\"Neha\\\", \\\"author3FirstName\\\": \\\"Jesse\\\", \\\"crossrefProductType\\\": \\\"software\\\"}\"]}",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/README.txt",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/LowOppLowNuclear.tar.gz",
+            "DOI; References; 10.34770/f8em-3c49/64/globus_README.txt",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/CRHighOpp.tar.gz",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/MedOppNoNuc.tar.gz",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/HighOppNoNucOrCCS.tar.gz",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/HighOppNoNuc.tar.gz",
+            "DOI; References; 10.34770/f8em-3c49/64/Step1_powergenome/README.txt",
+            "DOI; References; 10.34770/f8em-3c49/64/data_space_README.txt",
+            "DOI; IsReferencedBy; 10.1016/j.joule.2023.02.006",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1016/j.joule.2023.02.006\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001084],\"title\":\"The value of fusion energy to a decarbonized United States electric grid\",\"authors\":\"Schwartz, Jacob A.; Ricks, Wilson; Kolemen, Egemen\",\"source_name\":[\"Joule\"],\"publication_date\":\"2023-04-01T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"4\\\", \\\"journalVolume\\\": \\\"7\\\", \\\"author1LastName\\\": \\\"Schwartz\\\", \\\"author2LastName\\\": \\\"Ricks\\\", \\\"author3LastName\\\": \\\"Kolemen\\\", \\\"author1FirstName\\\": \\\"Jacob A.\\\", \\\"author2FirstName\\\": \\\"Wilson\\\", \\\"author3FirstName\\\": \\\"Egemen\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/MedOpp.tar.gz",
+            "DOI; References; 10.1016/j.joule.2023.02.006",
+            "CURATED; References; {\"related_identifier\":\"10.1016/j.joule.2023.02.006\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001084],\"title\":\"The value of fusion energy to a decarbonized United States electric grid\",\"authors\":\"Schwartz, Jacob A.; Ricks, Wilson; Kolemen, Egemen\",\"source_name\":[\"Joule\"],\"publication_date\":\"2023-04-01T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"4\\\", \\\"journalVolume\\\": \\\"7\\\", \\\"author1LastName\\\": \\\"Schwartz\\\", \\\"author2LastName\\\": \\\"Ricks\\\", \\\"author3LastName\\\": \\\"Kolemen\\\", \\\"author1FirstName\\\": \\\"Jacob A.\\\", \\\"author2FirstName\\\": \\\"Wilson\\\", \\\"author3FirstName\\\": \\\"Egemen\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/f8em-3c49/64/Step3_case_inputs.zip",
+            "DOI; References; 10.34770/f8em-3c49/64/Step4_selected_scenario_outputs/HighOppLowNuclear.tar.gz"
+        ],
+        "authors": [
+            "Schwartz, Jacob A. [Princeton Plasma Physics Laboratory] (ORCID:0000000196368181)",
+            "Ricks, Wilson [Princeton University]",
+            "Kolemen, Egemen [Princeton Plasma Physics Laboratory] (ORCID:0000000342123247)",
+            "Jenkins, Jesse D. [Princeton University] (ORCID:0000000296707793)"
+        ],
+        "subjects": [
+            "fusion",
+            "economics",
+            "cost",
+            "value",
+            "tokamak",
+            "power plant"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/f8em-3c49",
+        "doe_contract_number": "AC02-09CH11466",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001084"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001084"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001085",
+        "title": "Electromagnetic total-f algorithm for gyrokinetic particle-in-cell simulations of boundary plasma in XGC",
+        "doi": "https://doi.org/10.34770/t2y6-af55",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2022-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/t2y6-af55/41/Hager_et_al_PhysPlasmas_29_112308_2022_data_set_v20221123.tar",
+            "DOI; References; 10.1063/5.0097855",
+            "CURATED; References; {\"related_identifier\":\"10.1063/5.0097855\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001085,2005049],\"title\":\"Electromagnetic total-<i>f</i> algorithm for gyrokinetic particle-in-cell simulations of boundary plasma in XGC\",\"authors\":\"Hager, Robert; Ku, S.; Sharma, A. Y.\",\"source_name\":[\"Physics of Plasmas\"],\"publication_date\":\"2022-11-01T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"11\\\", \\\"journalVolume\\\": \\\"29\\\", \\\"author1LastName\\\": \\\"Hager\\\", \\\"author2LastName\\\": \\\"Ku\\\", \\\"author3LastName\\\": \\\"Sharma\\\", \\\"author1FirstName\\\": \\\"Robert\\\", \\\"author2FirstName\\\": \\\"S.\\\", \\\"author3FirstName\\\": \\\"A. Y.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; IsReferencedBy; 10.1063/5.0097855",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1063/5.0097855\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001085,2005049],\"title\":\"Electromagnetic total-<i>f</i> algorithm for gyrokinetic particle-in-cell simulations of boundary plasma in XGC\",\"authors\":\"Hager, Robert; Ku, S.; Sharma, A. Y.\",\"source_name\":[\"Physics of Plasmas\"],\"publication_date\":\"2022-11-01T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"11\\\", \\\"journalVolume\\\": \\\"29\\\", \\\"author1LastName\\\": \\\"Hager\\\", \\\"author2LastName\\\": \\\"Ku\\\", \\\"author3LastName\\\": \\\"Sharma\\\", \\\"author1FirstName\\\": \\\"Robert\\\", \\\"author2FirstName\\\": \\\"S.\\\", \\\"author3FirstName\\\": \\\"A. Y.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/t2y6-af55/41/license.txt"
+        ],
+        "authors": [
+            "Hager, Robert [Princeton Plasma Physics Laboratory] (ORCID:0000000246243150)",
+            "Ku, Seung-Hoe [Princeton Plasma Physics Laboratory] (ORCID:0000000299641208)",
+            "Sharma, Amil Y. [Princeton Plasma Physics Laboratory] (ORCID:0000000279467425)",
+            "Churchill, Randy Michael [Princeton Plasma Physics Laboratory] (ORCID:000000015711746X)",
+            "Chang, C.S. [Princeton Plasma Physics Laboratory] (ORCID:0000000233465731)",
+            "Scheinberg, Aaron"
+        ],
+        "subjects": [
+            "Tokamak",
+            "Magnetic confinement fusion",
+            "gyrokinetic",
+            "XGC"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/t2y6-af55",
+        "doe_contract_number": "AC02-05CH11231; AC02-06CH11357; AC02-09CH11466; AC05-00OR22725",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001085"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001085"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001086",
+        "title": "A reduced-turbulence regime in the Large Helical Device upon injection of low-Z materials powders",
+        "doi": "https://doi.org/10.34770/g0cf-b557",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2023-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178505_t.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCIdn_178504_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Ha_gas_178486.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/CXSdata_167233_t5.25.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/plotEMC3_6.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178510_t4.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/178490t7090_v2_ambipolarSolutions.h5",
+            "DOI; References; 10.34770/g0cf-b557/105/PCIdn_167234_t5.2.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCIdn_178485_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/input_power_178504.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCIdn_178505_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/relative_variations_nescan.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCIdn_166254_t5.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Ti0_178490",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178476_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Te0_178490",
+            "DOI; References; 10.34770/g0cf-b557/105/flux_surf.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/178485t7090_v1_ambipolarSolutions.h5",
+            "DOI; References; 10.34770/g0cf-b557/105/DYTRANS_178486.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/plotEMC3_4.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/CXSdata_178504_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCIdn_167233_t5.2.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/TSdata_167234_t5.25.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Ha_gas_178490.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/trajectory_Y.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/CXSproffit_167233_t5.25.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Ti0_178485",
+            "DOI; References; 10.1088/1741-4326/acd465",
+            "CURATED; References; {\"related_identifier\":\"10.1088/1741-4326/acd465\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001086],\"title\":\"A reduced-turbulence regime in the Large Helical Device upon injection of low-Z materials powders\",\"authors\":\"Nespoli, F.; Tanaka, K.; Masuzaki, S.\",\"source_name\":[\"Nuclear Fusion\"],\"publication_date\":\"2023-05-19T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"7\\\", \\\"journalVolume\\\": \\\"63\\\", \\\"author1LastName\\\": \\\"Nespoli\\\", \\\"author2LastName\\\": \\\"Tanaka\\\", \\\"author3LastName\\\": \\\"Masuzaki\\\", \\\"author1FirstName\\\": \\\"F.\\\", \\\"author2FirstName\\\": \\\"K.\\\", \\\"author3FirstName\\\": \\\"S.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/g0cf-b557/105/PCIdn_178510_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/DYTRANS_178490.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCIdn_178496_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Ti0_178487",
+            "DOI; References; 10.34770/g0cf-b557/105/EMC3_profiles.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Ti0_178486",
+            "DOI; References; 10.34770/g0cf-b557/105/PMC_0166256_2p5U-AH02-02-NF.mp4",
+            "DOI; References; 10.34770/g0cf-b557/105/TSproffit_178505_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Te0_178485",
+            "DOI; References; 10.34770/g0cf-b557/105/plotEMC3_2.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Te0_178487",
+            "DOI; References; 10.34770/g0cf-b557/105/Te0_178486",
+            "DOI; References; 10.34770/g0cf-b557/105/178486t7090_v1_ambipolarSolutions.h5",
+            "DOI; References; 10.34770/g0cf-b557/105/TSproffit_167233_t5.25.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/relative_variations_Pscan.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178505_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/neutral_source_B.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Ti0_178505",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_167233_t5.2.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Spec_178485_tst_7.0000_len_200_fmin_20_fmax_500.dat",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_167234_t5.2.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/TSdata_178505_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/ne0_178485",
+            "DOI; References; 10.34770/g0cf-b557/105/ne0_178486",
+            "DOI; References; 10.34770/g0cf-b557/105/TSdata_178504_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/TSproffit_167234_t5.25.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/ne0_178487",
+            "DOI; References; 10.34770/g0cf-b557/105/plotEMC3_5.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178505_PSD.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Ha_gas_178485.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Ti0_178504",
+            "DOI; References; 10.34770/g0cf-b557/105/Ha_gas_178487.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Te0_178504",
+            "DOI; References; 10.34770/g0cf-b557/105/plotEMC3_7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_166254_t5.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178494_t5.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Te0_178505",
+            "DOI; References; 10.34770/g0cf-b557/105/CXSproffit_178504_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/B_source.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/DYTRANS_178485.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178487_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178504_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/178486t7090_v2_ambipolarSolutions.h5",
+            "DOI; References; 10.34770/g0cf-b557/105/CXSproffit_167234_t5.25.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/plotEMC3_3.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/ne0_178490",
+            "DOI; References; 10.34770/g0cf-b557/105/input_power_178505.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/trajectory_Z.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178490_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/relative_variations_Bscan.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/README.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCIdn_178510_t4.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Spec_178487_tst_7.0000_len_200_fmin_20_fmax_500.dat",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178485_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/DYTRANS_178487.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/relative_variations_diffpow.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178494_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178496_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/Spec_178490_tst_7.0000_len_200_fmin_20_fmax_500.dat",
+            "DOI; References; 10.34770/g0cf-b557/105/plotEMC3_1.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCIdn_178494_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/trajectory_X.txt",
+            "DOI; IsReferencedBy; 10.1088/1741-4326/acd465",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1088/1741-4326/acd465\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001086],\"title\":\"A reduced-turbulence regime in the Large Helical Device upon injection of low-Z materials powders\",\"authors\":\"Nespoli, F.; Tanaka, K.; Masuzaki, S.\",\"source_name\":[\"Nuclear Fusion\"],\"publication_date\":\"2023-05-19T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"7\\\", \\\"journalVolume\\\": \\\"63\\\", \\\"author1LastName\\\": \\\"Nespoli\\\", \\\"author2LastName\\\": \\\"Tanaka\\\", \\\"author3LastName\\\": \\\"Masuzaki\\\", \\\"author1FirstName\\\": \\\"F.\\\", \\\"author2FirstName\\\": \\\"K.\\\", \\\"author3FirstName\\\": \\\"S.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/g0cf-b557/105/Spec_178486_tst_7.0000_len_200_fmin_20_fmax_500.dat",
+            "DOI; References; 10.34770/g0cf-b557/105/TSdata_167233_t5.25.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCIdn_178476_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/TSproffit_178504_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178510_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/neutral_source_C.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/plotEMC3_8.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/CXSdata_167234_t5.25.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178486_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/CXSproffit_178505_t7.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCI_PSD_178505_Freq.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/PCIdn_178494_t5.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/nB_toroidal_prof.txt",
+            "DOI; References; 10.34770/g0cf-b557/105/CXSdata_178505_t7.txt"
+        ],
+        "authors": [
+            "Nespoli, Federico [Princeton Plasma Physics Laboratory] (ORCID:000000017644751X)",
+            "Tanaka, Kenji",
+            "Masuzaki, Suguru (ORCID:0000000301610938)",
+            "Ashikawa, Naoko",
+            "Shoji, Mamoru (ORCID:0000000306557347)",
+            "Gilson, Erik [Princeton Plasma Physics Laboratory] (ORCID:0000000168209132)",
+            "Lunsford, Robert [Princeton Plasma Physics Laboratory] (ORCID:0000000335886801)",
+            "Oishi, Tetsutarou",
+            "Ida, Katsumi (ORCID:0000000205854561)",
+            "Yoshinuma, Mikirou",
+            "Takemura, Yuki (ORCID:000000033754897X)",
+            "Kinoshita, Toshiki (ORCID:0000000339304434)",
+            "Motojima, Gen (ORCID:0000000155223082)",
+            "Osakabe, Masaki (ORCID:000000015220947X)",
+            "Kenmochi, Naoki (ORCID:0000000310888237)",
+            "Kawamura, Gakushi (ORCID:0000000291175898)",
+            "Suzuki, Chihiro (ORCID:0000000165369034)",
+            "Nagy, Alex [Princeton Plasma Physics Laboratory] (ORCID:0000000282012528)",
+            "Bortolon, Alessandro [Princeton Plasma Physics Laboratory] (ORCID:0000000200940209)",
+            "Pablant, Novimir [Princeton Plasma Physics Laboratory] (ORCID:0000000166178459)",
+            "Moll\u00e9n, Albert [Princeton Plasma Physics Laboratory] (ORCID:0000000292577864)",
+            "Tamura, Naoki (ORCID:0000000316821519)",
+            "Gates, David [Princeton Plasma Physics Laboratory] (ORCID:0000000156793124)",
+            "Morisaki, Tomohiro"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/g0cf-b557",
+        "doe_contract_number": "AC02-09CH11466",
+        "subjects": [],
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001086"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001086"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001087",
+        "title": "Dataset for the letter \"Shifting and Splitting of Resonance Lines due to Dynamical Friction in Plasmas\" Phys. Rev. Lett. 130, 105101 (2023)",
+        "doi": "https://doi.org/10.34770/vesb-kq11",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2023-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/vesb-kq11/88/prl.h5",
+            "DOI; IsReferencedBy; 10.1103/PhysRevLett.130.105101",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1103/PhysRevLett.130.105101\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1995835,1996983,2001087,2004945],\"title\":\"Shifting and Splitting of Resonance Lines due to Dynamical Friction in Plasmas\",\"authors\":\"Duarte, V.\u2009N.; Lestz, J.\u2009B.; Gorelenkov, N.\u2009N.\",\"source_name\":[\"Physical Review Letters\"],\"publication_date\":\"2023-03-09T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"10\\\", \\\"journalVolume\\\": \\\"130\\\", \\\"author1LastName\\\": \\\"Duarte\\\", \\\"author2LastName\\\": \\\"Lestz\\\", \\\"author3LastName\\\": \\\"Gorelenkov\\\", \\\"author1FirstName\\\": \\\"V.\u2009N.\\\", \\\"author2FirstName\\\": \\\"J.\u2009B.\\\", \\\"author3FirstName\\\": \\\"N.\u2009N.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.1103/PhysRevLett.130.105101",
+            "CURATED; References; {\"related_identifier\":\"10.1103/PhysRevLett.130.105101\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1995835,1996983,2001087,2004945],\"title\":\"Shifting and Splitting of Resonance Lines due to Dynamical Friction in Plasmas\",\"authors\":\"Duarte, V.\u2009N.; Lestz, J.\u2009B.; Gorelenkov, N.\u2009N.\",\"source_name\":[\"Physical Review Letters\"],\"publication_date\":\"2023-03-09T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"10\\\", \\\"journalVolume\\\": \\\"130\\\", \\\"author1LastName\\\": \\\"Duarte\\\", \\\"author2LastName\\\": \\\"Lestz\\\", \\\"author3LastName\\\": \\\"Gorelenkov\\\", \\\"author1FirstName\\\": \\\"V.\u2009N.\\\", \\\"author2FirstName\\\": \\\"J.\u2009B.\\\", \\\"author3FirstName\\\": \\\"N.\u2009N.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/vesb-kq11/88/README.txt"
+        ],
+        "authors": [
+            "Duarte, Vin\u00edcius [Princeton Plasma Physics Laboratory] (ORCID:0000000180967518)",
+            "Lestz, Jeff (ORCID:0000000269751537)",
+            "Gorelenkov, Nikolai [Princeton Plasma Physics Laboratory] (ORCID:0000000273458149)",
+            "White, Roscoe [Princeton Plasma Physics Laboratory] (ORCID:0000000242392685)"
+        ],
+        "subjects": [
+            "Fusion products",
+            "Plasma instabilities",
+            "Plasma stability",
+            "Plasma-beam interactions"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/vesb-kq11",
+        "doe_contract_number": "AC02-09CH11466",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001087"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001087"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001088",
+        "title": "Density Limits as Disruption Forecasters for Spherical Tokamaks",
+        "doi": "https://doi.org/10.34770/67tb-0988",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2023-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/67tb-0988/101/Fig11.dat",
+            "DOI; References; 10.34770/67tb-0988/101/Fig7.dat",
+            "DOI; References; 10.34770/67tb-0988/101/Fig10_left.dat",
+            "DOI; References; 10.1088/1361-6587/ace476",
+            "CURATED; References; {\"related_identifier\":\"10.1088/1361-6587/ace476\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001088],\"title\":\"Density limits as disruption forecasters for spherical tokamaks\",\"authors\":\"Berkery, J. W.; Sabbagh, S. A.; Ham, C. J.\",\"source_name\":[\"Plasma Physics and Controlled Fusion\"],\"publication_date\":\"2023-07-21T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"9\\\", \\\"journalVolume\\\": \\\"65\\\", \\\"author1LastName\\\": \\\"Berkery\\\", \\\"author2LastName\\\": \\\"Sabbagh\\\", \\\"author3LastName\\\": \\\"Ham\\\", \\\"author1FirstName\\\": \\\"J. W.\\\", \\\"author2FirstName\\\": \\\"S. A.\\\", \\\"author3FirstName\\\": \\\"C. J.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/67tb-0988/101/Fig5.dat",
+            "DOI; References; 10.34770/67tb-0988/101/Fig9_mid.dat",
+            "DOI; References; 10.34770/67tb-0988/101/Fig1.dat",
+            "DOI; References; 10.34770/67tb-0988/101/Fig3.dat",
+            "DOI; References; 10.34770/67tb-0988/101/Fig8.dat",
+            "DOI; References; 10.34770/67tb-0988/101/Readme.txt",
+            "DOI; References; 10.34770/67tb-0988/101/Fig10_right.dat",
+            "DOI; References; 10.34770/67tb-0988/101/Fig6.dat",
+            "DOI; References; 10.34770/67tb-0988/101/Fig9_right.dat",
+            "DOI; References; 10.34770/67tb-0988/101/Fig4.dat",
+            "DOI; References; 10.34770/67tb-0988/101/Fig9_left.dat",
+            "DOI; IsReferencedBy; 10.1088/1361-6587/ace476",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1088/1361-6587/ace476\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001088],\"title\":\"Density limits as disruption forecasters for spherical tokamaks\",\"authors\":\"Berkery, J. W.; Sabbagh, S. A.; Ham, C. J.\",\"source_name\":[\"Plasma Physics and Controlled Fusion\"],\"publication_date\":\"2023-07-21T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"9\\\", \\\"journalVolume\\\": \\\"65\\\", \\\"author1LastName\\\": \\\"Berkery\\\", \\\"author2LastName\\\": \\\"Sabbagh\\\", \\\"author3LastName\\\": \\\"Ham\\\", \\\"author1FirstName\\\": \\\"J. W.\\\", \\\"author2FirstName\\\": \\\"S. A.\\\", \\\"author3FirstName\\\": \\\"C. J.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/67tb-0988/101/Fig10_mid.dat",
+            "DOI; References; 10.34770/67tb-0988/101/Fig2.dat"
+        ],
+        "authors": [
+            "Berkery, John [Princeton Plasma Physics Laboratory] (ORCID:0000000280623210)"
+        ],
+        "subjects": [
+            "density limit",
+            "disruptions",
+            "tokamak"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/67tb-0988",
+        "doe_contract_number": "AC02-09CH11466",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001088"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001088"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001089",
+        "title": "Laboratory study of the failed torus mechanism in arched, line-tied, magnetic flux ropes",
+        "doi": "https://doi.org/10.34770/k547-cq20",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2023-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/k547-cq20/85/fig15.mat",
+            "DOI; References; 10.34770/k547-cq20/85/fig6.mat",
+            "DOI; References; 10.1063/5.0137457",
+            "CURATED; References; {\"related_identifier\":\"10.1063/5.0137457\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001089],\"title\":\"Laboratory study of the failed torus mechanism in arched, line-tied, magnetic flux ropes\",\"authors\":\"Alt, Andrew; Ji, Hantao; Yoo, Jongsoo\",\"source_name\":[\"Physics of Plasmas\"],\"publication_date\":\"2023-04-01T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"4\\\", \\\"journalVolume\\\": \\\"30\\\", \\\"author1LastName\\\": \\\"Alt\\\", \\\"author2LastName\\\": \\\"Ji\\\", \\\"author3LastName\\\": \\\"Yoo\\\", \\\"author1FirstName\\\": \\\"Andrew\\\", \\\"author2FirstName\\\": \\\"Hantao\\\", \\\"author3FirstName\\\": \\\"Jongsoo\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/k547-cq20/85/fig7Eruptive.mat",
+            "DOI; References; 10.34770/k547-cq20/85/fig17.mat",
+            "DOI; IsReferencedBy; 10.1063/5.0137457",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1063/5.0137457\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001089],\"title\":\"Laboratory study of the failed torus mechanism in arched, line-tied, magnetic flux ropes\",\"authors\":\"Alt, Andrew; Ji, Hantao; Yoo, Jongsoo\",\"source_name\":[\"Physics of Plasmas\"],\"publication_date\":\"2023-04-01T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"4\\\", \\\"journalVolume\\\": \\\"30\\\", \\\"author1LastName\\\": \\\"Alt\\\", \\\"author2LastName\\\": \\\"Ji\\\", \\\"author3LastName\\\": \\\"Yoo\\\", \\\"author1FirstName\\\": \\\"Andrew\\\", \\\"author2FirstName\\\": \\\"Hantao\\\", \\\"author3FirstName\\\": \\\"Jongsoo\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/k547-cq20/85/fig18.mat",
+            "DOI; References; 10.34770/k547-cq20/85/license.txt",
+            "DOI; References; 10.34770/k547-cq20/85/fig12.mat",
+            "DOI; References; 10.34770/k547-cq20/85/fig8.mat",
+            "DOI; References; 10.34770/k547-cq20/85/fig7FailedTorus.mat",
+            "DOI; References; 10.34770/k547-cq20/85/fig10a.mat",
+            "DOI; References; 10.34770/k547-cq20/85/fig2.mat",
+            "DOI; References; 10.34770/k547-cq20/85/fig10c.mat",
+            "DOI; References; 10.34770/k547-cq20/85/ReadMe.txt",
+            "DOI; References; 10.34770/k547-cq20/85/fig9a.mat",
+            "DOI; References; 10.34770/k547-cq20/85/fig10b.mat",
+            "DOI; References; 10.34770/k547-cq20/85/fig13.mat",
+            "DOI; References; 10.34770/k547-cq20/85/fig11.mat",
+            "DOI; References; 10.34770/k547-cq20/85/fig9b.mat",
+            "DOI; References; 10.34770/k547-cq20/85/fig5.mat"
+        ],
+        "authors": [
+            "Alt, Andrew [Princeton Plasma Physics Laboratory] (ORCID:0000000194758282)",
+            "Ji, Hantao [Princeton Plasma Physics Laboratory] (ORCID:0000000196009963)",
+            "Yoo, Jongsoo [Princeton Plasma Physics Laboratory] (ORCID:0000000338811995)",
+            "Bose, Sayak [Princeton Plasma Physics Laboratory] (ORCID:0000000180939322)",
+            "Goodman, Aaron [Princeton Plasma Physics Laboratory] (ORCID:0000000336396572)",
+            "Yamada, Masaaki [Princeton Plasma Physics Laboratory] (ORCID:0000000349961649)"
+        ],
+        "subjects": [
+            "Laboratory plasma",
+            "Flux rope",
+            "Coronal mass ejection",
+            "Laboratory Astrophysics",
+            "MHD",
+            "MRX"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/k547-cq20",
+        "doe_contract_number": "AC02-09CH11466; SC0019049",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001089"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001089"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001090",
+        "title": "Neoclassical transport in strong gradient regions of large aspect ratio tokamaks",
+        "doi": "https://doi.org/10.34770/0hs8-8242",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2023-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/0hs8-8242/83/ReadMe.txt",
+            "DOI; References; 10.1017/S0022377823000430",
+            "CURATED; References; {\"related_identifier\":\"10.1017/S0022377823000430\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001090],\"title\":\"Neoclassical transport in strong gradient regions of large aspect ratio tokamaks\",\"authors\":\"Trinczek, Silvia; Parra, Felix I.; Catto, Peter J.\",\"source_name\":[\"Journal of Plasma Physics\"],\"publication_date\":\"2023-05-25T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"3\\\", \\\"journalVolume\\\": \\\"89\\\", \\\"author1LastName\\\": \\\"Trinczek\\\", \\\"author2LastName\\\": \\\"Parra\\\", \\\"author3LastName\\\": \\\"Catto\\\", \\\"author1FirstName\\\": \\\"Silvia\\\", \\\"author2FirstName\\\": \\\"Felix I.\\\", \\\"author3FirstName\\\": \\\"Peter J.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; IsReferencedBy; 10.1017/S0022377823000430",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1017/S0022377823000430\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001090],\"title\":\"Neoclassical transport in strong gradient regions of large aspect ratio tokamaks\",\"authors\":\"Trinczek, Silvia; Parra, Felix I.; Catto, Peter J.\",\"source_name\":[\"Journal of Plasma Physics\"],\"publication_date\":\"2023-05-25T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"3\\\", \\\"journalVolume\\\": \\\"89\\\", \\\"author1LastName\\\": \\\"Trinczek\\\", \\\"author2LastName\\\": \\\"Parra\\\", \\\"author3LastName\\\": \\\"Catto\\\", \\\"author1FirstName\\\": \\\"Silvia\\\", \\\"author2FirstName\\\": \\\"Felix I.\\\", \\\"author3FirstName\\\": \\\"Peter J.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/0hs8-8242/83/license.txt"
+        ],
+        "authors": [
+            "Trinczek, Silvia [Princeton Plasma Physics Laboratory] (ORCID:0000000268685216)",
+            "Parra, Felix I. [Princeton Plasma Physics Laboratory] (ORCID:0000000196217404)",
+            "Catto, Peter J. (ORCID:0000000203491736)",
+            "Calvo, Iv\u00e1n (ORCID:0000000331183463)",
+            "Landreman, Matt (ORCID:000000027233577X)"
+        ],
+        "subjects": [
+            "plasma physics",
+            "tokamak",
+            "neoclassical transport",
+            "pedestal"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/0hs8-8242",
+        "doe_contract_number": "AC02-09CH11466; FG02-91ER-54109",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001090"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001090"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001091",
+        "title": "Operational Space and Performance Limiting Events in the First Physics Campaign of MAST-U",
+        "doi": "https://doi.org/10.34770/bn8n-b319",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2023-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/bn8n-b319/81/Fig7.dat",
+            "DOI; References; 10.34770/bn8n-b319/81/Fig2.dat",
+            "DOI; References; 10.34770/bn8n-b319/81/Fig9a.dat",
+            "DOI; References; 10.34770/bn8n-b319/81/Fig5.dat",
+            "DOI; References; 10.34770/bn8n-b319/81/Fig4.dat",
+            "DOI; References; 10.1088/1361-6587/acb464",
+            "CURATED; References; {\"related_identifier\":\"10.1088/1361-6587/acb464\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1992108,2001091],\"title\":\"Operational space and performance limiting events in the first physics campaign of MAST-U\",\"authors\":\"Berkery, J. W.; Sabbagh, S. A.; Kogan, L.\",\"source_name\":[\"Plasma Physics and Controlled Fusion\"],\"publication_date\":\"2023-02-20T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"4\\\", \\\"journalVolume\\\": \\\"65\\\", \\\"author1LastName\\\": \\\"Berkery\\\", \\\"author2LastName\\\": \\\"Sabbagh\\\", \\\"author3LastName\\\": \\\"Kogan\\\", \\\"author1FirstName\\\": \\\"J. W.\\\", \\\"author2FirstName\\\": \\\"S. A.\\\", \\\"author3FirstName\\\": \\\"L.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/bn8n-b319/81/Fig1.dat",
+            "DOI; References; 10.34770/bn8n-b319/81/Fig9b.dat",
+            "DOI; References; 10.34770/bn8n-b319/81/Fig8.dat",
+            "DOI; References; 10.34770/bn8n-b319/81/license.txt",
+            "DOI; References; 10.34770/bn8n-b319/81/Fig10.dat",
+            "DOI; References; 10.34770/bn8n-b319/81/Fig3.dat",
+            "DOI; References; 10.34770/bn8n-b319/81/Fig6.dat",
+            "DOI; References; 10.34770/bn8n-b319/81/Readme.txt",
+            "DOI; IsReferencedBy; 10.1088/1361-6587/acb464",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1088/1361-6587/acb464\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[1992108,2001091],\"title\":\"Operational space and performance limiting events in the first physics campaign of MAST-U\",\"authors\":\"Berkery, J. W.; Sabbagh, S. A.; Kogan, L.\",\"source_name\":[\"Plasma Physics and Controlled Fusion\"],\"publication_date\":\"2023-02-20T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"4\\\", \\\"journalVolume\\\": \\\"65\\\", \\\"author1LastName\\\": \\\"Berkery\\\", \\\"author2LastName\\\": \\\"Sabbagh\\\", \\\"author3LastName\\\": \\\"Kogan\\\", \\\"author1FirstName\\\": \\\"J. W.\\\", \\\"author2FirstName\\\": \\\"S. A.\\\", \\\"author3FirstName\\\": \\\"L.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}"
+        ],
+        "authors": [
+            "Berkery, John [Princeton Plasma Physics Laboratory] (ORCID:0000000280623210)"
+        ],
+        "subjects": [
+            "Spherical Tokamak"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/bn8n-b319",
+        "doe_contract_number": "AC02-09CH11466; SC0018623",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001091"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001091"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001092",
+        "title": "Self-consistent simulation of compressional Alfv\u00e9n eigenmodes excitation and runaway electron diffusion in tokamak disruptions",
+        "doi": "https://doi.org/10.34770/stwa-qh32",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2023-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/stwa-qh32/102/cae-re-diffusion.zip",
+            "DOI; IsReferencedBy; 10.1103/PhysRevLett.131.085102",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1103/PhysRevLett.131.085102\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001092],\"title\":\"Self-Consistent Simulation of the Excitation of Compressional Alfv\u00e9n Eigenmodes and Runaway Electron Diffusion in Tokamak Disruptions\",\"authors\":\"Liu, Chang; Lvovskiy, Andrey; Paz-Soldan, Carlos\",\"source_name\":[\"Physical Review Letters\"],\"publication_date\":\"2023-08-24T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"8\\\", \\\"journalVolume\\\": \\\"131\\\", \\\"author1LastName\\\": \\\"Liu\\\", \\\"author2LastName\\\": \\\"Lvovskiy\\\", \\\"author3LastName\\\": \\\"Paz-Soldan\\\", \\\"author1FirstName\\\": \\\"Chang\\\", \\\"author2FirstName\\\": \\\"Andrey\\\", \\\"author3FirstName\\\": \\\"Carlos\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.1103/PhysRevLett.131.085102",
+            "CURATED; References; {\"related_identifier\":\"10.1103/PhysRevLett.131.085102\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001092],\"title\":\"Self-Consistent Simulation of the Excitation of Compressional Alfv\u00e9n Eigenmodes and Runaway Electron Diffusion in Tokamak Disruptions\",\"authors\":\"Liu, Chang; Lvovskiy, Andrey; Paz-Soldan, Carlos\",\"source_name\":[\"Physical Review Letters\"],\"publication_date\":\"2023-08-24T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"8\\\", \\\"journalVolume\\\": \\\"131\\\", \\\"author1LastName\\\": \\\"Liu\\\", \\\"author2LastName\\\": \\\"Lvovskiy\\\", \\\"author3LastName\\\": \\\"Paz-Soldan\\\", \\\"author1FirstName\\\": \\\"Chang\\\", \\\"author2FirstName\\\": \\\"Andrey\\\", \\\"author3FirstName\\\": \\\"Carlos\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}"
+        ],
+        "authors": [
+            "Liu, Chang [Princeton Plasma Physics Laboratory] (ORCID:000000026747955X)",
+            "Lvovskiy, Andrey (ORCID:0000000236491169)",
+            "Paz-Soldan, Carlos (ORCID:0000000150694934)",
+            "Jardin, Stephen [Princeton Plasma Physics Laboratory] (ORCID:0000000163906908)",
+            "Bhattacharjee, Amitava [Princeton Plasma Physics Laboratory] (ORCID:0000000164110178)"
+        ],
+        "subjects": [
+            "Runaway electron",
+            "Tokamak",
+            "Alfv\u00e9n mode",
+            "Disruption",
+            "Kinetic-MHD simulation"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/stwa-qh32",
+        "doe_contract_number": "AC02-05CH11231; AC02-09CH11466; AC05-00OR22725; SC0016268",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001092"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001092"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001093",
+        "title": "Role of fast ions in spontaneous neoclassical tearing mode instabilities in NSTX",
+        "doi": "https://doi.org/10.34770/nezp-hz43",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2023-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/nezp-hz43/90/pro.zip",
+            "DOI; References; 10.34770/nezp-hz43/90/readme.txt",
+            "DOI; IsReferencedBy; 10.1088/1361-6587/acd07f",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1088/1361-6587/acd07f\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001093],\"title\":\"The role of fast ions in spontaneous neoclassical tearing mode instabilities in NSTX\",\"authors\":\"Yang, J.; Podest\u00e0, M.; Fredrickson, E. D.\",\"source_name\":[\"Plasma Physics and Controlled Fusion\"],\"publication_date\":\"2023-05-15T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"6\\\", \\\"journalVolume\\\": \\\"65\\\", \\\"author1LastName\\\": \\\"Yang\\\", \\\"author2LastName\\\": \\\"Podest\u00e0\\\", \\\"author3LastName\\\": \\\"Fredrickson\\\", \\\"author1FirstName\\\": \\\"J.\\\", \\\"author2FirstName\\\": \\\"M.\\\", \\\"author3FirstName\\\": \\\"E. D.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.1088/1361-6587/acd07f",
+            "CURATED; References; {\"related_identifier\":\"10.1088/1361-6587/acd07f\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001093],\"title\":\"The role of fast ions in spontaneous neoclassical tearing mode instabilities in NSTX\",\"authors\":\"Yang, J.; Podest\u00e0, M.; Fredrickson, E. D.\",\"source_name\":[\"Plasma Physics and Controlled Fusion\"],\"publication_date\":\"2023-05-15T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"6\\\", \\\"journalVolume\\\": \\\"65\\\", \\\"author1LastName\\\": \\\"Yang\\\", \\\"author2LastName\\\": \\\"Podest\u00e0\\\", \\\"author3LastName\\\": \\\"Fredrickson\\\", \\\"author1FirstName\\\": \\\"J.\\\", \\\"author2FirstName\\\": \\\"M.\\\", \\\"author3FirstName\\\": \\\"E. D.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/nezp-hz43/90/save.zip"
+        ],
+        "authors": [
+            "Yang, James [Princeton Plasma Physics Laboratory] (ORCID:0000000184228464)",
+            "Podesta, Mario [Princeton Plasma Physics Laboratory] (ORCID:0000000349750585)",
+            "Fredrickson, Eric [Princeton Plasma Physics Laboratory] (ORCID:0000000224394089)",
+            "Liu, Chang [Princeton Plasma Physics Laboratory] (ORCID:000000026747955X)",
+            "Berkery, John [Princeton Plasma Physics Laboratory] (ORCID:0000000280623210)",
+            "Poli, Francesca [Princeton Plasma Physics Laboratory] (ORCID:0000000339594371)"
+        ],
+        "subjects": [
+            "fast ions",
+            "neoclassical tearing modes",
+            "kick model",
+            "NSTX"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/nezp-hz43",
+        "doe_contract_number": "AC02-09CH11466",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001093"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001093"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001094",
+        "title": "Effects of collisional ion orbit loss on tokamak radial electric field and toroidal rotation in an L-mode plasma",
+        "doi": "https://doi.org/10.34770/hj83-n134",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2023-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; IsReferencedBy; 10.1088/1741-4326/acc815",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1088/1741-4326/acc815\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001094],\"title\":\"Effects of collisional ion orbit loss on tokamak radial electric field and toroidal rotation in an L-mode plasma\",\"authors\":\"Zhu, Hongxuan; Stoltzfus-Dueck, T.; Hager, R.\",\"source_name\":[\"Nuclear Fusion\"],\"publication_date\":\"2023-04-13T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"6\\\", \\\"journalVolume\\\": \\\"63\\\", \\\"author1LastName\\\": \\\"Zhu\\\", \\\"author2LastName\\\": \\\"Stoltzfus-Dueck\\\", \\\"author3LastName\\\": \\\"Hager\\\", \\\"author1FirstName\\\": \\\"Hongxuan\\\", \\\"author2FirstName\\\": \\\"T.\\\", \\\"author3FirstName\\\": \\\"R.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/hj83-n134/65/license.txt",
+            "DOI; References; 10.1088/1741-4326/acc815",
+            "CURATED; References; {\"related_identifier\":\"10.1088/1741-4326/acc815\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001094],\"title\":\"Effects of collisional ion orbit loss on tokamak radial electric field and toroidal rotation in an L-mode plasma\",\"authors\":\"Zhu, Hongxuan; Stoltzfus-Dueck, T.; Hager, R.\",\"source_name\":[\"Nuclear Fusion\"],\"publication_date\":\"2023-04-13T04:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalIssue\\\": \\\"6\\\", \\\"journalVolume\\\": \\\"63\\\", \\\"author1LastName\\\": \\\"Zhu\\\", \\\"author2LastName\\\": \\\"Stoltzfus-Dueck\\\", \\\"author3LastName\\\": \\\"Hager\\\", \\\"author1FirstName\\\": \\\"Hongxuan\\\", \\\"author2FirstName\\\": \\\"T.\\\", \\\"author3FirstName\\\": \\\"R.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/hj83-n134/65/README.txt",
+            "DOI; References; 10.34770/hj83-n134/65/ARK_DATA.zip"
+        ],
+        "authors": [
+            "Zhu, Hongxuan [Princeton Plasma Physics Laboratory] (ORCID:0000000198446972)",
+            "Stoltzfus-Dueck, T [Princeton Plasma Physics Laboratory] (ORCID:0000000325876298)",
+            "Hager, R [Princeton Plasma Physics Laboratory] (ORCID:0000000246243150)",
+            "Ku, S [Princeton Plasma Physics Laboratory] (ORCID:0000000299641208)",
+            "Chang, C.S. [Princeton Plasma Physics Laboratory] (ORCID:0000000233465731)"
+        ],
+        "subjects": [
+            "ion orbit loss",
+            "radial electric field",
+            "tokamak edge plasmas",
+            "gyrokinetic simulations"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/hj83-n134",
+        "doe_contract_number": "AC02-05CH11231; AC02-09CH11466",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001094"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001094"
+            }
+        ]
+    },
+    {
+        "osti_id": "2001095",
+        "title": "Reduced Physics Model of the Tokamak Scrape-off-Layer for Pulse Design",
+        "doi": "https://doi.org/10.34770/nh4z-kh27",
+        "product_type": "Dataset",
+        "language": "English",
+        "country_publication": "United States",
+        "site_ownership_code": "PPPL",
+        "publication_date": "2023-01-01T00:00:00Z",
+        "entry_date": "2023-09-22T00:00:00Z",
+        "related_identifiers": [
+            "DOI; References; 10.34770/nh4z-kh27/86/SOLPS139396_R98_new.pkl",
+            "DOI; References; 10.34770/nh4z-kh27/86/139396cx.sav",
+            "DOI; References; 10.34770/nh4z-kh27/86/SOLPS139396_R99_new.pkl",
+            "DOI; References; 10.34770/nh4z-kh27/86/IRCY.txt",
+            "DOI; IsReferencedBy; 10.1016/j.nme.2022.101354",
+            "CURATED; IsReferencedBy; {\"related_identifier\":\"10.1016/j.nme.2022.101354\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001095],\"title\":\"Reduced physics model of the tokamak Scrape-Off-Layer for pulse design\",\"authors\":\"Zhang, X.; Poli, F. M.; Emdee, E. D.\",\"source_name\":[\"Nuclear Materials and Energy\"],\"publication_date\":\"2023-03-01T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalVolume\\\": \\\"34\\\", \\\"author1LastName\\\": \\\"Zhang\\\", \\\"author2LastName\\\": \\\"Poli\\\", \\\"author3LastName\\\": \\\"Emdee\\\", \\\"author1FirstName\\\": \\\"X.\\\", \\\"author2FirstName\\\": \\\"F. M.\\\", \\\"author3FirstName\\\": \\\"E. D.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/nh4z-kh27/86/EFLUX.txt",
+            "DOI; References; 10.34770/nh4z-kh27/86/EHEAT.txt",
+            "DOI; References; 10.34770/nh4z-kh27/86/README.txt",
+            "DOI; References; 10.34770/nh4z-kh27/86/LP_139396.pkl",
+            "DOI; References; 10.1016/j.nme.2022.101354",
+            "CURATED; References; {\"related_identifier\":\"10.1016/j.nme.2022.101354\",\"related_identifier_type\":\"DOI\",\"osti_ids\":[2001095],\"title\":\"Reduced physics model of the tokamak Scrape-Off-Layer for pulse design\",\"authors\":\"Zhang, X.; Poli, F. M.; Emdee, E. D.\",\"source_name\":[\"Nuclear Materials and Energy\"],\"publication_date\":\"2023-03-01T05:00:00Z\",\"optional_data_json_string\":[\"{\\\"journalVolume\\\": \\\"34\\\", \\\"author1LastName\\\": \\\"Zhang\\\", \\\"author2LastName\\\": \\\"Poli\\\", \\\"author3LastName\\\": \\\"Emdee\\\", \\\"author1FirstName\\\": \\\"X.\\\", \\\"author2FirstName\\\": \\\"F. M.\\\", \\\"author3FirstName\\\": \\\"E. D.\\\", \\\"crossrefProductType\\\": \\\"journal\\\"}\"]}",
+            "DOI; References; 10.34770/nh4z-kh27/86/139396mpts.sav",
+            "DOI; References; 10.34770/nh4z-kh27/86/IHEAT.txt",
+            "DOI; References; 10.34770/nh4z-kh27/86/ERCY.txt",
+            "DOI; References; 10.34770/nh4z-kh27/86/IFLUX.txt",
+            "DOI; References; 10.34770/nh4z-kh27/86/SOLPS139396_R97_new.pkl"
+        ],
+        "authors": [
+            "Zhang, Xin [Princeton Plasma Physics Laboratory] (ORCID:0000000337755821)",
+            "Poli, F. M. [Princeton Plasma Physics Laboratory] (ORCID:0000000339594371)",
+            "Emdee, E. D. [Princeton Plasma Physics Laboratory] (ORCID:0000000333342077)",
+            "Podesta, M. [Princeton Plasma Physics Laboratory] (ORCID:0000000349750585)"
+        ],
+        "subjects": [
+            "Scrape Off Layer",
+            "Reduced modeling",
+            "Time dependent simulations",
+            "TRANSP"
+        ],
+        "dataset_size": 0,
+        "site_url": "https://doi.org/10.34770/nh4z-kh27",
+        "doe_contract_number": "AC02-09CH11466",
+        "sponsor_orgs": [
+            "USDOE Office of Science (SC)"
+        ],
+        "research_orgs": [
+            "Princeton Plasma Physics Laboratory (PPPL), Princeton, NJ (United States)"
+        ],
+        "links": [
+            {
+                "rel": "citation",
+                "href": "https://www.osti.gov/dataexplorer/biblio/2001095"
+            },
+            {
+                "rel": "fulltext",
+                "href": "https://www.osti.gov/dataexplorer/servlets/purl/2001095"
             }
         ]
     }
