@@ -258,12 +258,12 @@ class Scraper:
             to_upload_j = json.load(f)
 
         df = pd.DataFrame()
+        df["DOI"] = [item["resource"].get("doi") for item in to_upload_j]
         df["ARK"] = list(map(get_ark, to_upload_j))
 
         df["Issue Date"] = [
             f"{item['resource']['publication_year']}" for item in to_upload_j
         ]
-        df["DOI"] = [item["resource"].get("doi") for item in to_upload_j]
         df["Title"] = [item["resource"]["titles"][0]["title"] for item in to_upload_j]
         df["Author"] = [
             ";".join([value["value"] for value in item["resource"]["creators"]])
@@ -324,11 +324,11 @@ class Scraper:
         """
         self.log.info("[bold yellow]Updating form input")
 
-        entry_df = pd.read_csv(self.entry_form, index_col="ARK", sep="\t")
+        entry_df = pd.read_csv(self.entry_form, index_col="DOI", sep="\t")
         if self.form_input.exists():
             self.log.info(f"File exists. Will update: {self.form_input}")
 
-            input_df = pd.read_csv(self.form_input, index_col="ARK", sep="\t")
+            input_df = pd.read_csv(self.form_input, index_col="DOI", sep="\t")
             self.log.info("Identifying PDC records to add and remove ...")
             entry_id = set(entry_df.index)
             input_id = set(input_df.index)
