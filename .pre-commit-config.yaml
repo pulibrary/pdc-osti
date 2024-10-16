@@ -6,8 +6,9 @@ repos:
         exclude: .gitlab/changelog_config.yml
       - id: check-shebang-scripts-are-executable
       - id: end-of-file-fixer
-        exclude_types: [bib]
+        exclude_types: [bib,json]
       - id: trailing-whitespace
+        exclude_types: [json]
   - repo: https://github.com/psf/black
     rev: 24.1.1
     hooks:
