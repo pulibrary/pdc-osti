@@ -368,22 +368,25 @@ class Scraper:
         self.log.info(f"[bold green]✔ Pipeline run completed for {SCRIPT_NAME}!")
 
 
-def get_funder(text: str) -> list[str]:
+def get_funder(text: str | None) -> list[str]:
     """Aggregate funding grant numbers from text"""
 
     # Clean up text by fixing any whitespace to get full grant no.
-    for key, value in REPLACE_DICT.items():
-        text = text.replace(key, value)
+    if text:
+        for key, value in REPLACE_DICT.items():
+            text = text.replace(key, value)
 
-    for hyphen in ["\u2010", "\u2013"]:
-        text = text.replace(hyphen, "-")
+        for hyphen in ["\u2010", "\u2013"]:
+            text = text.replace(hyphen, "-")
 
-    base_match = re.match(REGEX_BARE_DOE, text)
-    if base_match:  # DOE/FES funded but no grant number
-        return ["AC02-09CH11466"]
+        base_match = re.match(REGEX_BARE_DOE, text)
+        if base_match:  # DOE/FES funded but no grant number
+            return ["AC02-09CH11466"]
+        else:
+            if text and text != "N/A":
+                return [text]
     else:
-        if text and text != "N/A":
-            return [text]
+        return [""]
 
 
 def get_doe_funding(grant_nos: str) -> dict[str, set]:
