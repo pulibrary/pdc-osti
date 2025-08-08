@@ -4,7 +4,6 @@ import json
 from logging import Logger
 from pathlib import Path
 
-import ostiapi
 import pandas as pd
 from rich.prompt import Confirm
 
@@ -186,15 +185,6 @@ class Poster:
     def _fake_post(self, records: dict) -> dict:
         """A fake JSON response that mirrors OSTI's"""
         self.log.info("[bold yellow]Fake posting")
-        try:
-            ostiapi.datatoxml(records)  # Check that JSON can be parsed into XML
-        except AttributeError:
-            raise AttributeError(
-                "Failure to load data into XML!\n"
-                "Check your dicttoxml version (requires > 1.7.4)"
-            )
-        else:
-            self.log.info("[bold green]Data loaded into XML!")
 
         return {
             "record": [
@@ -231,8 +221,6 @@ class Poster:
                 self.log.info(f"[red]\t✗ {record['title']}")
 
         self.log.info("[bold yellow]Posting to OSTI")
-        if self.mode == "test":
-            ostiapi.testmode()
 
         self.log.info(f"[yellow]Loading: {self.osti_upload}")
         with open(self.osti_upload) as f:
@@ -242,7 +230,8 @@ class Poster:
         if self.mode == "dry-run":
             response_data = self._fake_post(osti_j)
         else:
-            response_data = ostiapi.post(osti_j, self.username, self.password)
+            pass
+            # response_data = ostiapi.post(osti_j, self.username, self.password)
 
         self.log.info(f"[yellow]Writing: {self.response_output}")
         with open(self.response_output, "w") as f:

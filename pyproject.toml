@@ -23,8 +23,7 @@ requires-python = ">=3.8"
 dependencies = [
     "requests",
     "pandas",
-    "dicttoxml<2.0.0",
-    "ostiapi @ git+https://github.com/doecode/ostiapi.git",
+    "elinkapi",
     "pydantic[dotenv]<2.0.0",
     "rich",
     "PyYAML>=6.0, <7.0"
