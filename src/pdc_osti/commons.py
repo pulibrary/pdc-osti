@@ -70,8 +70,5 @@ def get_is_referenced_by(item: dict) -> str:
 
 def get_keywords(item: dict) -> str:
     keywords = item["resource"].get("keywords")
-
-    if keywords:
-        return "; ".join(keywords)
-    else:
-        return ""
+    # Handles ending of list with a comma
+    return "; ".join(key for key in keywords if key)
