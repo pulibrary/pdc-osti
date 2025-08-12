@@ -54,29 +54,15 @@ class Poster:
 
         # Ensure minimum (test/prod) environment variables are prepared
         if mode in ["test", "prod"]:
-            environment_vars = [
-                f"{v}_{mode.upper()}" for v in ["OSTI_USERNAME", "OSTI_PASSWORD"]
-            ]
+            environment_vars = [f"ELINK2_TOKEN_{mode}"]
         if mode == "dry-run":
-            environment_vars = [
-                "OSTI_USERNAME_TEST",
-                "OSTI_PASSWORD_TEST",
-                "OSTI_USERNAME_PROD",
-                "OSTI_PASSWORD_PROD",
-            ]
+            environment_vars = ["ELINK2_TOKEN_TEST", "ELINK2_TOKEN_PROD"]
 
         settings_dict = settings.dict()
         assert all([var in settings_dict for var in environment_vars]), (
             f"All {mode} environment variables need to be set. "
             f"See the README for more information."
         )
-
-        # Assign username and password depending on where data is being posted
-        if mode in ["test", "prod"]:
-            self.username = settings_dict.get(f"OSTI_USERNAME_{mode.upper()}")
-            self.password = settings_dict.get(f"OSTI_PASSWORD_{mode.upper()}")
-        else:
-            self.username, self.password = None, None
 
     def generate_upload_json(self) -> None:
         """
@@ -293,9 +279,7 @@ def main() -> None:
     if mode == "dry-run":
         user_response = True
     if mode in ["test", "prod"]:
-        log.warning(
-            "[bold red]" f"Running in {mode} mode will trigger emails to PPPL and OSTI!"
-        )
+        log.warning("[bold red]" f"Running in {mode} mode...!")
         user_response = Confirm.ask("Are you sure you wish you proceed?")
     log.info(f"{user_response=}")
     if user_response:
