@@ -71,4 +71,7 @@ def get_is_referenced_by(item: dict) -> str:
 def get_keywords(item: dict) -> str:
     keywords = item["resource"].get("keywords")
 
-    return "; ".join(keywords)
+    if keywords:
+        return "; ".join(keywords)
+    else:
+        return ""
