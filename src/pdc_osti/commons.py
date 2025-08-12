@@ -68,7 +68,7 @@ def get_is_referenced_by(item: dict) -> str:
     return isreferencedby
 
 
-def get_keywords(item: dict) -> str:
+def get_keywords(item: dict) -> list[str]:
     keywords = item["resource"].get("keywords")
-    # Handles ending of list with a comma
-    return "; ".join(key for key in keywords if key)
+    # Handles ending of list with a comma -> null
+    return [key for key in keywords if key]
