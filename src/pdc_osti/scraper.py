@@ -261,9 +261,7 @@ class Scraper:
         df["DOI"] = [item["resource"].get("doi") for item in to_upload_j]
         df["ARK"] = list(map(get_ark, to_upload_j))
 
-        df["Issue Date"] = [
-            f"{item['resource']['publication_year']}" for item in to_upload_j
-        ]
+        df["Issue Date"] = [f"{item['date_approved']}" for item in to_upload_j]
         df["Title"] = [item["resource"]["titles"][0]["title"] for item in to_upload_j]
         df["Author"] = [
             ";".join([value["value"] for value in item["resource"]["creators"]])
