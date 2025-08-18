@@ -11,20 +11,25 @@ def get_ark(record: dict) -> str:
 
 
 def get_author(creator: dict) -> dict:
-    """Retrieve individual author from PDC metadata"""
+    """Retrieve individual author from PDC metadata for E-Link 2 API"""
 
     c_dict = {
+        "type": "AUTHOR",
         "first_name": creator.get("given_name"),
         "last_name": creator.get("family_name"),
     }
-
-    c_id = creator["identifier"]
-    if c_id:
-        c_dict["orcid_id"] = c_id["value"]
+    if orc_id := creator.get("identifier"):
+        c_dict["orcid"] = orc_id["value"]
 
     affils = creator["affiliations"]
     if affils:
-        c_dict["affiliation_name"] = ";".join(item["value"] for item in affils)
+        affiliations = []
+        for affil in affils:
+            if ror_id := affil.get("identifier"):
+                affiliations.append({"ror_id": ror_id})
+            else:
+                affiliations.append({"name": affil.get("value")})
+        c_dict["affiliations"] = affiliations
     return c_dict
 
 
