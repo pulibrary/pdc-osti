@@ -106,7 +106,7 @@ def get_sponsors(item: dict, log, contract_nos, nondoe_nos) -> list:
                 log.warning(f"MULTIPLE RORs for {name}: {''.join(ror_ids)}")
                 break
             if len(ror_ids) == 1:
-                t_dict["ror"] = ror_ids[0]
+                t_dict["ror_id"] = ror_ids[0]
             else:
                 t_dict["name"] = name
 

@@ -5,6 +5,7 @@ from logging import Logger
 from pathlib import Path
 
 import pandas as pd
+from elinkapi import Elink, exceptions
 from rich.prompt import Confirm
 
 from .commons import (
@@ -13,6 +14,7 @@ from .commons import (
     get_doi,
     get_is_referenced_by,
     get_keywords,
+    get_sponsors,
 )
 from .config import settings
 from .logger import pdc_log, script_log_end, script_log_init
@@ -20,6 +22,15 @@ from .logger import pdc_log, script_log_end, script_log_init
 SCRIPT_NAME = Path(__file__).stem
 
 ACCEPTED_DATATYPE = ["AS", "GD", "IM", "ND", "IP", "FP", "SM", "MM", "I"]
+
+if settings.ELINK2_TOKEN_TEST:
+    api_test = Elink(
+        token=settings.ELINK2_TOKEN_TEST, target="https://review.osti.gov/elink2api/"
+    )
+if settings.ELINK2_TOKEN_PROD:
+    api_prod = Elink(
+        token=settings.ELINK2_TOKEN_PROD, target="https://osti.gov/elink2api/"
+    )
 
 
 class Poster:
@@ -54,7 +65,7 @@ class Poster:
 
         # Ensure minimum (test/prod) environment variables are prepared
         if mode in ["test", "prod"]:
-            environment_vars = [f"ELINK2_TOKEN_{mode}"]
+            environment_vars = [f"ELINK2_TOKEN_{mode.upper()}"]
         if mode == "dry-run":
             environment_vars = ["ELINK2_TOKEN_TEST", "ELINK2_TOKEN_PROD"]
 
@@ -115,16 +126,12 @@ class Poster:
             # Collect all required information
             # site_url and accession_num are initial settings
             item_dict = {
+                "access_limitations": ["UNL"],
                 "title": row["Title"],
-                "dataset_type": row["Datatype"],
                 "site_url": f"https://arks.princeton.edu/ark:/{ark}",
-                "contract_nos": row["DOE Contract"],
-                "sponsor_org": row["Sponsoring Organizations"],
-                "research_org": "PPPL",
                 "accession_num": ark,
-                "publication_date": row["Issue Date"],
-                "othnondoe_contract_nos": row["Non-DOE Contract"],
-                "abstract": get_description(princeton_data),
+                "publication_date": str(row["Issue Date"]),
+                "description": get_description(princeton_data),
                 "keywords": get_keywords(princeton_data),
             }
 
@@ -142,10 +149,23 @@ class Poster:
                 self.log.warning("[bold red]No DOI!!!")
 
             authors = get_authors(princeton_data)
-            if authors:
-                item_dict["authors"] = authors
-            else:
-                item_dict["creators"] = row["Author"]
+            item_dict["persons"] = authors
+
+            contract_nos = row["DOE Contract"].split(";")
+            nondoe_nos = row["Non-DOE Contract"].split(";")
+
+            sponsors = get_sponsors(princeton_data, self.log, contract_nos, nondoe_nos)
+
+            # Add DOE contracts
+            identifiers = []
+            for num in contract_nos:
+                if contract_nos:
+                    cn_doe_dict = {"type": "CN_DOE", "value": num}
+                    identifiers.append(cn_doe_dict)
+            for num in nondoe_nos:
+                if num:
+                    identifiers.append({"type": "CN_NONDOE", "value": num})
+            item_dict["identifiers"] = identifiers
 
             # Collect optional required information
             is_referenced_by = get_is_referenced_by(princeton_data)
@@ -160,6 +180,13 @@ class Poster:
                         }
                     )
             osti_format.append(item_dict)
+
+            item_dict["site_ownership_code"] = "PPPL"
+            item_dict["product_type"] = "DA"
+            item_dict["organizations"] = [
+                {"type": "RESEARCHING", "ror_id": "https://ror.org/03vn1ts68"}
+            ]
+            item_dict["organizations"] += sponsors
 
         state = "Updating" if self.osti_upload.exists() else "Writing"
         self.log.info(f"[yellow]{state}: {self.osti_upload}")
@@ -179,9 +206,7 @@ class Poster:
                     "accession_num": record["accession_num"],
                     "product_nos": "None",
                     "title": record["title"],
-                    "contract_nos": record["contract_nos"],
-                    "other_identifying_nos": None,
-                    "othnondoe_contract_nos": record["othnondoe_contract_nos"],
+                    "identifiers": record["identifiers"],
                     "doi": (
                         record.get("doi") if record.get("doi") else "10.11578/1488485"
                     ),
@@ -201,10 +226,12 @@ class Poster:
         """
 
         def _log_status(record):
-            if record["status"] == "SUCCESS":
-                self.log.info(f"[green]\t✔ {record['title']}")
+            if oid := record.get("osti_id"):
+                self.log.info(
+                    f"[green]\t✔ {oid} - {record['doi']}: {record['title']}  "
+                )
             else:
-                self.log.info(f"[red]\t✗ {record['title']}")
+                self.log.info(f"[red]\t✗         - {record['doi']}")
 
         self.log.info("[bold yellow]Posting to OSTI")
 
@@ -213,40 +240,29 @@ class Poster:
             osti_j = json.load(f)
 
         self.log.info("[bold yellow]Posting data")
-        if self.mode == "dry-run":
-            response_data = self._fake_post(osti_j)
-        else:
-            pass
-            # response_data = ostiapi.post(osti_j, self.username, self.password)
+        match self.mode:
+            case "dry-run":
+                response_data = self._fake_post(osti_j)
+            case "test":
+                response_data = submit_to_osti(osti_j, test=True)
+            case "prod":
+                response_data = submit_to_osti(osti_j, test=False)
 
         self.log.info(f"[yellow]Writing: {self.response_output}")
-        with open(self.response_output, "w") as f:
-            json.dump(response_data, f, indent=4)
+        with open(self.response_output, "w", encoding="utf-8") as f:
+            json.dump(response_data, f, ensure_ascii=False, indent=4)
 
         # output results to the shell:
-        if isinstance(response_data["record"], list):
-            for item in response_data["record"]:
-                _log_status(item)
-        elif isinstance(response_data["record"], dict):
-            _log_status(response_data["record"])
+        for item in response_data:
+            _log_status(item)
 
         if self.mode != "dry-run":
-            status = []
-            if isinstance(response_data["record"], list):
-                status.extend(
-                    [item["status"] == "SUCCESS" for item in response_data["record"]]
-                )
-            elif isinstance(response_data["record"], dict):
-                status.extend([response_data["record"]["status"] == "SUCCESS"])
+            status = [item.get("osti_id") for item in response_data]
 
             if all(status):
                 self.log.info("Congrats 🚀 OSTI says that all records were uploaded!")
             else:
-                self.log.info(
-                    "Some of OSTI's responses do not have 'SUCCESS' as their "
-                    f"status. Look at the file {self.response_output} to "
-                    "see which records were not successfully uploaded."
-                )
+                self.log.warning("Some of OSTI's responses did not succeed.")
 
         self.log.info("[bold green]✔ Posted to OSTI!")
 
@@ -255,6 +271,41 @@ class Poster:
         self.generate_upload_json()
         self.post_to_osti()
         self.log.info(f"[bold green]✔ Pipeline run completed for {SCRIPT_NAME}!")
+
+
+def submit_to_osti(send_data: list, test: bool = True) -> list[dict]:
+    API = api_test if test else api_prod
+
+    results = []
+    for item in send_data:
+        doi = item.get("doi")
+        pdc_log.info(f"[yellow]Working on {doi} ...")
+        elink_response = API.query_records(doi=doi)
+
+        try:
+            if not elink_response.data:
+                result = API.post_new_record(item, "save")
+            else:
+                osti_id = elink_response.data[0].osti_id
+                item["osti_id"] = osti_id
+                result = API.update_record(osti_id, item, "save")
+            results.append(json.loads(result.model_dump_json()))
+        except exceptions.ForbiddenException as ve:
+            pdc_log.warning("[bold red]Forbidden Exception returned")
+            pdc_log.warning(f"{ve.status_code}: {ve.message}")
+            pdc_log.warning(ve.errors[0])
+            results.append({"osti_id": None, "doi": item.get("doi")})
+        except exceptions.BadRequestException as ve:
+            pdc_log.warning("[bold red]Bad Request Exception returned")
+            pdc_log.warning(f"{ve.status_code}: {ve.message}")
+            pdc_log.warning(ve.errors[0])
+            results.append({"osti_id": None, "doi": item.get("doi")})
+        except exceptions.ServerException as ve:
+            pdc_log.warning("[bold red]Server Exception returned")
+            pdc_log.warning(f"{ve.status_code}: {ve.message}")
+            pdc_log.warning(ve.errors[0])
+            results.append({"osti_id": None, "doi": item.get("doi")})
+    return results
 
 
 def main() -> None:
