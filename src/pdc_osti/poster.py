@@ -195,29 +195,16 @@ class Poster:
 
         self.log.info("[bold green]✔ Upload data generated!")
 
-    def _fake_post(self, records: dict) -> dict:
+    def _fake_post(self, records: dict) -> list[dict]:
         """A fake JSON response that mirrors OSTI's"""
         self.log.info("[bold yellow]Fake posting")
 
-        return {
-            "record": [
-                {
-                    "osti_id": "1488485",
-                    "accession_num": record["accession_num"],
-                    "product_nos": "None",
-                    "title": record["title"],
-                    "identifiers": record["identifiers"],
-                    "doi": (
-                        record.get("doi") if record.get("doi") else "10.11578/1488485"
-                    ),
-                    "doi_status": "PENDING",
-                    "status": "SUCCESS",
-                    "status_message": None,
-                    "@status": "UPDATED",
-                }
-                for record in records
-            ]
-        }
+        def _add_id(item: dict):
+            temp = item.copy()
+            temp["osti_id"] = 1488485
+            return temp
+
+        return [_add_id(record) for record in records]
 
     def post_to_osti(self) -> None:
         """
