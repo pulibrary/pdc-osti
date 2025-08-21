@@ -170,15 +170,16 @@ class Poster:
             # Collect optional required information
             is_referenced_by = get_is_referenced_by(princeton_data)
             if len(is_referenced_by) != 0:
-                item_dict["related_identifiers"] = []
-                for irb in is_referenced_by:
-                    item_dict["related_identifiers"].append(
-                        {
-                            "related_identifier": irb,
-                            "relation_type": "IsReferencedBy",
-                            "related_identifier_type": "DOI",
-                        }
-                    )
+                item_dict["related_identifiers"] = [
+                    {
+                        "type": irb.get("related_identifier_type"),
+                        "relation": irb.get("relation_type"),
+                        "value": irb.get("related_identifier").replace(
+                            "https://doi.org/", ""
+                        ),
+                    }
+                    for irb in is_referenced_by
+                ]
             osti_format.append(item_dict)
 
             item_dict["site_ownership_code"] = "PPPL"

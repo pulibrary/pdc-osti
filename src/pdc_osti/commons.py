@@ -129,19 +129,13 @@ def get_sponsors(item: dict, log, contract_nos, nondoe_nos) -> list:
     return sponsors
 
 
-def get_is_referenced_by(item: dict) -> str:
+def get_is_referenced_by(item: dict) -> list[dict]:
     """Retrieve IsReferencedBy for dataset"""
     related_objects = item["resource"].get("related_objects")
     if related_objects:
-        isreferencedby = [
-            m["related_identifier"]
-            for m in related_objects
-            if m["relation_type"] in ["IsCitedBy", "IsReferencedBy"]
-        ]
+        return related_objects
     else:
-        isreferencedby = []
-
-    return isreferencedby
+        return []
 
 
 def get_keywords(item: dict) -> list[str]:
