@@ -290,6 +290,7 @@ class Scraper:
         # Sponsoring organizations is always Office of Science
         df["Sponsoring Organizations"] = "USDOE Office of Science (SC)"
 
+        df.sort_values("Issue Date", ascending=True, axis=0)
         # Fixes #56
         # df["Datatype"] = None  # To be filled in
 
