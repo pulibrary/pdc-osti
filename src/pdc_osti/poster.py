@@ -40,6 +40,7 @@ class Poster:
     def __init__(
         self,
         mode: str,
+        state: str = "save",
         data_dir: Path = Path("data"),
         to_upload: str = "metadata_to_upload.json",
         entry_form_full_path: str = "entry_form.tsv",
@@ -49,6 +50,7 @@ class Poster:
     ) -> None:
         self.log = log
         self.mode = mode
+        self.state = state
 
         # Prepare all paths
         self.entry_form = f"pdc_{entry_form_full_path}"
@@ -224,9 +226,9 @@ class Poster:
             case "dry-run":
                 response_data = self._fake_post(osti_j)
             case "test":
-                response_data = submit_to_osti(osti_j, test=True)
+                response_data = submit_to_osti(osti_j, test=True, state=self.state)
             case "prod":
-                response_data = submit_to_osti(osti_j, test=False)
+                response_data = submit_to_osti(osti_j, test=False, state=self.state)
 
         self.log.info(f"[yellow]Writing: {self.response_output}")
         with open(self.response_output, "w", encoding="utf-8") as f:
@@ -253,7 +255,9 @@ class Poster:
         self.log.info(f"[bold green]✔ Pipeline run completed for {SCRIPT_NAME}!")
 
 
-def submit_to_osti(send_data: list, test: bool = True) -> list[dict]:
+def submit_to_osti(
+    send_data: list, test: bool = True, state: str = "save"
+) -> list[dict]:
     API = api_test if test else api_prod
 
     results = []
@@ -264,11 +268,11 @@ def submit_to_osti(send_data: list, test: bool = True) -> list[dict]:
 
         try:
             if not elink_response.data:
-                result = API.post_new_record(item, "save")
+                result = API.post_new_record(item, state)
             else:
                 osti_id = elink_response.data[0].osti_id
                 item["osti_id"] = osti_id
-                result = API.update_record(osti_id, item, "save")
+                result = API.update_record(osti_id, item, state)
             results.append(json.loads(result.model_dump_json()))
         except exceptions.ForbiddenException as ve:
             pdc_log.warning("[bold red]Forbidden Exception returned")
@@ -299,6 +303,12 @@ def main() -> None:
         type=str,
         help="Mode of KPI operation (dry-run, test, or execute)",
     )
+    parser.add_argument(
+        "--state",
+        default="save",
+        type=str,
+        help="What state for E-Link 2 submission. Either save or submit",
+    )
     args = parser.parse_args()
 
     log = script_log_init(SCRIPT_NAME)
@@ -306,11 +316,13 @@ def main() -> None:
     log.info("Will use data from PDC")
 
     mode = args.mode
-    p = Poster(mode)
+    state = args.state
+    p = Poster(mode, state=state)
     if mode == "dry-run":
         user_response = True
     if mode in ["test", "prod"]:
         log.warning("[bold red]" f"Running in {mode} mode...!")
+        log.warning("[bold red]" f"State: {state}!")
         user_response = Confirm.ask("Are you sure you wish you proceed?")
     log.info(f"{user_response=}")
     if user_response:
