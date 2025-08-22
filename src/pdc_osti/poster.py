@@ -42,7 +42,7 @@ class Poster:
         mode: str,
         data_dir: Path = Path("data"),
         to_upload: str = "metadata_to_upload.json",
-        form_input_full_path: str = "form_input.tsv",
+        entry_form_full_path: str = "entry_form.tsv",
         osti_upload: str = "osti.json",
         response_dir: Path = Path("responses"),
         log: Logger = pdc_log,
@@ -51,7 +51,7 @@ class Poster:
         self.mode = mode
 
         # Prepare all paths
-        self.form_input = f"pdc_{form_input_full_path}"
+        self.entry_form = f"pdc_{entry_form_full_path}"
         self.data_dir = data_dir
         self.to_upload = data_dir / f"pdc_{to_upload}"
         self.osti_upload = data_dir / f"pdc_{osti_upload}"
@@ -85,9 +85,9 @@ class Poster:
         with open(self.to_upload) as f:
             to_upload_j = json.load(f)
 
-        self.log.info(f"[yellow]Loading: {self.form_input}")
+        self.log.info(f"[yellow]Loading: {self.entry_form}")
         df = pd.read_csv(
-            self.form_input, index_col="ARK", sep="\t", keep_default_na=False
+            self.entry_form, index_col="ARK", sep="\t", keep_default_na=False
         )
 
         # Validate Input CSV
@@ -97,7 +97,6 @@ class Poster:
         expected_columns = [
             "Sponsoring Organizations",
             "DOE Contract",
-            "Datatype",
         ]
         assert all(
             [col in df.columns for col in expected_columns]

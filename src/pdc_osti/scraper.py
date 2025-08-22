@@ -312,48 +312,6 @@ class Scraper:
 
         self.log.info("[bold green]✔ Entry form generated!")
 
-    def update_form_input(self) -> None:
-        """
-        Update form_input.tsv by adding new records or removing PDC
-        records that were removed/withdrawn
-
-        In most cases, this will update form_input.tsv. This further
-        supports CI
-        """
-        self.log.info("[bold yellow]Updating form input")
-
-        entry_df = pd.read_csv(self.entry_form, index_col="DOI", sep="\t")
-        if self.form_input.exists():
-            self.log.info(f"File exists. Will update: {self.form_input}")
-
-            input_df = pd.read_csv(self.form_input, index_col="DOI", sep="\t")
-            self.log.info("Identifying PDC records to add and remove ...")
-            entry_id = set(entry_df.index)
-            input_id = set(input_df.index)
-            drops = input_id - entry_id
-            adds = list(entry_id - input_id)
-            commons = entry_id & input_id
-            self.log.info(f"Commons records : {len(commons):3}")
-            self.log.info(f"New records     : {len(adds):3}")
-            self.log.info(f"Records to drop : {len(drops):3}")
-            self.log.info(f"Removing : {','.join([str(drop) for drop in drops])} ...")
-            input_df.drop(drops, inplace=True)
-            self.log.info(f"Appending : {','.join([str(add) for add in adds])}")
-            revised_df = pd.concat([input_df, entry_df.loc[adds]], axis=0)
-
-            # "AS" is a placeholder - not included in PDC metadata
-            revised_df.loc[adds, "Datatype"] = "AS"
-        else:
-            self.log.warning(f"[bold red]{self.form_input} does not exist!")
-            revised_df = entry_df.copy()
-            revised_df["Datatype"] = "AS"
-
-        state = "Updating" if self.form_input.exists() else "Writing"
-        self.log.info(f"[yellow]{state}: {self.form_input}")
-        revised_df.to_csv(self.form_input, sep="\t")
-
-        self.log.info("[bold green]✔ Form input updated!")
-
     def run_pipeline(self, scrape=True) -> None:
         self.log.info(f"[bold yellow]Running {SCRIPT_NAME} pipeline")
         if scrape:
@@ -362,7 +320,6 @@ class Scraper:
 
         self.get_unposted_metadata()
         self.generate_contract_entry_form()
-        self.update_form_input()
         self.log.info(f"[bold green]✔ Pipeline run completed for {SCRIPT_NAME}!")
 
 
