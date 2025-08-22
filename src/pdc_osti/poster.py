@@ -21,8 +21,6 @@ from .logger import pdc_log, script_log_end, script_log_init
 
 SCRIPT_NAME = Path(__file__).stem
 
-ACCEPTED_DATATYPE = ["AS", "GD", "IM", "ND", "IP", "FP", "SM", "MM", "I"]
-
 if settings.ELINK2_TOKEN_TEST:
     api_test = Elink(
         token=settings.ELINK2_TOKEN_TEST, target="https://review.osti.gov/elink2api/"
@@ -108,11 +106,6 @@ class Poster:
             assert no_empty_cells(
                 df[column]
             ), f"Empty values in required {column} column"
-
-        assert all([dt in ACCEPTED_DATATYPE for dt in df["Datatype"]]), (
-            "The Datatype column contains improper datatype values. "
-            f"The accepted datatype values are: {ACCEPTED_DATATYPE}"
-        )
 
         # Generate final JSON to post to OSTI
         osti_format = []
