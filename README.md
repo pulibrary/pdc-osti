@@ -17,7 +17,7 @@ For oversight reasons, [OSTI](https://www.osti.gov/) requires that PPPL submit i
 To post to OSTI's test server, a user needs to acquire an ELink account. Currently, the OSTI API does not have a UI to create an account, so a new user will have to contact OSTI directly. To post to the production account, go to LastPass and get Princeton's credentials.
 
 ### Setup an environment
-We are dependent on [ostiapi](https://github.com/doecode/ostiapi) as a library. Presumably, this will eventually be available on PyPi. For all other libraries install the requirements in a python 3.8 environment.
+We are dependent on [ostiapi](https://github.com/doecode/elinkapi) as a library. For all other libraries install the requirements in a python 3.10 (minimum) environment.
 
 ```bash
 pip install -e .
@@ -35,30 +35,31 @@ After a user gets an E-Link Account, one can set the appropriate variables in a 
 which is already removed from version control by `.gitignore`. `.env-template` is provided for convenience.
 
 ```
-OSTI_USERNAME_TEST="my-test-osti-username"
-OSTI_PASSWORD_TEST="my-test-osti-password"
-OSTI_USERNAME_PROD="my-prod-osti-username" # from LastPass
-OSTI_PASSWORD_PROD="my-prod-osti-password" # from LastPass
+ELINK2_TOKEN_TEST="****"
+ELINK2_TOKEN_PROD="****"
 ```
 
 ## Workflow
 
 ### Pull necessary data
 
-Run `scraper` command-line script to collect data from OSTI & DSpace. The pipeline will compare (by title) to see which datasets haven't yet been uploaded. It will output `entry_form.tsv` that one needs to manually fill out with DOE Contract information
+Run `scraper` command-line script to collect data from OSTI & DSpace.
+The pipeline will compare (by title) to see which datasets haven't yet been uploaded.
 
 ### Manually enter data
 
-Copy `entry_form.tsv` to a Google Sheet and share with partners at PPPL. They will need to enter `Datatype`. [See `Datatype` codes here.](https://github.com/doecode/ostiapi#data-set-content-type-values)
-(Ideally, in the long run we would integrate these fields into DSpace's metadata.) Save the file into this folder as `form_input.tsv`.
-The `Sponsoring Organization`, `DOE Contract` and `Non-DOE Contract` may need to be modified. The latter two are retrieved from PDC metadata.
-Note that the default `Sponsoring Organization` is "USDOE Office of Science (SC)".
+This step is no longer needed with E-Link 2 since it no longer requires the `Datatype`.
+Any corrections to contract/award numbers must be done within PDC Describe.
 
-Note: Since we're joining by title, typos and encoding errors will inevitably lead to missed results in `entry_form.tsv`. `scraper` also checks for items that are in OSTI but not PDC, something that shouldn't happen. The user will need to manually remove those rows from the entry form.
+Note: Since we're joining by title, typos and encoding errors will inevitably lead to
+missed results in `entry_form.tsv`.
+`scraper` also checks for items that are in OSTI but not PDC, something that
+shouldn't happen.
+
 
 ### Post to OSTI
 
-`poster` is used to combine the `form_input.tsv` and PDC metadata to generate the JSON necessary for OSTI ingestion. Choose one of the three options:
+`poster` is used to combine the `entry_form.tsv` and PDC metadata to generate the JSON necessary for OSTI ingestion. Choose one of the three options:
 
 ```
     --dry-run: Make fake requests locally to test workflow.

@@ -32,7 +32,5 @@ jobs:
       run: |
         poster -m dry-run
       env:
-        OSTI_USERNAME_TEST: my-test-osti-username
-        OSTI_PASSWORD_TEST: my-test-osti-password
-        OSTI_USERNAME_PROD: my-prod-osti-username
-        OSTI_PASSWORD_PROD: my-prod-osti-password
+        ELINK2_TOKEN_TEST: my-test-token
+        ELINK2_TOKEN_PROD: my-prod-token
