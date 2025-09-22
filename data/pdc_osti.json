@@ -287,6 +287,10 @@
             },
             {
                 "type": "SPONSOR",
+                "name": "National Research Foundation of Korea "
+            },
+            {
+                "type": "SPONSOR",
                 "name": "NASA",
                 "identifiers": [
                     {
@@ -343,7 +347,13 @@
             },
             {
                 "type": "SPONSOR",
-                "name": "National Research Foundation of Korea "
+                "name": "MMS mission",
+                "identifiers": [
+                    {
+                        "type": "CN_NONDOE",
+                        "value": "NNG04EB99C"
+                    }
+                ]
             },
             {
                 "type": "SPONSOR",
@@ -360,16 +370,6 @@
                     {
                         "type": "CN_DOE",
                         "value": "SC0024369"
-                    }
-                ]
-            },
-            {
-                "type": "SPONSOR",
-                "name": "MMS mission",
-                "identifiers": [
-                    {
-                        "type": "CN_NONDOE",
-                        "value": "NNG04EB99C"
                     }
                 ]
             }
@@ -1225,10 +1225,6 @@
             },
             {
                 "type": "SPONSOR",
-                "name": "Commonwealth Fusion Systems"
-            },
-            {
-                "type": "SPONSOR",
                 "ror_id": "https://ror.org/01bj3aw27",
                 "identifiers": [
                     {
@@ -1240,6 +1236,10 @@
                         "value": "AC05-00OR22725"
                     }
                 ]
+            },
+            {
+                "type": "SPONSOR",
+                "name": "Commonwealth Fusion Systems"
             }
         ]
     },
@@ -1355,10 +1355,6 @@
             },
             {
                 "type": "SPONSOR",
-                "name": "Commonwealth Fusion Systems"
-            },
-            {
-                "type": "SPONSOR",
                 "ror_id": "https://ror.org/01bj3aw27",
                 "identifiers": [
                     {
@@ -1366,6 +1362,10 @@
                         "value": "AC02-09CH11466"
                     }
                 ]
+            },
+            {
+                "type": "SPONSOR",
+                "name": "Commonwealth Fusion Systems"
             }
         ]
     },
@@ -1536,110 +1536,6 @@
         "access_limitations": [
             "UNL"
         ],
-        "title": "Data for \"Verification of the kinetic electron role in the microinstabilities in a negative triangularity model equilibrium\"",
-        "site_url": "https://doi.org/10.34770/8n25-0909",
-        "accession_num": "10.34770/8n25-0909",
-        "publication_date": "2025-03-11",
-        "description": "This contains the dataset used in \"Verification of the kinetic electron role in the microinstabilities in a negative triangularity model equilibrium\" published in Physics of Plasmas in Oct 2024. It consists of plaintext files as well as .bp files (which may be read by ADIOS open-source software) used for creating the plots that appear in the paper. These are derived from simulation outputs from XGC (X-point Gyrokinetic Code). The data mainly consists of growth rate and frequency measurements as well as poloidal cross-section data.",
-        "keywords": [
-            "gyrokinetic",
-            "triangularity",
-            "instability"
-        ],
-        "doi": "10.34770/8n25-0909",
-        "persons": [
-            {
-                "type": "AUTHOR",
-                "first_name": "Jessica",
-                "last_name": "Li",
-                "orcid": "0000-0002-8830-6279",
-                "affiliations": [
-                    {
-                        "ror_id": "https://ror.org/00hx57361"
-                    }
-                ]
-            },
-            {
-                "type": "AUTHOR",
-                "first_name": "Choong-Seock",
-                "last_name": "Chang",
-                "orcid": "0000-0002-3346-5731",
-                "affiliations": [
-                    {
-                        "ror_id": "https://ror.org/03vn1ts68"
-                    }
-                ]
-            },
-            {
-                "type": "AUTHOR",
-                "first_name": "Robert",
-                "last_name": "Hager",
-                "orcid": "0000-0002-4624-3150",
-                "affiliations": [
-                    {
-                        "ror_id": "https://ror.org/03vn1ts68"
-                    }
-                ]
-            },
-            {
-                "type": "AUTHOR",
-                "first_name": "Allan",
-                "last_name": "Reiman",
-                "orcid": "0000-0002-9876-7351",
-                "affiliations": [
-                    {
-                        "ror_id": "https://ror.org/03vn1ts68"
-                    }
-                ]
-            },
-            {
-                "type": "AUTHOR",
-                "first_name": "Michael",
-                "last_name": "Zarnstorff",
-                "orcid": "0000-0001-7525-0539",
-                "affiliations": [
-                    {
-                        "ror_id": "https://ror.org/03vn1ts68"
-                    }
-                ]
-            }
-        ],
-        "identifiers": [
-            {
-                "type": "CN_DOE",
-                "value": "AC02-09CH11466"
-            }
-        ],
-        "related_identifiers": [
-            {
-                "type": "DOI",
-                "relation": "IsCitedBy",
-                "value": "10.1063/5.0205813"
-            }
-        ],
-        "site_ownership_code": "PPPL",
-        "product_type": "DA",
-        "organizations": [
-            {
-                "type": "RESEARCHING",
-                "ror_id": "https://ror.org/03vn1ts68"
-            },
-            {
-                "type": "SPONSOR",
-                "ror_id": "https://ror.org/01bj3aw27",
-                "identifiers": [
-                    {
-                        "type": "CN_DOE",
-                        "value": "AC02-09CH11466"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "access_limitations": [
-            "UNL"
-        ],
         "title": "Data for \"Observation of Nonaxisymmetric Standard Magnetorotational Instability Induced by a Free-Shear Layer\"",
         "site_url": "https://doi.org/10.34770/38k9-rm86",
         "accession_num": "10.34770/38k9-rm86",
@@ -1747,7 +1643,13 @@
             },
             {
                 "type": "SPONSOR",
-                "name": "Max-Planck-Princeton Center for Plasma Physics"
+                "ror_id": "https://ror.org/021nxhr62",
+                "identifiers": [
+                    {
+                        "type": "CN_NONDOE",
+                        "value": "AST-2108871"
+                    }
+                ]
             },
             {
                 "type": "SPONSOR",
@@ -1761,13 +1663,111 @@
             },
             {
                 "type": "SPONSOR",
-                "ror_id": "https://ror.org/021nxhr62",
+                "ror_id": "https://ror.org/01bj3aw27",
                 "identifiers": [
                     {
-                        "type": "CN_NONDOE",
-                        "value": "AST-2108871"
+                        "type": "CN_DOE",
+                        "value": "AC02-09CH11466"
                     }
                 ]
+            },
+            {
+                "type": "SPONSOR",
+                "name": "Max-Planck-Princeton Center for Plasma Physics"
+            }
+        ]
+    },
+    {
+        "access_limitations": [
+            "UNL"
+        ],
+        "title": "Data for \"Verification of the kinetic electron role in the microinstabilities in a negative triangularity model equilibrium\"",
+        "site_url": "https://doi.org/10.34770/8n25-0909",
+        "accession_num": "10.34770/8n25-0909",
+        "publication_date": "2025-03-11",
+        "description": "This contains the dataset used in \"Verification of the kinetic electron role in the microinstabilities in a negative triangularity model equilibrium\" published in Physics of Plasmas in Oct 2024. It consists of plaintext files as well as .bp files (which may be read by ADIOS open-source software) used for creating the plots that appear in the paper. These are derived from simulation outputs from XGC (X-point Gyrokinetic Code). The data mainly consists of growth rate and frequency measurements as well as poloidal cross-section data.",
+        "keywords": [
+            "gyrokinetic",
+            "triangularity",
+            "instability"
+        ],
+        "doi": "10.34770/8n25-0909",
+        "persons": [
+            {
+                "type": "AUTHOR",
+                "first_name": "Jessica",
+                "last_name": "Li",
+                "orcid": "0000-0002-8830-6279",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/00hx57361"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Choong-Seock",
+                "last_name": "Chang",
+                "orcid": "0000-0002-3346-5731",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03vn1ts68"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Robert",
+                "last_name": "Hager",
+                "orcid": "0000-0002-4624-3150",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03vn1ts68"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Allan",
+                "last_name": "Reiman",
+                "orcid": "0000-0002-9876-7351",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03vn1ts68"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Michael",
+                "last_name": "Zarnstorff",
+                "orcid": "0000-0001-7525-0539",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03vn1ts68"
+                    }
+                ]
+            }
+        ],
+        "identifiers": [
+            {
+                "type": "CN_DOE",
+                "value": "AC02-09CH11466"
+            }
+        ],
+        "related_identifiers": [
+            {
+                "type": "DOI",
+                "relation": "IsCitedBy",
+                "value": "10.1063/5.0205813"
+            }
+        ],
+        "site_ownership_code": "PPPL",
+        "product_type": "DA",
+        "organizations": [
+            {
+                "type": "RESEARCHING",
+                "ror_id": "https://ror.org/03vn1ts68"
             },
             {
                 "type": "SPONSOR",
@@ -1937,26 +1937,6 @@
             },
             {
                 "type": "SPONSOR",
-                "ror_id": "https://ror.org/00hx57361",
-                "identifiers": [
-                    {
-                        "type": "CN_NONDOE",
-                        "value": "2025-97"
-                    }
-                ]
-            },
-            {
-                "type": "SPONSOR",
-                "name": "NRF",
-                "identifiers": [
-                    {
-                        "type": "CN_NONDOE",
-                        "value": "RS-2024-00346024"
-                    }
-                ]
-            },
-            {
-                "type": "SPONSOR",
                 "ror_id": "https://ror.org/01bj3aw27",
                 "identifiers": [
                     {
@@ -1974,6 +1954,26 @@
                     {
                         "type": "CN_DOE",
                         "value": "SC0022272"
+                    }
+                ]
+            },
+            {
+                "type": "SPONSOR",
+                "name": "NRF",
+                "identifiers": [
+                    {
+                        "type": "CN_NONDOE",
+                        "value": "RS-2024-00346024"
+                    }
+                ]
+            },
+            {
+                "type": "SPONSOR",
+                "ror_id": "https://ror.org/00hx57361",
+                "identifiers": [
+                    {
+                        "type": "CN_NONDOE",
+                        "value": "2025-97"
                     }
                 ]
             }
@@ -2050,21 +2050,21 @@
             },
             {
                 "type": "SPONSOR",
-                "name": "Samsung Electronics",
-                "identifiers": [
-                    {
-                        "type": "CN_NONDOE",
-                        "value": "IO 210224-08446-01"
-                    }
-                ]
-            },
-            {
-                "type": "SPONSOR",
                 "name": "Onassis Foundation",
                 "identifiers": [
                     {
                         "type": "CN_NONDOE",
                         "value": "F ZS 029-1/2022-2023"
+                    }
+                ]
+            },
+            {
+                "type": "SPONSOR",
+                "name": "Samsung Electronics",
+                "identifiers": [
+                    {
+                        "type": "CN_NONDOE",
+                        "value": "IO 210224-08446-01"
                     }
                 ]
             },
@@ -2333,6 +2333,91 @@
         "access_limitations": [
             "UNL"
         ],
+        "title": "Data for figures in \"Improved liquid lithium surfaces in the Lithium Tokamak Experiment-\u03b2\"",
+        "site_url": "https://doi.org/10.34770/jpbt-qe53",
+        "accession_num": "10.34770/jpbt-qe53",
+        "publication_date": "2025-05-12",
+        "description": "Data for figures in \"Improved liquid lithium surfaces in the Lithium Tokamak Experiment-\u03b2\" accepted in Nuclear Materials and Energy. ",
+        "keywords": [
+            "Liquid metals",
+            "Liquid lithium",
+            "Wall conditioning",
+            "Plasma facing components",
+            "Tokamaks",
+            "Low-recycling"
+        ],
+        "doi": "10.34770/jpbt-qe53",
+        "persons": [
+            {
+                "type": "AUTHOR",
+                "first_name": "Dennis",
+                "last_name": "Boyle",
+                "orcid": "0000-0001-8091-8169",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03vn1ts68"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Anurag",
+                "last_name": "Maan",
+                "orcid": "0000-0001-7474-2785",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03vn1ts68"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Richard",
+                "last_name": "Majeski",
+                "orcid": "0000-0001-9437-0958",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03vn1ts68"
+                    }
+                ]
+            }
+        ],
+        "identifiers": [
+            {
+                "type": "CN_DOE",
+                "value": "AC02-09CH11466"
+            }
+        ],
+        "related_identifiers": [
+            {
+                "type": "DOI",
+                "relation": "IsCitedBy",
+                "value": "10.1016/j.nme.2025.101949"
+            }
+        ],
+        "site_ownership_code": "PPPL",
+        "product_type": "DA",
+        "organizations": [
+            {
+                "type": "RESEARCHING",
+                "ror_id": "https://ror.org/03vn1ts68"
+            },
+            {
+                "type": "SPONSOR",
+                "ror_id": "https://ror.org/01bj3aw27",
+                "identifiers": [
+                    {
+                        "type": "CN_DOE",
+                        "value": "AC02-09CH11466"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "access_limitations": [
+            "UNL"
+        ],
         "title": "Data for \"Effects beyond ideal MHD on stability of wide and enhanced pedestal regimes in NSTX\"",
         "site_url": "https://doi.org/10.34770/q7ej-1m25",
         "accession_num": "10.34770/q7ej-1m25",
@@ -2405,91 +2490,6 @@
             {
                 "type": "CN_DOE",
                 "value": "AC02-09CH11466"
-            }
-        ],
-        "site_ownership_code": "PPPL",
-        "product_type": "DA",
-        "organizations": [
-            {
-                "type": "RESEARCHING",
-                "ror_id": "https://ror.org/03vn1ts68"
-            },
-            {
-                "type": "SPONSOR",
-                "ror_id": "https://ror.org/01bj3aw27",
-                "identifiers": [
-                    {
-                        "type": "CN_DOE",
-                        "value": "AC02-09CH11466"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "access_limitations": [
-            "UNL"
-        ],
-        "title": "Data for figures in \"Improved liquid lithium surfaces in the Lithium Tokamak Experiment-\u03b2\"",
-        "site_url": "https://doi.org/10.34770/jpbt-qe53",
-        "accession_num": "10.34770/jpbt-qe53",
-        "publication_date": "2025-05-12",
-        "description": "Data for figures in \"Improved liquid lithium surfaces in the Lithium Tokamak Experiment-\u03b2\" accepted in Nuclear Materials and Energy. ",
-        "keywords": [
-            "Liquid metals",
-            "Liquid lithium",
-            "Wall conditioning",
-            "Plasma facing components",
-            "Tokamaks",
-            "Low-recycling"
-        ],
-        "doi": "10.34770/jpbt-qe53",
-        "persons": [
-            {
-                "type": "AUTHOR",
-                "first_name": "Dennis",
-                "last_name": "Boyle",
-                "orcid": "0000-0001-8091-8169",
-                "affiliations": [
-                    {
-                        "ror_id": "https://ror.org/03vn1ts68"
-                    }
-                ]
-            },
-            {
-                "type": "AUTHOR",
-                "first_name": "Anurag",
-                "last_name": "Maan",
-                "orcid": "0000-0001-7474-2785",
-                "affiliations": [
-                    {
-                        "ror_id": "https://ror.org/03vn1ts68"
-                    }
-                ]
-            },
-            {
-                "type": "AUTHOR",
-                "first_name": "Richard",
-                "last_name": "Majeski",
-                "orcid": "0000-0001-9437-0958",
-                "affiliations": [
-                    {
-                        "ror_id": "https://ror.org/03vn1ts68"
-                    }
-                ]
-            }
-        ],
-        "identifiers": [
-            {
-                "type": "CN_DOE",
-                "value": "AC02-09CH11466"
-            }
-        ],
-        "related_identifiers": [
-            {
-                "type": "DOI",
-                "relation": "IsCitedBy",
-                "value": "10.1016/j.nme.2025.101949"
             }
         ],
         "site_ownership_code": "PPPL",
@@ -2742,21 +2742,21 @@
             },
             {
                 "type": "SPONSOR",
-                "ror_id": "https://ror.org/01cmst727",
-                "identifiers": [
-                    {
-                        "type": "CN_NONDOE",
-                        "value": "560651"
-                    }
-                ]
-            },
-            {
-                "type": "SPONSOR",
                 "ror_id": "https://ror.org/01bj3aw27",
                 "identifiers": [
                     {
                         "type": "CN_DOE",
                         "value": "AC02-09CH11466"
+                    }
+                ]
+            },
+            {
+                "type": "SPONSOR",
+                "ror_id": "https://ror.org/01cmst727",
+                "identifiers": [
+                    {
+                        "type": "CN_NONDOE",
+                        "value": "560651"
                     }
                 ]
             }
@@ -2942,21 +2942,21 @@
             },
             {
                 "type": "SPONSOR",
-                "name": "Korean Ministry of Science and ICT",
-                "identifiers": [
-                    {
-                        "type": "CN_NONDOE",
-                        "value": "KFE-EN2401-15"
-                    }
-                ]
-            },
-            {
-                "type": "SPONSOR",
                 "ror_id": "https://ror.org/01bj3aw27",
                 "identifiers": [
                     {
                         "type": "CN_DOE",
                         "value": "AC02-09CH11466"
+                    }
+                ]
+            },
+            {
+                "type": "SPONSOR",
+                "name": "Korean Ministry of Science and ICT",
+                "identifiers": [
+                    {
+                        "type": "CN_NONDOE",
+                        "value": "KFE-EN2401-15"
                     }
                 ]
             }
@@ -3115,10 +3115,6 @@
             },
             {
                 "type": "SPONSOR",
-                "name": "Zero Carbon Technology Consortium"
-            },
-            {
-                "type": "SPONSOR",
                 "ror_id": "https://ror.org/01bj3aw27",
                 "identifiers": [
                     {
@@ -3126,6 +3122,10 @@
                         "value": "AC02-09CH11466"
                     }
                 ]
+            },
+            {
+                "type": "SPONSOR",
+                "name": "Zero Carbon Technology Consortium"
             }
         ]
     },
@@ -3372,6 +3372,379 @@
                     {
                         "type": "CN_DOE",
                         "value": "FC02-04ER54698"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "access_limitations": [
+            "UNL"
+        ],
+        "title": "Dataset for paper Error Field Measurements and Correction on MUSE Permanent Magnet Stellarator",
+        "site_url": "https://doi.org/10.34770/sdmb-h590",
+        "accession_num": "10.34770/sdmb-h590",
+        "publication_date": "2025-09-10",
+        "description": "This dataset contains the data and scripts required to generate all the figures in the paper \"Error Field Measurements and Correction on MUSE Permanent Magnet Stellarator\u201d. The data includes electron mapping images and related metadata.",
+        "keywords": [
+            "Stellarator",
+            "Error Fields",
+            "Electron Beam"
+        ],
+        "doi": "10.34770/sdmb-h590",
+        "persons": [
+            {
+                "type": "AUTHOR",
+                "first_name": "Xu",
+                "last_name": "Chu",
+                "orcid": "0000-0002-0382-6428",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/00hx57361"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Michael",
+                "last_name": "Zarnstorff",
+                "orcid": "0000-0001-7525-0539",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03vn1ts68"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Ken",
+                "last_name": "Hammond",
+                "orcid": "0000-0002-1104-4434",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03vn1ts68"
+                    }
+                ]
+            }
+        ],
+        "identifiers": [
+            {
+                "type": "CN_DOE",
+                "value": "AC02-09CH11466"
+            }
+        ],
+        "site_ownership_code": "PPPL",
+        "product_type": "DA",
+        "organizations": [
+            {
+                "type": "RESEARCHING",
+                "ror_id": "https://ror.org/03vn1ts68"
+            },
+            {
+                "type": "SPONSOR",
+                "ror_id": "https://ror.org/01bj3aw27",
+                "identifiers": [
+                    {
+                        "type": "CN_DOE",
+                        "value": "AC02-09CH11466"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "access_limitations": [
+            "UNL"
+        ],
+        "title": "Dataset, Code, and Models for Training Deep Learning Potentials for Low Temperature Plasma-Surface Interactions",
+        "site_url": "https://doi.org/10.34770/wq4t-wa25",
+        "accession_num": "10.34770/wq4t-wa25",
+        "publication_date": "2025-09-10",
+        "description": "This repository contains datasets, training scripts, and finished models, and test simulations used in the development of DeepREBO\u2014 a machine-learned interatomic potential trained to emulate the REBO2 empirical potential. The data was generated to study deep potential development for simulations of plasma-surface interactions. It uses an active learning framework, starting from a minimal dataset and iteratively expanding it. Included are those generated datasets, the trained models, and simulations used to evaluate the performance of the training process. This resource supports reproducibility and provides a reference framework for training deep potentials in plasma-surface interaction studies.",
+        "keywords": [
+            "deep potential",
+            "plasma-surface interactions",
+            "active learning",
+            "interatomic potentials",
+            "molecular dynamics"
+        ],
+        "doi": "10.34770/wq4t-wa25",
+        "persons": [
+            {
+                "type": "AUTHOR",
+                "first_name": "Jack S.",
+                "last_name": "Draney",
+                "orcid": "0000-0002-0289-2554",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/00hx57361"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Athanassios",
+                "last_name": "Panagiotopoulos",
+                "orcid": "0000-0002-8152-6615",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/00hx57361"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "David",
+                "last_name": "Graves",
+                "orcid": "0000-0002-2288-6768",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/00hx57361"
+                    }
+                ]
+            }
+        ],
+        "identifiers": [
+            {
+                "type": "CN_DOE",
+                "value": "AC02-09CH11466"
+            }
+        ],
+        "site_ownership_code": "PPPL",
+        "product_type": "DA",
+        "organizations": [
+            {
+                "type": "RESEARCHING",
+                "ror_id": "https://ror.org/03vn1ts68"
+            },
+            {
+                "type": "SPONSOR",
+                "ror_id": "https://ror.org/01bj3aw27",
+                "identifiers": [
+                    {
+                        "type": "CN_DOE",
+                        "value": "AC02-09CH11466"
+                    }
+                ]
+            },
+            {
+                "type": "SPONSOR",
+                "ror_id": "https://ror.org/01bj3aw27"
+            },
+            {
+                "type": "SPONSOR",
+                "ror_id": "https://ror.org/01bj3aw27"
+            }
+        ]
+    },
+    {
+        "access_limitations": [
+            "UNL"
+        ],
+        "title": "Data for \"Plasma shape effects on the Alfv\u00e9n eigenmode spectrum through Alfv\u00e9n slow-magnetosonic wave coupling\"",
+        "site_url": "https://doi.org/10.34770/tdn9-6g42",
+        "accession_num": "10.34770/tdn9-6g42",
+        "publication_date": "2025-09-17",
+        "description": "electron density profile as a function of normalized poloidal flux: psinorm ne(10^20/m^3) dne/dpsiN\nPressure profile as a function of normalized poloidal flux: psinorm ptot(KPa) dptot/dpsiN scaled to oftain beta=5% at magnetic axis\nMagnetic safety factor profile as a function of normalized poloidal flux: psinorm q_profile\nAll needed to perform the NOVA calculations.",
+        "keywords": [
+            "slow magnetosonic waves",
+            "Alfven waves",
+            "tokamaks",
+            "eigenmodes",
+            "Alfven-slow wave coupling"
+        ],
+        "doi": "10.34770/tdn9-6g42",
+        "persons": [
+            {
+                "type": "AUTHOR",
+                "first_name": "G. J.",
+                "last_name": "Kramer",
+                "orcid": "0000-0001-5105-8139",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03vn1ts68"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "C. Z.",
+                "last_name": "Cheng",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03vn1ts68"
+                    }
+                ]
+            }
+        ],
+        "identifiers": [
+            {
+                "type": "CN_DOE",
+                "value": "AC02-09CH11466"
+            }
+        ],
+        "related_identifiers": [
+            {
+                "type": "DOI",
+                "relation": "IsReferencedBy",
+                "value": "10.1088/1361-6587/aca828"
+            }
+        ],
+        "site_ownership_code": "PPPL",
+        "product_type": "DA",
+        "organizations": [
+            {
+                "type": "RESEARCHING",
+                "ror_id": "https://ror.org/03vn1ts68"
+            },
+            {
+                "type": "SPONSOR",
+                "ror_id": "https://ror.org/01bj3aw27",
+                "identifiers": [
+                    {
+                        "type": "CN_DOE",
+                        "value": "AC02-09CH11466"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "access_limitations": [
+            "UNL"
+        ],
+        "title": "Data for \"Sensitivities of time-dependent temperature profile predictions for NSTX with the Multi-Mode Model\"",
+        "site_url": "https://doi.org/10.34770/yvhr-gj82",
+        "accession_num": "10.34770/yvhr-gj82",
+        "publication_date": "2025-09-19",
+        "description": "Data for figures contained in \"Sensitivities of time-dependent temperature profile predictions for NSTX with the Multi-Mode Model\"",
+        "keywords": [
+            "Time-dependent integrated modeling",
+            "Spherical tokamaks",
+            "Reduced turbulent transport models",
+            "TRANSP",
+            "MMM",
+            "NSTX"
+        ],
+        "doi": "10.34770/yvhr-gj82",
+        "persons": [
+            {
+                "type": "AUTHOR",
+                "first_name": "Jeff",
+                "last_name": "Lestz",
+                "orcid": "0000-0002-6975-1537",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03ngjpk76"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Galina",
+                "last_name": "Avdeeva",
+                "orcid": "0000-0001-7072-7967",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03ngjpk76"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Stanley",
+                "last_name": "Kaye",
+                "orcid": "0000-0002-2514-1163",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03vn1ts68"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Marina",
+                "last_name": "Gorelenkova",
+                "orcid": "0000-0001-8487-1396",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03vn1ts68"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Federico",
+                "last_name": "Halpern",
+                "orcid": "0000-0002-0387-6038",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03ngjpk76"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Joseph",
+                "last_name": "McClenaghan",
+                "orcid": "0000-0003-4735-0991",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03ngjpk76"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Alexei",
+                "last_name": "Pankin",
+                "orcid": "0000-0002-1406-2902",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03vn1ts68"
+                    }
+                ]
+            },
+            {
+                "type": "AUTHOR",
+                "first_name": "Kathreen",
+                "last_name": "Thome",
+                "orcid": "0000-0002-4801-3922",
+                "affiliations": [
+                    {
+                        "ror_id": "https://ror.org/03ngjpk76"
+                    }
+                ]
+            }
+        ],
+        "identifiers": [
+            {
+                "type": "CN_DOE",
+                "value": "AC02-09CH11466"
+            },
+            {
+                "type": "CN_DOE",
+                "value": "SC0021113"
+            }
+        ],
+        "site_ownership_code": "PPPL",
+        "product_type": "DA",
+        "organizations": [
+            {
+                "type": "RESEARCHING",
+                "ror_id": "https://ror.org/03vn1ts68"
+            },
+            {
+                "type": "SPONSOR",
+                "ror_id": "https://ror.org/01bj3aw27",
+                "identifiers": [
+                    {
+                        "type": "CN_DOE",
+                        "value": "AC02-09CH11466"
+                    },
+                    {
+                        "type": "CN_DOE",
+                        "value": "SC0021113"
                     }
                 ]
             }
