@@ -27,7 +27,7 @@ if settings.ELINK2_TOKEN_TEST:
     )
 if settings.ELINK2_TOKEN_PROD:
     api_prod = Elink(
-        token=settings.ELINK2_TOKEN_PROD, target="https://osti.gov/elink2api/"
+        token=settings.ELINK2_TOKEN_PROD, target="https://www.osti.gov/elink2api/"
     )
 
 
