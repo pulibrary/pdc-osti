@@ -116,7 +116,7 @@ class Scraper:
 
         self.log.info("[bold yellow]Get existing datasets")
 
-        MAX_PAGE_COUNT = 15
+        MAX_PAGE_COUNT = 20
         existing_datasets = []
 
         for page in range(MAX_PAGE_COUNT):
