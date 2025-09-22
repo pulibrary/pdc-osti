@@ -304,10 +304,6 @@ class Scraper:
             "PDC community that have not been registered with OSTI."
         )
         self.log.info(f"[purple]They've been saved to the form {self.entry_form}.")
-        self.log.info(
-            "[purple]You're now expected to manually update that form and "
-            "save as a new file before running Poster.py"
-        )
         for i, row in df.iterrows():
             self.log.info(f"\t{repr(row['Title'])}")
 

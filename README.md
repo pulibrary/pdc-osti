@@ -83,5 +83,5 @@ Congrats 🚀 OSTI says that all records were successfully uploaded!
 
 ## Useful Links:
 
-- [OSTI API](https://www.osti.gov/elink/241-6api.jsp)
+- [OSTI API](https://www.osti.gov/elink2api)
 - [Previously submitted PPPL datasets](https://www.osti.gov/dataexplorer/api/v1/records?site_ownership_code=PPPL)
