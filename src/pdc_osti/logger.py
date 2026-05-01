@@ -5,8 +5,8 @@ from logging.config import dictConfig
 from pathlib import Path
 
 import yaml
-from rich.logging import Console, RichHandler
-
+from rich.console import Console
+from rich.logging import RichHandler
 from . import LOG_NAME
 from . import __version__ as pdc_osti_version
 
