@@ -8,6 +8,7 @@ import pandas as pd
 from elinkapi import Elink, exceptions
 from rich.prompt import Confirm
 
+from . import PPPL_ROR
 from .commons import (
     get_authors,
     get_contributors,
@@ -185,9 +186,7 @@ class Poster:
 
             item_dict["site_ownership_code"] = "PPPL"
             item_dict["product_type"] = "DA"
-            item_dict["organizations"] = [
-                {"type": "RESEARCHING", "ror_id": "https://ror.org/03vn1ts68"}
-            ]
+            item_dict["organizations"] = [{"type": "RESEARCHING", "ror_id": PPPL_ROR}]
             item_dict["organizations"] += sponsors
 
         state = "Updating" if self.osti_upload.exists() else "Writing"
