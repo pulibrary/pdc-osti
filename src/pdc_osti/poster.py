@@ -8,8 +8,10 @@ import pandas as pd
 from elinkapi import Elink, exceptions
 from rich.prompt import Confirm
 
+from . import PPPL_ROR
 from .commons import (
     get_authors,
+    get_contributors,
     get_description,
     get_doi,
     get_is_referenced_by,
@@ -122,7 +124,7 @@ class Poster:
             item_dict = {
                 "access_limitations": ["UNL"],
                 "title": row["Title"],
-                "site_url": f"https://arks.princeton.edu/ark:/{ark}",
+                "site_url": f"https://arks.princeton.edu/ark:/{ark}",  # noqa: E231
                 "accession_num": ark,
                 "publication_date": str(row["Issue Date"]),
                 "description": get_description(princeton_data),
@@ -136,14 +138,20 @@ class Poster:
                     item_dict["doi"] = doi
                     # Uses DOI moving forward #50
                     item_dict["accession_num"] = doi
-                    item_dict["site_url"] = f"https://doi.org/{doi}"
+                    item_dict["site_url"] = f"https://doi.org/{doi}"  # noqa: E231
                 else:
                     self.log.debug(f"OSTI DOI minted: {doi}")
             else:
                 self.log.warning("[bold red]No DOI!!!")
 
             authors = get_authors(princeton_data)
-            item_dict["persons"] = authors
+
+            contributors = get_contributors(princeton_data)
+            if not contributors:
+                item_dict["persons"] = authors
+            else:
+                self.log.info(f"[yellow]Adding contributors... N={len(contributors)}")
+                item_dict["persons"] = authors + contributors
 
             contract_nos = row["DOE Contract"].split(";")
             nondoe_nos = row["Non-DOE Contract"].split(";")
@@ -178,9 +186,7 @@ class Poster:
 
             item_dict["site_ownership_code"] = "PPPL"
             item_dict["product_type"] = "DA"
-            item_dict["organizations"] = [
-                {"type": "RESEARCHING", "ror_id": "https://ror.org/03vn1ts68"}
-            ]
+            item_dict["organizations"] = [{"type": "RESEARCHING", "ror_id": PPPL_ROR}]
             item_dict["organizations"] += sponsors
 
         state = "Updating" if self.osti_upload.exists() else "Writing"
@@ -213,7 +219,7 @@ class Poster:
                     f"[green]\t✔ {oid} - {record['doi']}: {record['title']}  "
                 )
             else:
-                self.log.info(f"[red]\t✗         - {record['doi']}")
+                self.log.info(f"[red]\t✗         - {record['doi']}")  # noqa: E221
 
         self.log.info("[bold yellow]Posting to OSTI")
 
