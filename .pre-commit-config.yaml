@@ -10,7 +10,7 @@ repos:
       - id: trailing-whitespace
         exclude_types: [json]
   - repo: https://github.com/psf/black
-    rev: 24.1.1
+    rev: 25.11.0
     hooks:
       - id: black
         # It is recommended to specify the latest version of Python
@@ -19,7 +19,7 @@ repos:
         # https://pre-commit.com/#top_level-default_language_version
         language_version: python3.13
   - repo: https://github.com/pycqa/flake8
-    rev: 5.0.4
+    rev: 6.1.0
     hooks:
       - id: flake8
         args:
