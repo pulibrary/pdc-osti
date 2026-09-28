@@ -16,7 +16,7 @@ from .logger import pdc_log, script_log_end, script_log_init
 SCRIPT_NAME = Path(__file__).stem
 
 # All possible prefix: https://regex101.com/r/SxNHJg
-REGEX_DOE = r"^(DE|AC|SC|FC|FG|AR|EE|EM|FE|NA|NE)"
+REGEX_DOE = r"^(?!FES-ERCAP)(DE|AC|SC|FC|FG|AR|EE|EM|FE|NA|NE)"  # modified for iss#96
 REGEX_DOE_SUB = "^(DE)+(-?)"  # https://regex101.com/r/NsZbRJ
 REGEX_BARE_DOE = re.compile(
     r"(^((U.S.|U. S.) (Department of Energy))|FES)$"
