@@ -41,6 +41,41 @@ def get_authors(record: dict) -> list[dict]:
         return [get_author(creator) for creator in creators]
 
 
+def get_contributors(record: dict) -> list[dict]:
+    """Retrieve contributors with ORCID from PDC"""
+
+    contributors = record["resource"].get("contributors")
+    if contributors:
+        return [get_contributor(contributor) for contributor in contributors]
+    else:
+        return []
+
+
+def get_contributor(contributor: dict) -> dict:
+    """Retrieve individual contributor from PDC metadata for E-Link 2 API"""
+
+    c_dict = {
+        "type": "CONTRIBUTING",
+        "first_name": contributor.get("given_name"),
+        "last_name": contributor.get("family_name"),
+    }
+    if orc_id := contributor.get("identifier"):
+        c_dict["orcid"] = orc_id["value"]
+
+    affils = contributor["affiliations"]
+    if affils:
+        affiliations = []
+        for affil in affils:
+            if ror_id := affil.get("identifier"):
+                affiliations.append({"ror_id": ror_id})
+            else:
+                affiliations.append({"name": affil.get("value")})
+        c_dict["affiliations"] = affiliations
+
+    c_dict["contributor_type"] = contributor.get("type")
+    return c_dict
+
+
 def get_datacite_awards(item: dict) -> list:
     return [m["award_number"] for m in item["resource"].get("funders")]
 
